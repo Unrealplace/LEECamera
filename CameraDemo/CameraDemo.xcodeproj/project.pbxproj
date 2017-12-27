@@ -15,6 +15,8 @@
 		2BAB07DF1FF3913D00DFAC18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07DE1FF3913D00DFAC18 /* main.m */; };
 		2BAB07E71FF3A7A500DFAC18 /* SystemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07E61FF3A7A500DFAC18 /* SystemVC.m */; };
 		2BAB07EA1FF3A80900DFAC18 /* ACCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */; };
+		B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */; };
+		B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		2BAB07E61FF3A7A500DFAC18 /* SystemVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemVC.m; sourceTree = "<group>"; };
 		2BAB07E81FF3A80900DFAC18 /* ACCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraViewController.h; sourceTree = "<group>"; };
 		2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraViewController.m; sourceTree = "<group>"; };
+		B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraView.h; sourceTree = "<group>"; };
+		B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraView.m; sourceTree = "<group>"; };
+		B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACVideoPreView.h; sourceTree = "<group>"; };
+		B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACVideoPreView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,10 @@
 				2BAB07E61FF3A7A500DFAC18 /* SystemVC.m */,
 				2BAB07E81FF3A80900DFAC18 /* ACCameraViewController.h */,
 				2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */,
+				B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */,
+				B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */,
+				B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */,
+				B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */,
 				2BAB07D51FF3913D00DFAC18 /* Main.storyboard */,
 				2BAB07D81FF3913D00DFAC18 /* Assets.xcassets */,
 				2BAB07DA1FF3913D00DFAC18 /* LaunchScreen.storyboard */,
@@ -153,10 +163,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BAB07D41FF3913D00DFAC18 /* ViewController.m in Sources */,
+				B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */,
 				2BAB07DF1FF3913D00DFAC18 /* main.m in Sources */,
 				2BAB07D11FF3913D00DFAC18 /* AppDelegate.m in Sources */,
 				2BAB07E71FF3A7A500DFAC18 /* SystemVC.m in Sources */,
 				2BAB07EA1FF3A80900DFAC18 /* ACCameraViewController.m in Sources */,
+				B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BQNL96S8U;
 				INFOPLIST_FILE = CameraDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CameraDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -307,6 +320,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BQNL96S8U;
 				INFOPLIST_FILE = CameraDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CameraDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
