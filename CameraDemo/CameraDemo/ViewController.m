@@ -2,8 +2,8 @@
 //  ViewController.m
 //  CameraDemo
 //
-//  Created by NicoLin on 2017/12/27.
-//  Copyright © 2017年 NicoLin. All rights reserved.
+//  Created by OliverLee on 2017/12/27.
+//  Copyright © 2017年 OliverLee. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -71,7 +71,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
+    
+//    ACPhotoPickerController * pickerVC = [[ACPhotoPickerController alloc]init];
+//    pickerVC.maximumSize = CGSizeMake(1024, 1024);
+//    [navi setNavigationBarHidden:YES animated:NO];
+//    [self presentViewController:navi animated:YES completion:nil];
+    
+    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:[NSClassFromString(_dataSource[indexPath.section]) new]];
+    
+    [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
+    
+//    [self presentViewController:navi animated:YES completion:^{
+//
+//        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+//
+//    }];
+    
+//        [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
 }
 
 @end

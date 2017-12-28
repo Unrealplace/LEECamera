@@ -15,6 +15,22 @@
 		2BAB07DF1FF3913D00DFAC18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07DE1FF3913D00DFAC18 /* main.m */; };
 		2BAB07E71FF3A7A500DFAC18 /* SystemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07E61FF3A7A500DFAC18 /* SystemVC.m */; };
 		2BAB07EA1FF3A80900DFAC18 /* ACCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */; };
+		2BAB07ED1FF4841800DFAC18 /* ACCameraBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07EC1FF4841800DFAC18 /* ACCameraBaseViewController.m */; };
+		2BAB07F01FF48EC000DFAC18 /* ACCameraBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07EF1FF48EC000DFAC18 /* ACCameraBottomView.m */; };
+		2BAB07F31FF48ED000DFAC18 /* ACCameraTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07F21FF48ED000DFAC18 /* ACCameraTopView.m */; };
+		2BAB07F71FF4C04300DFAC18 /* ACMotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07F61FF4C04300DFAC18 /* ACMotionManager.m */; };
+		2BAB080F1FF4E34C00DFAC18 /* ACPhotoShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB080E1FF4E34C00DFAC18 /* ACPhotoShowViewController.m */; };
+		2BAB08121FF4F56F00DFAC18 /* ACFaceDetectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08111FF4F56F00DFAC18 /* ACFaceDetectionViewController.m */; };
+		2BAB08271FF4FDEB00DFAC18 /* ACAlbumBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08181FF4FCB500DFAC18 /* ACAlbumBtn.m */; };
+		2BAB08281FF4FDEB00DFAC18 /* ACPhotoAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB081A1FF4FCB500DFAC18 /* ACPhotoAlbumCell.m */; };
+		2BAB08291FF4FDEB00DFAC18 /* ACPhotoAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB081C1FF4FCB500DFAC18 /* ACPhotoAlbumController.m */; };
+		2BAB082A1FF4FDEB00DFAC18 /* ACPhotoDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB081E1FF4FCB500DFAC18 /* ACPhotoDetailController.m */; };
+		2BAB082B1FF4FDEB00DFAC18 /* ACPhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08201FF4FCB500DFAC18 /* ACPhotoPickerCell.m */; };
+		2BAB082C1FF4FDEB00DFAC18 /* ACPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08221FF4FCB500DFAC18 /* ACPhotoPickerController.m */; };
+		2BAB082D1FF4FDEB00DFAC18 /* NSIndexSet+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08241FF4FCB500DFAC18 /* NSIndexSet+Convenience.m */; };
+		2BAB082E1FF4FDEB00DFAC18 /* UICollectionView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08261FF4FCB500DFAC18 /* UICollectionView+Convenience.m */; };
+		2BAB08351FF504EB00DFAC18 /* UIView+ACCameraFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08341FF504EB00DFAC18 /* UIView+ACCameraFrame.m */; };
+		69949F3B0CB1E194D24A204A /* libPods-CameraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */; };
 		B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */; };
 		B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */; };
 /* End PBXBuildFile section */
@@ -34,10 +50,44 @@
 		2BAB07E61FF3A7A500DFAC18 /* SystemVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemVC.m; sourceTree = "<group>"; };
 		2BAB07E81FF3A80900DFAC18 /* ACCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraViewController.h; sourceTree = "<group>"; };
 		2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraViewController.m; sourceTree = "<group>"; };
+		2BAB07EB1FF4841800DFAC18 /* ACCameraBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraBaseViewController.h; sourceTree = "<group>"; };
+		2BAB07EC1FF4841800DFAC18 /* ACCameraBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraBaseViewController.m; sourceTree = "<group>"; };
+		2BAB07EE1FF48EC000DFAC18 /* ACCameraBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraBottomView.h; sourceTree = "<group>"; };
+		2BAB07EF1FF48EC000DFAC18 /* ACCameraBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraBottomView.m; sourceTree = "<group>"; };
+		2BAB07F11FF48ED000DFAC18 /* ACCameraTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraTopView.h; sourceTree = "<group>"; };
+		2BAB07F21FF48ED000DFAC18 /* ACCameraTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraTopView.m; sourceTree = "<group>"; };
+		2BAB07F51FF4C04300DFAC18 /* ACMotionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACMotionManager.h; sourceTree = "<group>"; };
+		2BAB07F61FF4C04300DFAC18 /* ACMotionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACMotionManager.m; sourceTree = "<group>"; };
+		2BAB080D1FF4E34C00DFAC18 /* ACPhotoShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPhotoShowViewController.h; sourceTree = "<group>"; };
+		2BAB080E1FF4E34C00DFAC18 /* ACPhotoShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACPhotoShowViewController.m; sourceTree = "<group>"; };
+		2BAB08101FF4F56F00DFAC18 /* ACFaceDetectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFaceDetectionViewController.h; sourceTree = "<group>"; };
+		2BAB08111FF4F56F00DFAC18 /* ACFaceDetectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFaceDetectionViewController.m; sourceTree = "<group>"; };
+		2BAB08171FF4FCB500DFAC18 /* ACAlbumBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAlbumBtn.h; sourceTree = "<group>"; };
+		2BAB08181FF4FCB500DFAC18 /* ACAlbumBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAlbumBtn.m; sourceTree = "<group>"; };
+		2BAB08191FF4FCB500DFAC18 /* ACPhotoAlbumCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPhotoAlbumCell.h; sourceTree = "<group>"; };
+		2BAB081A1FF4FCB500DFAC18 /* ACPhotoAlbumCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACPhotoAlbumCell.m; sourceTree = "<group>"; };
+		2BAB081B1FF4FCB500DFAC18 /* ACPhotoAlbumController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPhotoAlbumController.h; sourceTree = "<group>"; };
+		2BAB081C1FF4FCB500DFAC18 /* ACPhotoAlbumController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACPhotoAlbumController.m; sourceTree = "<group>"; };
+		2BAB081D1FF4FCB500DFAC18 /* ACPhotoDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPhotoDetailController.h; sourceTree = "<group>"; };
+		2BAB081E1FF4FCB500DFAC18 /* ACPhotoDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACPhotoDetailController.m; sourceTree = "<group>"; };
+		2BAB081F1FF4FCB500DFAC18 /* ACPhotoPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPhotoPickerCell.h; sourceTree = "<group>"; };
+		2BAB08201FF4FCB500DFAC18 /* ACPhotoPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACPhotoPickerCell.m; sourceTree = "<group>"; };
+		2BAB08211FF4FCB500DFAC18 /* ACPhotoPickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPhotoPickerController.h; sourceTree = "<group>"; };
+		2BAB08221FF4FCB500DFAC18 /* ACPhotoPickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACPhotoPickerController.m; sourceTree = "<group>"; };
+		2BAB08231FF4FCB500DFAC18 /* NSIndexSet+Convenience.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+Convenience.h"; sourceTree = "<group>"; };
+		2BAB08241FF4FCB500DFAC18 /* NSIndexSet+Convenience.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+Convenience.m"; sourceTree = "<group>"; };
+		2BAB08251FF4FCB500DFAC18 /* UICollectionView+Convenience.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Convenience.h"; sourceTree = "<group>"; };
+		2BAB08261FF4FCB500DFAC18 /* UICollectionView+Convenience.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Convenience.m"; sourceTree = "<group>"; };
+		2BAB082F1FF500F500DFAC18 /* ACCameraHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraHeader.h; sourceTree = "<group>"; };
+		2BAB08331FF504EB00DFAC18 /* UIView+ACCameraFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ACCameraFrame.h"; sourceTree = "<group>"; };
+		2BAB08341FF504EB00DFAC18 /* UIView+ACCameraFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ACCameraFrame.m"; sourceTree = "<group>"; };
+		88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CameraDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraView.h; sourceTree = "<group>"; };
 		B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraView.m; sourceTree = "<group>"; };
 		B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACVideoPreView.h; sourceTree = "<group>"; };
 		B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACVideoPreView.m; sourceTree = "<group>"; };
+		BA8FCB3DDD32F8D9395F0AB7 /* Pods-CameraDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CameraDemo/Pods-CameraDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C8A24F05D0337AAF934D2589 /* Pods-CameraDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CameraDemo/Pods-CameraDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69949F3B0CB1E194D24A204A /* libPods-CameraDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +107,8 @@
 			children = (
 				2BAB07CE1FF3913D00DFAC18 /* CameraDemo */,
 				2BAB07CD1FF3913D00DFAC18 /* Products */,
+				96D779807FAE9168C813D98F /* Pods */,
+				997E92AE57EDF049B28F6BBC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,16 +125,11 @@
 			children = (
 				2BAB07CF1FF3913D00DFAC18 /* AppDelegate.h */,
 				2BAB07D01FF3913D00DFAC18 /* AppDelegate.m */,
-				2BAB07D21FF3913D00DFAC18 /* ViewController.h */,
-				2BAB07D31FF3913D00DFAC18 /* ViewController.m */,
 				2BAB07E51FF3A7A500DFAC18 /* SystemVC.h */,
 				2BAB07E61FF3A7A500DFAC18 /* SystemVC.m */,
-				2BAB07E81FF3A80900DFAC18 /* ACCameraViewController.h */,
-				2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */,
-				B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */,
-				B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */,
-				B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */,
-				B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */,
+				2BAB07D21FF3913D00DFAC18 /* ViewController.h */,
+				2BAB07D31FF3913D00DFAC18 /* ViewController.m */,
+				2BAB07F41FF4BFF500DFAC18 /* ACCameraView */,
 				2BAB07D51FF3913D00DFAC18 /* Main.storyboard */,
 				2BAB07D81FF3913D00DFAC18 /* Assets.xcassets */,
 				2BAB07DA1FF3913D00DFAC18 /* LaunchScreen.storyboard */,
@@ -91,6 +139,99 @@
 			path = CameraDemo;
 			sourceTree = "<group>";
 		};
+		2BAB07F41FF4BFF500DFAC18 /* ACCameraView */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB08161FF4FCB500DFAC18 /* PhotoPicker */,
+				2BAB08151FF4FC6E00DFAC18 /* Tools */,
+				2BAB08141FF4FC5300DFAC18 /* Controllers */,
+				2BAB08131FF4FC3900DFAC18 /* View */,
+			);
+			path = ACCameraView;
+			sourceTree = "<group>";
+		};
+		2BAB08131FF4FC3900DFAC18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */,
+				B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */,
+				2BAB07EE1FF48EC000DFAC18 /* ACCameraBottomView.h */,
+				2BAB07EF1FF48EC000DFAC18 /* ACCameraBottomView.m */,
+				2BAB07F11FF48ED000DFAC18 /* ACCameraTopView.h */,
+				2BAB07F21FF48ED000DFAC18 /* ACCameraTopView.m */,
+				B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */,
+				B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2BAB08141FF4FC5300DFAC18 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB07EB1FF4841800DFAC18 /* ACCameraBaseViewController.h */,
+				2BAB07EC1FF4841800DFAC18 /* ACCameraBaseViewController.m */,
+				2BAB07E81FF3A80900DFAC18 /* ACCameraViewController.h */,
+				2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */,
+				2BAB08101FF4F56F00DFAC18 /* ACFaceDetectionViewController.h */,
+				2BAB08111FF4F56F00DFAC18 /* ACFaceDetectionViewController.m */,
+				2BAB080D1FF4E34C00DFAC18 /* ACPhotoShowViewController.h */,
+				2BAB080E1FF4E34C00DFAC18 /* ACPhotoShowViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2BAB08151FF4FC6E00DFAC18 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB07F51FF4C04300DFAC18 /* ACMotionManager.h */,
+				2BAB07F61FF4C04300DFAC18 /* ACMotionManager.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		2BAB08161FF4FCB500DFAC18 /* PhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB08171FF4FCB500DFAC18 /* ACAlbumBtn.h */,
+				2BAB08181FF4FCB500DFAC18 /* ACAlbumBtn.m */,
+				2BAB08191FF4FCB500DFAC18 /* ACPhotoAlbumCell.h */,
+				2BAB081A1FF4FCB500DFAC18 /* ACPhotoAlbumCell.m */,
+				2BAB081B1FF4FCB500DFAC18 /* ACPhotoAlbumController.h */,
+				2BAB081C1FF4FCB500DFAC18 /* ACPhotoAlbumController.m */,
+				2BAB081D1FF4FCB500DFAC18 /* ACPhotoDetailController.h */,
+				2BAB081E1FF4FCB500DFAC18 /* ACPhotoDetailController.m */,
+				2BAB081F1FF4FCB500DFAC18 /* ACPhotoPickerCell.h */,
+				2BAB08201FF4FCB500DFAC18 /* ACPhotoPickerCell.m */,
+				2BAB08211FF4FCB500DFAC18 /* ACPhotoPickerController.h */,
+				2BAB08221FF4FCB500DFAC18 /* ACPhotoPickerController.m */,
+				2BAB08331FF504EB00DFAC18 /* UIView+ACCameraFrame.h */,
+				2BAB08341FF504EB00DFAC18 /* UIView+ACCameraFrame.m */,
+				2BAB08231FF4FCB500DFAC18 /* NSIndexSet+Convenience.h */,
+				2BAB08241FF4FCB500DFAC18 /* NSIndexSet+Convenience.m */,
+				2BAB08251FF4FCB500DFAC18 /* UICollectionView+Convenience.h */,
+				2BAB08261FF4FCB500DFAC18 /* UICollectionView+Convenience.m */,
+				2BAB082F1FF500F500DFAC18 /* ACCameraHeader.h */,
+			);
+			path = PhotoPicker;
+			sourceTree = "<group>";
+		};
+		96D779807FAE9168C813D98F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA8FCB3DDD32F8D9395F0AB7 /* Pods-CameraDemo.debug.xcconfig */,
+				C8A24F05D0337AAF934D2589 /* Pods-CameraDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		997E92AE57EDF049B28F6BBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -98,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BAB07E21FF3913D00DFAC18 /* Build configuration list for PBXNativeTarget "CameraDemo" */;
 			buildPhases = (
+				98E35DBDB0F9D9E5CDCEDE2D /* [CP] Check Pods Manifest.lock */,
 				2BAB07C81FF3913D00DFAC18 /* Sources */,
 				2BAB07C91FF3913D00DFAC18 /* Frameworks */,
 				2BAB07CA1FF3913D00DFAC18 /* Resources */,
+				F8AD71CF038505DEC62DC6DE /* [CP] Embed Pods Frameworks */,
+				BC6F95188B459F752F541F82 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -157,17 +301,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		98E35DBDB0F9D9E5CDCEDE2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CameraDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC6F95188B459F752F541F82 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CameraDemo/Pods-CameraDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8AD71CF038505DEC62DC6DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CameraDemo/Pods-CameraDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2BAB07C81FF3913D00DFAC18 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BAB08271FF4FDEB00DFAC18 /* ACAlbumBtn.m in Sources */,
+				2BAB08281FF4FDEB00DFAC18 /* ACPhotoAlbumCell.m in Sources */,
+				2BAB08291FF4FDEB00DFAC18 /* ACPhotoAlbumController.m in Sources */,
+				2BAB082A1FF4FDEB00DFAC18 /* ACPhotoDetailController.m in Sources */,
+				2BAB082B1FF4FDEB00DFAC18 /* ACPhotoPickerCell.m in Sources */,
+				2BAB082C1FF4FDEB00DFAC18 /* ACPhotoPickerController.m in Sources */,
+				2BAB082D1FF4FDEB00DFAC18 /* NSIndexSet+Convenience.m in Sources */,
+				2BAB082E1FF4FDEB00DFAC18 /* UICollectionView+Convenience.m in Sources */,
 				2BAB07D41FF3913D00DFAC18 /* ViewController.m in Sources */,
 				B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */,
 				2BAB07DF1FF3913D00DFAC18 /* main.m in Sources */,
+				2BAB07F01FF48EC000DFAC18 /* ACCameraBottomView.m in Sources */,
 				2BAB07D11FF3913D00DFAC18 /* AppDelegate.m in Sources */,
 				2BAB07E71FF3A7A500DFAC18 /* SystemVC.m in Sources */,
+				2BAB07F71FF4C04300DFAC18 /* ACMotionManager.m in Sources */,
 				2BAB07EA1FF3A80900DFAC18 /* ACCameraViewController.m in Sources */,
+				2BAB080F1FF4E34C00DFAC18 /* ACPhotoShowViewController.m in Sources */,
+				2BAB08121FF4F56F00DFAC18 /* ACFaceDetectionViewController.m in Sources */,
+				2BAB07F31FF48ED000DFAC18 /* ACCameraTopView.m in Sources */,
+				2BAB07ED1FF4841800DFAC18 /* ACCameraBaseViewController.m in Sources */,
+				2BAB08351FF504EB00DFAC18 /* UIView+ACCameraFrame.m in Sources */,
 				B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,12 +510,13 @@
 		};
 		2BAB07E31FF3913D00DFAC18 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA8FCB3DDD32F8D9395F0AB7 /* Pods-CameraDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BQNL96S8U;
 				INFOPLIST_FILE = CameraDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CameraDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -315,12 +526,13 @@
 		};
 		2BAB07E41FF3913D00DFAC18 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8A24F05D0337AAF934D2589 /* Pods-CameraDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BQNL96S8U;
 				INFOPLIST_FILE = CameraDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CameraDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

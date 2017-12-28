@@ -1,5 +1,5 @@
 //
-//  SystemVC.h
+//  ACCameraViewController.h
 //  CameraDemo
 //
 //  Created by OliverLee on 2017/12/27.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SystemVC : UIViewController
+#import "ACCameraBaseViewController.h"
+@interface ACCameraViewController : ACCameraBaseViewController
 
 @end

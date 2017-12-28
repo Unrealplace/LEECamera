@@ -3,7 +3,7 @@
 //  CameraDemo
 //
 //  Created by LiYang on 2017/12/27.
-//  Copyright © 2017年 NicoLin. All rights reserved.
+//  Copyright © 2017年 OliverLee. All rights reserved.
 //
 
 #import "ACVideoPreView.h"
@@ -28,7 +28,6 @@
 
 - (void)setCaptureSession:(AVCaptureSession *)captureSession {
     [(AVCaptureVideoPreviewLayer*)self.layer setSession:captureSession];
-
 }
 
 - (CGPoint)captureDevicePointForPoint:(CGPoint)point {
