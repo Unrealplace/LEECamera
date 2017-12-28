@@ -15,6 +15,7 @@
 #import "ACAlbumBtn.h"
 #import "ACCameraHeader.h"
 #import "UIView+ACCameraFrame.h"
+#import "UIImage+ACCameraFixOrientation.h"
 
 @interface ACPhotoPickerController ()<PHPhotoLibraryChangeObserver,UICollectionViewDelegate,UICollectionViewDataSource,UIViewControllerPreviewingDelegate>
 
@@ -138,7 +139,7 @@
         
         ACAlbumBtn * albumBtn = [ACAlbumBtn buttonWithType:UIButtonTypeCustom];
         albumBtn.frame = CGRectMake((_naviView.ca_width - 80.0f)/2, ACCAMERA_NAVI_TOP_PADDING, 80.0f, ACCAMERA_NAVI_HEIGHT);
-        [albumBtn.titleLabel setFont:ACFont(16.0f)];
+        [albumBtn.titleLabel setFont:ACCAMERA_ACFont(16.0f)];
         [albumBtn setImage:[UIImage imageNamed:@"editor_album_open"] forState:UIControlStateNormal];
         [albumBtn setImage:[UIImage imageNamed:@"editor_album_close"] forState:UIControlStateSelected];
         [albumBtn setAlbumTitle:@"所有照片"];
@@ -168,7 +169,7 @@
         
         _photoCollections = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:layout];
         _photoCollections.collectionViewLayout = layout;
-        _photoCollections.backgroundColor = ACRGBColor(51, 51, 51);
+        _photoCollections.backgroundColor = ACCAMERA_ACRGBColor(51, 51, 51);
         _photoCollections.showsVerticalScrollIndicator = NO;
         _photoCollections.showsHorizontalScrollIndicator = NO;
         _photoCollections.dataSource = self;
@@ -209,7 +210,7 @@
             //动画结束前，按钮不可点击
             _albumBtn.enabled = NO;
             [NSObject pop_animate:^{
-                self.albumVC.view.pop_easeInEaseOut.frame = CGRectMake(0, -SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+                self.albumVC.view.pop_easeInEaseOut.frame = CGRectMake(0, -ACCAMERA_SCREEN_HEIGHT, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
             } completion:^(BOOL finished) {
                 [self.albumVC.view removeFromSuperview];
                 self.albumVC = nil;
@@ -221,14 +222,15 @@
         
         if (!self.albumVC) {
             self.albumVC = [[ACPhotoAlbumController alloc] init];
-            @weakify(self)
+            __weak typeof(self) weakSelf = self;
+//            @weakify(self)
             [self.albumVC selectAlbumWithAlbumHandler:^(PHFetchResult *result, NSString * albumTitle) {
-                @strongify(self)
-                [self.albumBtn setAlbumTitle:albumTitle];
-                self.allPhotos = result;
-                [self showAlbumWithStatus:NO];
+//                @strongify(self)
+                [weakSelf.albumBtn setAlbumTitle:albumTitle];
+                weakSelf.allPhotos = result;
+                [weakSelf showAlbumWithStatus:NO];
             }];
-            self.albumVC.view.frame = CGRectMake(0, -SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+            self.albumVC.view.frame = CGRectMake(0, -ACCAMERA_SCREEN_HEIGHT, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
             self.albumVC.view.pop_duration = EditorDropAnimateDuration;
             [self.view addSubview:self.albumVC.view];
             [self.view bringSubviewToFront:self.naviView];
@@ -236,7 +238,7 @@
     
         _albumBtn.enabled = NO;
         [NSObject pop_animate:^{
-            self.albumVC.view.pop_easeInEaseOut.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            self.albumVC.view.pop_easeInEaseOut.frame = CGRectMake(0, 0, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
         } completion:^(BOOL finished) {
             _albumBtn.enabled = YES;
         }];
@@ -259,12 +261,12 @@
     imageOptions.networkAccessAllowed = NO;
     imageOptions.resizeMode = PHImageRequestOptionsResizeModeFast;
     imageOptions.synchronous = YES;
-    @weakify(self)
+    __weak typeof(self) weakSelf = self;
+
     [[PHImageManager defaultManager] requestImageForAsset:self.allPhotos[indexPath.item] targetSize:self.maximumSize contentMode:PHImageContentModeAspectFit options:imageOptions resultHandler:^(UIImage *result, NSDictionary *info) {
         @autoreleasepool {
-            @strongify(self)
-            if (self.pickAction) {
-                self.pickAction([result fixOrientation]);
+            if (weakSelf.pickAction) {
+                weakSelf.pickAction([result acCameraFixOrientation]);
             }
         }
     }];
@@ -480,17 +482,16 @@
             detailVC.photo = result;
         }
     }];
-    @weakify(self);
+    __weak typeof(self) weakSelf = self;
     [detailVC selectTheImgWithBlock:^(UIImage *photo) {
-        @strongify(self);
-        if (self.pickAction) {
-            self.pickAction(photo);
-            [self closePhotoPicker];
+        if (weakSelf.pickAction) {
+            weakSelf.pickAction(photo);
+            [weakSelf closePhotoPicker];
         }
     }];
     
     // 预览区域大小(可不设置)
-    detailVC.preferredContentSize = CGSizeMake(kScreenWidth, kScreenHeight);
+    detailVC.preferredContentSize = CGSizeMake(ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
     
     return detailVC;
 }

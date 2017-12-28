@@ -33,6 +33,7 @@
 		69949F3B0CB1E194D24A204A /* libPods-CameraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */; };
 		B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */; };
 		B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */; };
+		B6BF63961FF52529000CE33D /* UIImage+ACCameraFixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63951FF52529000CE33D /* UIImage+ACCameraFixOrientation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,8 @@
 		B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraView.m; sourceTree = "<group>"; };
 		B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACVideoPreView.h; sourceTree = "<group>"; };
 		B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACVideoPreView.m; sourceTree = "<group>"; };
+		B6BF63941FF52529000CE33D /* UIImage+ACCameraFixOrientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ACCameraFixOrientation.h"; sourceTree = "<group>"; };
+		B6BF63951FF52529000CE33D /* UIImage+ACCameraFixOrientation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ACCameraFixOrientation.m"; sourceTree = "<group>"; };
 		BA8FCB3DDD32F8D9395F0AB7 /* Pods-CameraDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CameraDemo/Pods-CameraDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C8A24F05D0337AAF934D2589 /* Pods-CameraDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CameraDemo/Pods-CameraDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +213,8 @@
 				2BAB08241FF4FCB500DFAC18 /* NSIndexSet+Convenience.m */,
 				2BAB08251FF4FCB500DFAC18 /* UICollectionView+Convenience.h */,
 				2BAB08261FF4FCB500DFAC18 /* UICollectionView+Convenience.m */,
+				B6BF63941FF52529000CE33D /* UIImage+ACCameraFixOrientation.h */,
+				B6BF63951FF52529000CE33D /* UIImage+ACCameraFixOrientation.m */,
 				2BAB082F1FF500F500DFAC18 /* ACCameraHeader.h */,
 			);
 			path = PhotoPicker;
@@ -373,6 +378,7 @@
 				2BAB07E71FF3A7A500DFAC18 /* SystemVC.m in Sources */,
 				2BAB07F71FF4C04300DFAC18 /* ACMotionManager.m in Sources */,
 				2BAB07EA1FF3A80900DFAC18 /* ACCameraViewController.m in Sources */,
+				B6BF63961FF52529000CE33D /* UIImage+ACCameraFixOrientation.m in Sources */,
 				2BAB080F1FF4E34C00DFAC18 /* ACPhotoShowViewController.m in Sources */,
 				2BAB08121FF4F56F00DFAC18 /* ACFaceDetectionViewController.m in Sources */,
 				2BAB07F31FF48ED000DFAC18 /* ACCameraTopView.m in Sources */,

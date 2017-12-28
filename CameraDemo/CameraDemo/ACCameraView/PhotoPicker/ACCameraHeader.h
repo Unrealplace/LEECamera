@@ -33,3 +33,8 @@
 #define ACCAMERA_NAVI_TOP_PADDING                (ACCAMERA_DeviceIsX ? 44.0f : 0.0f)
 #define ACCAMERA_NAVI_HEIGHT                     (ACCAMERA_DeviceIsX ? 60.0f : 44.0f)
 #define ACCAMERA_EDIT_BOTTOM_PADDING             (ACCAMERA_DeviceIsX ? 34.0f : 0.0f)
+
+
+//字体
+#define ACCAMERA_ACFont(size)                       [UIFont systemFontOfSize:size]
+#define ACCAMERA_ACBoldFont(size)                [UIFont boldSystemFontOfSize:size]
