@@ -32,8 +32,10 @@
 }
 
 
-@property (nonatomic, strong)UIImageView * imageView;
+@property(nonatomic, strong)UIImageView * imageView;
 @property(nonatomic, strong) ACMotionManager *motionManager;
+@property(nonatomic, assign) AVCaptureFlashMode currentflashMode; // 当前闪光灯的模式，用来调整前后摄像头切换时候的模式
+@property(nonatomic, assign)BOOL isFrontCarmera;// 当前是前置还是后置摄像头
 
 @end
 
@@ -49,6 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _isFrontCarmera = NO;
     _cameraView = [[ACCameraView alloc] initWithFrame:self.view.bounds];
     _cameraView.delegate = self;
     [self.view addSubview:_cameraView];
@@ -67,10 +70,14 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+
  }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+
  
 }
 - (BOOL)shouldAutorotate {
@@ -79,6 +86,7 @@
 
 - (void)dealloc {
     NSLog(@"dealloc");
+    self.navigationController.navigationBarHidden = NO;
 //    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
@@ -190,7 +198,6 @@
 }
 
 
-
 /**
  拍摄照片
  */
@@ -199,6 +206,7 @@
     if (connection.isVideoOrientationSupported) {
         connection.videoOrientation = [self currentVideoOrientation];
     }
+    self.isFrontCarmera?(connection.videoMirrored=YES):(connection.videoMirrored=NO);
     id takePictureSuccess = ^(CMSampleBufferRef sampleBuffer,NSError *error){
         if (sampleBuffer == NULL)return ;
         self.imageView.image = nil;
@@ -208,7 +216,6 @@
         photoVC.showImage = image;
         [self.navigationController pushViewController:photoVC animated:YES];
         
-//        self.imageView.image = image;
     };
     [_imageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:takePictureSuccess];
 }
@@ -237,6 +244,9 @@
         // 如果后置转前置，系统会自动关闭手电筒，如果之前打开的，需要通知camera更新UI
         if (videoDevice.position == AVCaptureDevicePositionFront) {
 //            [self.cameraView changeTorch:NO];
+            self.isFrontCarmera = YES;
+        }else{
+            self.isFrontCarmera = NO;
         }
         
         // 前后摄像头的闪光灯不是同步的，所以在转换摄像头后需要重新设置闪光灯
@@ -245,7 +255,80 @@
     }
     return error;
 }
+- (BOOL)cameraSupportsTapToFocus{
+    return [[self activeCamera] isFocusPointOfInterestSupported];
+}
 
+#pragma mark 闪光灯 和 手电筒的 配置
+
+- (BOOL)cameraHasFlash{
+    return [[self activeCamera] hasFlash];
+}
+
+- (AVCaptureFlashMode)flashMode{
+    return [[self activeCamera] flashMode];
+}
+
+
+- (id)changeFlash:(AVCaptureFlashMode)flashMode{
+    if (![self cameraHasFlash]) {
+        NSDictionary *desc = @{NSLocalizedDescriptionKey:@"不支持闪光灯"};
+        NSError *error = [NSError errorWithDomain:@"com.cc.camera" code:401 userInfo:desc];
+        return error;
+    }
+    // 如果手电筒打开，先关闭手电筒
+    if ([self torchMode] == AVCaptureTorchModeOn) {
+        [self setTorchMode:AVCaptureTorchModeOff];
+    }
+    return [self setFlashMode:flashMode];
+}
+- (id)setFlashMode:(AVCaptureFlashMode)flashMode{
+    AVCaptureDevice *device = [self activeCamera];
+    if ([device isFlashModeSupported:flashMode]) {
+        NSError *error;
+        if ([device lockForConfiguration:&error]) {
+            device.flashMode = flashMode;
+            [device unlockForConfiguration];
+            _currentflashMode = flashMode;
+        }
+        return error;
+    }
+    return nil;
+}
+
+- (BOOL)cameraHasTorch {
+    return [[self activeCamera] hasTorch];
+}
+
+- (AVCaptureTorchMode)torchMode {
+    return [[self activeCamera] torchMode];
+}
+
+- (id)changeTorch:(AVCaptureTorchMode)torchMode{
+    if (![self cameraHasTorch]) {
+        NSDictionary *desc = @{NSLocalizedDescriptionKey:@"不支持手电筒"};
+        NSError *error = [NSError errorWithDomain:@"com.cc.camera" code:403 userInfo:desc];
+        return error;
+    }
+    // 如果闪光灯打开，先关闭闪光灯
+    if ([self flashMode] == AVCaptureFlashModeOn) {
+        [self setFlashMode:AVCaptureFlashModeOff];
+    }
+    return [self setTorchMode:torchMode];
+}
+
+- (id)setTorchMode:(AVCaptureTorchMode)torchMode{
+    AVCaptureDevice *device = [self activeCamera];
+    if ([device isTorchModeSupported:torchMode]) {
+        NSError *error;
+        if ([device lockForConfiguration:&error]) {
+            device.torchMode = torchMode;
+            [device unlockForConfiguration];
+        }
+        return error;
+    }
+    return nil;
+}
 #pragma mark ACCameraDelegate
 
 - (void)cancelAction:(ACCameraView *)cameraView {
@@ -259,13 +342,27 @@
     [self takePictureImage];
 
 }
-- (void)switchCameraAction:(ACCameraView *)cameraView
-                   Success:(void (^)(void))succsss
-                    Failed:(void (^)(NSError *))failed{
+- (void)switchCameraAction:(ACCameraView *)cameraView{
     NSLog(@"switchCamera");
-    id error = [self switchCameras];
-    error?!failed?:failed(error):!succsss?:succsss();
-    
+     [self switchCameras];
+ 
 }
+- (void)flashLightAction:(ACCameraView *)cameraView {
+ 
+    [self changeFlash:[self flashMode] == AVCaptureFlashModeOn?AVCaptureFlashModeOff:AVCaptureFlashModeOn];
 
+}
+- (void)focusPointAction:(ACCameraView *)cameraView
+                   point:(CGPoint)point {
+    
+    AVCaptureDevice *device = [self activeCamera];
+    if ([self cameraSupportsTapToFocus] && [device isFocusModeSupported:AVCaptureFocusModeAutoFocus]){
+        NSError *error;
+        if ([device lockForConfiguration:&error]) {
+            device.focusPointOfInterest = point;
+            device.focusMode = AVCaptureFocusModeAutoFocus;
+            [device unlockForConfiguration];
+        }
+     }
+ }
 @end

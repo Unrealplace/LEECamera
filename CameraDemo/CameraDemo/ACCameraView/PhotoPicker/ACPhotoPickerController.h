@@ -16,4 +16,6 @@ typedef void(^photoPickerHandler)(UIImage * photo);
 
 //选图回调
 - (void)selectPhotoWithPickAction:(photoPickerHandler)pickAction;
+
+
 @end

@@ -31,6 +31,15 @@
     [super setFrame:frame];
 }
 
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _thumbImageView.frame = CGRectMake(0, 0, self.frame.size.height, self.frame.size.height);
+    _albumNameLabel.frame = CGRectMake(CGRectGetMaxX(self.thumbImageView.frame)+15, 0, 120, 23);
+    _albumNameLabel.center = CGPointMake(_albumNameLabel.center.x, _thumbImageView.center.y-18);
+    _photoCountLabel.frame = CGRectMake(self.albumNameLabel.frame.origin.x, CGRectGetMaxY(self.albumNameLabel.frame)+18, 120, 23);
+    
+}
 - (void)customedCell
 {
     self.thumbImageView = [[UIImageView alloc] init];

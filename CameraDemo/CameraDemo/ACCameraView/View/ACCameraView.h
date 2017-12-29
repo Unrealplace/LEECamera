@@ -27,17 +27,29 @@
  转换摄像头
  
  @param cameraView 摄像头视图
- @param succsss 成功回调
- @param failed 失败回调
+ 
  */
-- (void)switchCameraAction:(ACCameraView*)cameraView
-                   Success:(void(^)(void))succsss
-                    Failed:(void(^)(NSError*))failed;
+- (void)switchCameraAction:(ACCameraView*)cameraView;
+
 /**
  开启拍照
  */
 - (void)takePhotoAction:(ACCameraView*)cameraView;
 
+/**
+ 定点聚焦
+
+ @param cameraView 摄像头视图
+ @param point 聚焦点
+ */
+- (void)focusPointAction:(ACCameraView*)cameraView point:(CGPoint)point;
+
+/**
+ 闪光灯效果
+
+ @param cameraView 摄像头视图
+ */
+- (void)flashLightAction:(ACCameraView*)cameraView ;
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ACPhotoPickerController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -23,6 +24,7 @@
     self.dataSource = @[
                         @"SystemVC",
                         @"ACCameraViewController",
+                        @"ACPhotoPickerController",
                         ];
     
     [self.view addSubview:self.tableView];
@@ -41,6 +43,8 @@
     }
     return _tableView;
 }
+
+
 
 #pragma mark - UITableView DataSource   UITableView Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -72,14 +76,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    ACPhotoPickerController * pickerVC = [[ACPhotoPickerController alloc]init];
-//    pickerVC.maximumSize = CGSizeMake(1024, 1024);
-//    [navi setNavigationBarHidden:YES animated:NO];
-//    [self presentViewController:navi animated:YES completion:nil];
-    
+    ACPhotoPickerController * pickerVC = [[ACPhotoPickerController alloc]init];
+    pickerVC.maximumSize = CGSizeMake(1024, 1024);
     UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:[NSClassFromString(_dataSource[indexPath.section]) new]];
+    [navi setNavigationBarHidden:YES animated:NO];
+    [self presentViewController:navi animated:YES completion:nil];
     
-    [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
+    
+//    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:[NSClassFromString(_dataSource[indexPath.section]) new]];
+//
+//    [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
     
 //    [self presentViewController:navi animated:YES completion:^{
 //

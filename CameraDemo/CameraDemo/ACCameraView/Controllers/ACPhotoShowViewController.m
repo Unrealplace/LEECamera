@@ -7,6 +7,7 @@
 //
 
 #import "ACPhotoShowViewController.h"
+#import "ACFaceDetectionViewController.h"
 
 @interface ACPhotoShowViewController ()
 
@@ -35,6 +36,7 @@
         _showImageView = [UIImageView new];
         _showImageView.frame = CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height-44-80);
         _showImageView.image = self.showImage;
+        _showImageView.contentMode = UIViewContentModeScaleToFill;
     }
     return _showImageView;
 }
@@ -60,6 +62,8 @@
 }
 
 - (void)selectBtnClick:(UIButton*)btn {
+    ACFaceDetectionViewController * faceDecVC = [ACFaceDetectionViewController new];
+    [self.navigationController pushViewController:faceDecVC animated:YES];
     
 }
 

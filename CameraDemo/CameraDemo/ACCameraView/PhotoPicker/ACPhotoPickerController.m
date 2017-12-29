@@ -16,6 +16,8 @@
 #import "ACCameraHeader.h"
 #import "UIView+ACCameraFrame.h"
 #import "UIImage+ACCameraFixOrientation.h"
+#import "ACCameraViewController.h"
+#import "ACFaceDetectionViewController.h"
 
 @interface ACPhotoPickerController ()<PHPhotoLibraryChangeObserver,UICollectionViewDelegate,UICollectionViewDataSource,UIViewControllerPreviewingDelegate>
 
@@ -39,6 +41,11 @@
 
 @property (nonatomic, strong) NSIndexPath *selectIndexPath;
 
+@property (nonatomic, strong)UILabel    * topShowLabel;
+
+@property (nonatomic, strong)UIButton   * bottomShowBtn;
+
+
 @property CGRect previousPreheatRect;
 @end
 
@@ -56,11 +63,18 @@
     
     [self.view addSubview:self.photoCollections];
     [self.view addSubview:self.naviView];
+    [self.view addSubview:self.topShowLabel];
+    [self.view addSubview:self.bottomShowBtn];
+    
+}
+-(BOOL)prefersStatusBarHidden{
+    
+    return YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.baiduStatName = @"相册";
+//    self.baiduStatName = @"相册";
     
     self.maximumSize = CGSizeMake(2048.0f, 2048.0f);
     
@@ -79,18 +93,24 @@
             __weak typeof(self) weakSelf = self;
             
 //            @weakify(self)
-            [ACAlertManager alertWithTitle:@"相机权限未开启" message:@"相机权限未开启，请进入系统【设置】>【隐私】>【相机】中打开开关,开启相机功能" ensureAction:^{
-//                @strongify(self)
-                //跳入当前App设置界面,
-                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-                [weakSelf closePhotoPicker];
-            } cancelAction:^{
+//            [ACAlertManager alertWithTitle:@"相机权限未开启" message:@"相机权限未开启，请进入系统【设置】>【隐私】>【相机】中打开开关,开启相机功能" ensureAction:^{
+////                @strongify(self)
+//                //跳入当前App设置界面,
+//                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+//                [weakSelf closePhotoPicker];
+//            } cancelAction:^{
+//
+//            }];
             
-            }];
+            
         }
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
@@ -180,6 +200,32 @@
     return _photoCollections;
 }
 
+- (UILabel *)topShowLabel {
+    if (!_topShowLabel) {
+        _topShowLabel = [UILabel new];
+        _topShowLabel.frame = CGRectMake(0, 64, 280, 35);
+        _topShowLabel.ca_centerX = self.view.ca_centerX;
+        _topShowLabel.backgroundColor = [UIColor blackColor];
+//        _topShowLabel.alpha = 0.6;
+        _topShowLabel.textAlignment = NSTextAlignmentCenter;
+        _topShowLabel.textColor = [UIColor whiteColor];
+        _topShowLabel.text = @"五官清晰可辨的正面照效果更好";
+    }
+    return _topShowLabel;
+}
+- (UIButton *)bottomShowBtn {
+    if (!_bottomShowBtn) {
+        _bottomShowBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _bottomShowBtn.frame = CGRectMake(0, self.view.ca_height - 64, 200, 44);
+        _bottomShowBtn.ca_centerX = self.view.ca_centerX;
+        _bottomShowBtn.backgroundColor = [UIColor yellowColor];
+//        _bottomShowBtn.alpha = 0.6;
+        _topShowLabel.textColor = [UIColor whiteColor];
+        [_bottomShowBtn setTitle:@"不满意？现在拍一张！" forState:UIControlStateNormal];
+        [_bottomShowBtn addTarget:self action:@selector(bottomShowBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _bottomShowBtn;
+}
 - (void)setAllPhotos:(PHFetchResult *)allPhotos {
     if (_allPhotos != allPhotos) {
         _allPhotos = allPhotos;
@@ -191,6 +237,11 @@
     }
 }
 
+- (void)bottomShowBtnClick:(UIButton*)btn {
+    ACCameraViewController * cameraVC = [ACCameraViewController new];
+    [self.navigationController pushViewController:cameraVC animated:YES];
+    
+}
 #pragma mark - bar item action
 - (void)closePhotoPicker
 {
@@ -209,13 +260,20 @@
             
             //动画结束前，按钮不可点击
             _albumBtn.enabled = NO;
-            [NSObject pop_animate:^{
-                self.albumVC.view.pop_easeInEaseOut.frame = CGRectMake(0, -ACCAMERA_SCREEN_HEIGHT, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
+            [UIView animateWithDuration:0.3 animations:^{
+                 self.albumVC.view.frame = CGRectMake(0, -ACCAMERA_SCREEN_HEIGHT, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
             } completion:^(BOOL finished) {
                 [self.albumVC.view removeFromSuperview];
                 self.albumVC = nil;
                 _albumBtn.enabled = YES;
             }];
+//            [NSObject pop_animate:^{
+//                self.albumVC.view.pop_easeInEaseOut.frame = CGRectMake(0, -ACCAMERA_SCREEN_HEIGHT, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
+//            } completion:^(BOOL finished) {
+//                [self.albumVC.view removeFromSuperview];
+//                self.albumVC = nil;
+//                _albumBtn.enabled = YES;
+//            }];
         }
     }
     else {
@@ -231,17 +289,26 @@
                 [weakSelf showAlbumWithStatus:NO];
             }];
             self.albumVC.view.frame = CGRectMake(0, -ACCAMERA_SCREEN_HEIGHT, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
-            self.albumVC.view.pop_duration = EditorDropAnimateDuration;
+//            self.albumVC.view.pop_duration = EditorDropAnimateDuration;
             [self.view addSubview:self.albumVC.view];
             [self.view bringSubviewToFront:self.naviView];
         }
     
         _albumBtn.enabled = NO;
-        [NSObject pop_animate:^{
-            self.albumVC.view.pop_easeInEaseOut.frame = CGRectMake(0, 0, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            self.albumVC.view.frame = CGRectMake(0, 0, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
+
         } completion:^(BOOL finished) {
             _albumBtn.enabled = YES;
+
         }];
+        
+//        [NSObject pop_animate:^{
+//            self.albumVC.view.pop_easeInEaseOut.frame = CGRectMake(0, 0, ACCAMERA_SCREEN_WIDTH, ACCAMERA_SCREEN_HEIGHT);
+//        } completion:^(BOOL finished) {
+//            _albumBtn.enabled = YES;
+//        }];
     }
 }
 
@@ -249,7 +316,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self changeTheCropContentWithSelectedIndex:indexPath];
-    [self closePhotoPicker];
+    //这个是控制消失的效果的
+//    [self closePhotoPicker];
 }
 
 //从相机选相片
@@ -264,11 +332,15 @@
     __weak typeof(self) weakSelf = self;
 
     [[PHImageManager defaultManager] requestImageForAsset:self.allPhotos[indexPath.item] targetSize:self.maximumSize contentMode:PHImageContentModeAspectFit options:imageOptions resultHandler:^(UIImage *result, NSDictionary *info) {
-        @autoreleasepool {
+//        @autoreleasepool {
+        ACFaceDetectionViewController * faceDetecVC = [ACFaceDetectionViewController new];
+        [self.navigationController pushViewController:faceDetecVC animated:YES];
+        
             if (weakSelf.pickAction) {
+                
                 weakSelf.pickAction([result acCameraFixOrientation]);
             }
-        }
+//        }
     }];
 }
 
