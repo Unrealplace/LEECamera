@@ -11,6 +11,8 @@
 #import "ACCameraView.h"
 #import "ACMotionManager.h"
 #import "ACPhotoShowViewController.h"
+#import "ACCameraTool.h"
+
 
 @interface ACCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,
                                      AVCaptureAudioDataOutputSampleBufferDelegate,
@@ -56,6 +58,12 @@
     _cameraView.delegate = self;
     [self.view addSubview:_cameraView];
     
+    if ([ACCameraTool isFirstLoad]) {
+        NSLog(@"fisrt ----load");
+    }else{
+        NSLog(@"not----fisrt ----load");
+
+    }
     NSError *error;
     [self setupSession:&error];
     if (!error) {

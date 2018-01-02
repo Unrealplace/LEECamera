@@ -10,12 +10,20 @@
 #import "ACCameraViewController.h"
 #import "ACPhotoPickerController.h"
 #import "UIView+ACCameraFrame.h"
+#import "ACPhotoPickerController.h"
+#import "ACCameraViewController.h"
+#import "ACMTStoreDownloadManager.h"
+#import "ACFileManager.h"
+#import "ACSaveImageUtil.h"
 
 @interface ACFaceDetectionViewController ()
 
 @property (nonatomic, strong)UIButton * goBackSelectPhotoBtn;
 
 @property (nonatomic, strong)UIButton * goBackCameraBtn;
+
+@property (nonatomic, strong)UIButton * saveBtn;
+
 
 @end
 
@@ -26,6 +34,12 @@
  
     [self.view addSubview:self.goBackCameraBtn];
     [self.view addSubview:self.goBackSelectPhotoBtn];
+    [self.view addSubview:self.saveBtn];
+    
+    [[ACMTStoreDownloadManager sharedManager] downloadWithUrl:@"https://mplat-oss.adnonstop.com/app_source/20180102/1509866822018010210art41790.zip" currentProgress:^(double progress) {
+        NSLog(@"%lf",progress);
+        NSLog(@"%@--%@--%@",[ACFileManager cameraSeriasDirPath],[ACFileManager cameraSeriasZipPath],[ACFileManager cameraSeriasDebugDirPath]);
+    }];
     
     
 }
@@ -54,14 +68,47 @@
     return _goBackCameraBtn;
 }
 
+- (UIButton*)saveBtn {
+    if (!_saveBtn) {
+        _saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _saveBtn.frame = CGRectMake(100, 0, 150, 44);
+        _saveBtn.ca_center = self.view.ca_center;
+        _saveBtn.backgroundColor = [UIColor yellowColor];
+        [_saveBtn setTitle:@"保存图片" forState:UIControlStateNormal];
+        [_saveBtn addTarget:self action:@selector(saveBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _saveBtn;
+}
+
+
+- (void)saveBtnClick:(UIButton*)btn {
+    [ACSaveImageUtil saveImage:self.showImage compeleted:^(BOOL isCompeleted, NSString *status, NSDictionary *imgInfo) {
+    }];
+}
+
 - (void)goBackSelectPhotoBtnClick:(UIButton*)btn {
-    [self.navigationController popViewControllerAnimated:YES];
+    for (UIViewController * vc in self.navigationController.childViewControllers) {
+        if ([vc isKindOfClass:[ACPhotoPickerController class]]) {
+            [self.navigationController popToViewController:vc animated:YES];
+        }
+    }
     
 }
+
 - (void)goBackCameraBtnClick:(UIButton*)btn {
     
-    ACCameraViewController * cameraVC = [ACCameraViewController new];
-    [self.navigationController pushViewController:cameraVC animated:YES];
+    BOOL have = NO;
+    for (UIViewController * vc in self.navigationController.childViewControllers) {
+        if ([vc isKindOfClass:[ACCameraViewController class]]) {
+            have = YES;
+            [self.navigationController popToViewController:vc animated:YES];
+        }
+    }
+    if (!have) {
+        ACCameraViewController * cameraVC = [ACCameraViewController new];
+        [self.navigationController pushViewController:cameraVC animated:YES];
+    }
+   
     
 }
 @end

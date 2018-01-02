@@ -55,6 +55,8 @@
 - (void)dealloc {
 //    self.photoCollections.delegate = nil;
 //    self.photoCollections.dataSource = nil;
+    NSLog(@"ACPhoto dealloc");
+    
 }
 
 - (void)loadView {
@@ -206,7 +208,6 @@
         _topShowLabel.frame = CGRectMake(0, 64, 280, 35);
         _topShowLabel.ca_centerX = self.view.ca_centerX;
         _topShowLabel.backgroundColor = [UIColor blackColor];
-//        _topShowLabel.alpha = 0.6;
         _topShowLabel.textAlignment = NSTextAlignmentCenter;
         _topShowLabel.textColor = [UIColor whiteColor];
         _topShowLabel.text = @"五官清晰可辨的正面照效果更好";
@@ -219,7 +220,6 @@
         _bottomShowBtn.frame = CGRectMake(0, self.view.ca_height - 64, 200, 44);
         _bottomShowBtn.ca_centerX = self.view.ca_centerX;
         _bottomShowBtn.backgroundColor = [UIColor yellowColor];
-//        _bottomShowBtn.alpha = 0.6;
         _topShowLabel.textColor = [UIColor whiteColor];
         [_bottomShowBtn setTitle:@"不满意？现在拍一张！" forState:UIControlStateNormal];
         [_bottomShowBtn addTarget:self action:@selector(bottomShowBtnClick:) forControlEvents:UIControlEventTouchUpInside];

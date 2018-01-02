@@ -10,4 +10,6 @@
 
 @interface ACFaceDetectionViewController : ACCameraBaseViewController
 
+@property (nonatomic,strong)UIImage * showImage;
+
 @end

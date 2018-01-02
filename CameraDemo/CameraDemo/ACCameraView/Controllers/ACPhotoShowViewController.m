@@ -63,6 +63,7 @@
 
 - (void)selectBtnClick:(UIButton*)btn {
     ACFaceDetectionViewController * faceDecVC = [ACFaceDetectionViewController new];
+    faceDecVC.showImage = self.showImage;
     [self.navigationController pushViewController:faceDecVC animated:YES];
     
 }
