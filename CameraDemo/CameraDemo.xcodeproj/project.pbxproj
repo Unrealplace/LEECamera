@@ -37,6 +37,7 @@
 		2BAB08441FFB55A600DFAC18 /* ACFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08431FFB55A600DFAC18 /* ACFileManager.m */; };
 		2BAB08471FFB6D8600DFAC18 /* ACSaveImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08451FFB6D8600DFAC18 /* ACSaveImageUtil.m */; };
 		2BAB084D1FFB841200DFAC18 /* ACBaseFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB084B1FFB841200DFAC18 /* ACBaseFileManager.m */; };
+		2BAB08661FFB9C3700DFAC18 /* ACFaceSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08651FFB9C3700DFAC18 /* ACFaceSDK.m */; };
 		69949F3B0CB1E194D24A204A /* libPods-CameraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */; };
 		B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */; };
 		B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */; };
@@ -103,6 +104,8 @@
 		2BAB08461FFB6D8600DFAC18 /* ACSaveImageUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACSaveImageUtil.h; sourceTree = "<group>"; };
 		2BAB084B1FFB841200DFAC18 /* ACBaseFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACBaseFileManager.m; sourceTree = "<group>"; };
 		2BAB084C1FFB841200DFAC18 /* ACBaseFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACBaseFileManager.h; sourceTree = "<group>"; };
+		2BAB08641FFB9C3700DFAC18 /* ACFaceSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFaceSDK.h; sourceTree = "<group>"; };
+		2BAB08651FFB9C3700DFAC18 /* ACFaceSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFaceSDK.m; sourceTree = "<group>"; };
 		88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CameraDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraView.h; sourceTree = "<group>"; };
 		B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraView.m; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 		2BAB07F41FF4BFF500DFAC18 /* ACCameraView */ = {
 			isa = PBXGroup;
 			children = (
+				2BAB08631FFB9C2300DFAC18 /* ACFaceSDK */,
 				2BAB08161FF4FCB500DFAC18 /* PhotoPicker */,
 				2BAB08151FF4FC6E00DFAC18 /* Tools */,
 				2BAB08141FF4FC5300DFAC18 /* Controllers */,
@@ -253,6 +257,15 @@
 				2BAB082F1FF500F500DFAC18 /* ACCameraHeader.h */,
 			);
 			path = PhotoPicker;
+			sourceTree = "<group>";
+		};
+		2BAB08631FFB9C2300DFAC18 /* ACFaceSDK */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB08641FFB9C3700DFAC18 /* ACFaceSDK.h */,
+				2BAB08651FFB9C3700DFAC18 /* ACFaceSDK.m */,
+			);
+			path = ACFaceSDK;
 			sourceTree = "<group>";
 		};
 		96D779807FAE9168C813D98F /* Pods */ = {
@@ -425,6 +438,7 @@
 				2BAB083E1FFB521E00DFAC18 /* ACMTStoreDownloadManager.m in Sources */,
 				2BAB07ED1FF4841800DFAC18 /* ACCameraBaseViewController.m in Sources */,
 				2BAB08351FF504EB00DFAC18 /* UIView+ACCameraFrame.m in Sources */,
+				2BAB08661FFB9C3700DFAC18 /* ACFaceSDK.m in Sources */,
 				B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */,
 				2BAB08471FFB6D8600DFAC18 /* ACSaveImageUtil.m in Sources */,
 			);
