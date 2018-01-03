@@ -16,6 +16,11 @@ typedef enum :NSInteger {
     
 }ACFaceSDKAPPType;
 
+typedef enum :NSInteger{
+    ACFaceSDKEnviromentTypeDebug = 0,
+    ACFaceSDKEnviromentTypeRelease
+}ACFaceSDKEnviromentType;
+
 @interface ACFaceSDK : NSObject
 
 + (instancetype)sharedSDK;
@@ -25,6 +30,19 @@ typedef enum :NSInteger {
  设置app 类型
  */
 @property (nonatomic, assign)ACFaceSDKAPPType appType;
+
+/**
+ 设置当前的环境，开发或者是测试环境
+ 
+  enviroType 配置环境，开发或者是测试
+ */
+@property (nonatomic, assign)ACFaceSDKEnviromentType enriroType;
+
+
+/**
+ 解压素材
+ */
+- (void)compressionSerias;
 
 
 

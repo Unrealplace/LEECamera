@@ -7,6 +7,9 @@
 //
 
 #import "ACFaceSDK.h"
+#import "ACFaceDataManager.h"
+
+NSString * const SERIAS_PATH = @"CameraSerias";
 
 @interface ACFaceSDK()
 
@@ -25,9 +28,14 @@
     
 }
 - (void)setAppType:(ACFaceSDKAPPType)appType {
-    _appType = appType;
+    _appType    = appType;
+}
+- (void)setEnriroType:(ACFaceSDKEnviromentType)enriroType {
+    _enriroType = enriroType;
 }
 
- 
+- (void)compressionSerias {
+    [ACFaceDataManager compressionCameraSeriasWithPath:SERIAS_PATH];
+}
 
 @end

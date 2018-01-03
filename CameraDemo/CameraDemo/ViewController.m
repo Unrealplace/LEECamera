@@ -8,11 +8,13 @@
 
 #import "ViewController.h"
 #import "ACPhotoPickerController.h"
+#import "ACCameraViewController.h"
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ACCameraSelectDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)NSArray     *dataSource;
+@property(nonatomic, strong)UINavigationController * navi;
 
 @end
 
@@ -73,13 +75,16 @@
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     ACPhotoPickerController * pickerVC = [[ACPhotoPickerController alloc]init];
     pickerVC.maximumSize = CGSizeMake(1024, 1024);
-    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:[NSClassFromString(_dataSource[indexPath.section]) new]];
-    [navi setNavigationBarHidden:YES animated:NO];
+    pickerVC.delegate = self;
+    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:pickerVC];
+//    [navi setNavigationBarHidden:YES animated:NO];
+//    self.navi =navi;
     [self presentViewController:navi animated:YES completion:nil];
     
     
@@ -94,6 +99,11 @@
 //    }];
     
 //        [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
+}
+
+- (void)cameraPhotoPickerController:(ACPhotoPickerController *)controller {
+    ACCameraViewController * cameraVC = [ACCameraViewController new];
+    [controller.navigationController pushViewController:cameraVC animated:YES];
 }
 
 @end

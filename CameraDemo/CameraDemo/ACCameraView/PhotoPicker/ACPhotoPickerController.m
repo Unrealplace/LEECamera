@@ -238,8 +238,12 @@
 }
 
 - (void)bottomShowBtnClick:(UIButton*)btn {
-    ACCameraViewController * cameraVC = [ACCameraViewController new];
-    [self.navigationController pushViewController:cameraVC animated:YES];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cameraPhotoPickerController:)]) {
+        [self.delegate cameraPhotoPickerController:self];
+    }
+//    ACCameraViewController * cameraVC = [ACCameraViewController new];
+//    [self.navigationController pushViewController:cameraVC animated:YES];
     
 }
 #pragma mark - bar item action

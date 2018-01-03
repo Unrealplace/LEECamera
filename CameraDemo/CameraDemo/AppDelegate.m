@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ACFaceSDK.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    [ACFaceSDK sharedSDK].appType = ACFaceSDKAPPTypeArtCamera;
+    [ACFaceSDK sharedSDK].enriroType = ACFaceSDKEnviromentTypeRelease;
+    [[ACFaceSDK sharedSDK] compressionSerias];
+    
+//    [[ACFaceSDK sharedSDK] compressionCameraSeriasWithPath:@"CameraSerias"];
+    
     return YES;
 }
 

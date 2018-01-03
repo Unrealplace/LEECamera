@@ -38,6 +38,18 @@
 		2BAB08471FFB6D8600DFAC18 /* ACSaveImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08451FFB6D8600DFAC18 /* ACSaveImageUtil.m */; };
 		2BAB084D1FFB841200DFAC18 /* ACBaseFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB084B1FFB841200DFAC18 /* ACBaseFileManager.m */; };
 		2BAB08661FFB9C3700DFAC18 /* ACFaceSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08651FFB9C3700DFAC18 /* ACFaceSDK.m */; };
+		2BAB08741FFC79E200DFAC18 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB086A1FFC700200DFAC18 /* ioapi.c */; };
+		2BAB08751FFC79E200DFAC18 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB086C1FFC700200DFAC18 /* mztools.c */; };
+		2BAB08761FFC79E200DFAC18 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB086E1FFC700200DFAC18 /* unzip.c */; };
+		2BAB08771FFC79E200DFAC18 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08701FFC700200DFAC18 /* zip.c */; };
+		2BAB08781FFC79E200DFAC18 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08731FFC700200DFAC18 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2BAB08861FFC820D00DFAC18 /* CameraSerias in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB08851FFC820700DFAC18 /* CameraSerias */; };
+		2BAB088A1FFCA97E00DFAC18 /* ACFaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08891FFCA97E00DFAC18 /* ACFaceModel.m */; };
+		2BAB088D1FFCABEF00DFAC18 /* ACArchiverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB088C1FFCABEF00DFAC18 /* ACArchiverManager.m */; };
+		2BAB08901FFCB0F800DFAC18 /* ACFaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB088F1FFCB0F800DFAC18 /* ACFaceDataManager.m */; };
+		2BAB08931FFCD25300DFAC18 /* ACIconShowFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08921FFCD25200DFAC18 /* ACIconShowFlowLayout.m */; };
+		2BAB08961FFCD6DA00DFAC18 /* ACIconCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08951FFCD6DA00DFAC18 /* ACIconCollectionCell.m */; };
+		2BAB08991FFCF5FF00DFAC18 /* ACOtherCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08981FFCF5FF00DFAC18 /* ACOtherCameraViewController.m */; };
 		69949F3B0CB1E194D24A204A /* libPods-CameraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */; };
 		B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */; };
 		B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */; };
@@ -106,6 +118,30 @@
 		2BAB084C1FFB841200DFAC18 /* ACBaseFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACBaseFileManager.h; sourceTree = "<group>"; };
 		2BAB08641FFB9C3700DFAC18 /* ACFaceSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFaceSDK.h; sourceTree = "<group>"; };
 		2BAB08651FFB9C3700DFAC18 /* ACFaceSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFaceSDK.m; sourceTree = "<group>"; };
+		2BAB08691FFC700200DFAC18 /* crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		2BAB086A1FFC700200DFAC18 /* ioapi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		2BAB086B1FFC700200DFAC18 /* ioapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		2BAB086C1FFC700200DFAC18 /* mztools.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		2BAB086D1FFC700200DFAC18 /* mztools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		2BAB086E1FFC700200DFAC18 /* unzip.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		2BAB086F1FFC700200DFAC18 /* unzip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		2BAB08701FFC700200DFAC18 /* zip.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		2BAB08711FFC700200DFAC18 /* zip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		2BAB08721FFC700200DFAC18 /* ZipArchive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		2BAB08731FFC700200DFAC18 /* ZipArchive.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		2BAB08851FFC820700DFAC18 /* CameraSerias */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CameraSerias; path = ../../../../../CameraSerias; sourceTree = "<group>"; };
+		2BAB08881FFCA97E00DFAC18 /* ACFaceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFaceModel.h; sourceTree = "<group>"; };
+		2BAB08891FFCA97E00DFAC18 /* ACFaceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFaceModel.m; sourceTree = "<group>"; };
+		2BAB088B1FFCABEF00DFAC18 /* ACArchiverManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACArchiverManager.h; sourceTree = "<group>"; };
+		2BAB088C1FFCABEF00DFAC18 /* ACArchiverManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACArchiverManager.m; sourceTree = "<group>"; };
+		2BAB088E1FFCB0F800DFAC18 /* ACFaceDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFaceDataManager.h; sourceTree = "<group>"; };
+		2BAB088F1FFCB0F800DFAC18 /* ACFaceDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFaceDataManager.m; sourceTree = "<group>"; };
+		2BAB08911FFCD25200DFAC18 /* ACIconShowFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACIconShowFlowLayout.h; sourceTree = "<group>"; };
+		2BAB08921FFCD25200DFAC18 /* ACIconShowFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACIconShowFlowLayout.m; sourceTree = "<group>"; };
+		2BAB08941FFCD6DA00DFAC18 /* ACIconCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACIconCollectionCell.h; sourceTree = "<group>"; };
+		2BAB08951FFCD6DA00DFAC18 /* ACIconCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACIconCollectionCell.m; sourceTree = "<group>"; };
+		2BAB08971FFCF5FF00DFAC18 /* ACOtherCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACOtherCameraViewController.h; sourceTree = "<group>"; };
+		2BAB08981FFCF5FF00DFAC18 /* ACOtherCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACOtherCameraViewController.m; sourceTree = "<group>"; };
 		88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CameraDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraView.h; sourceTree = "<group>"; };
 		B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraView.m; sourceTree = "<group>"; };
@@ -150,12 +186,15 @@
 		2BAB07CE1FF3913D00DFAC18 /* CameraDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2BAB087C1FFC7F6200DFAC18 /* Resources */,
 				2BAB07CF1FF3913D00DFAC18 /* AppDelegate.h */,
 				2BAB07D01FF3913D00DFAC18 /* AppDelegate.m */,
 				2BAB07E51FF3A7A500DFAC18 /* SystemVC.h */,
 				2BAB07E61FF3A7A500DFAC18 /* SystemVC.m */,
 				2BAB07D21FF3913D00DFAC18 /* ViewController.h */,
 				2BAB07D31FF3913D00DFAC18 /* ViewController.m */,
+				2BAB08971FFCF5FF00DFAC18 /* ACOtherCameraViewController.h */,
+				2BAB08981FFCF5FF00DFAC18 /* ACOtherCameraViewController.m */,
 				2BAB07F41FF4BFF500DFAC18 /* ACCameraView */,
 				2BAB07D51FF3913D00DFAC18 /* Main.storyboard */,
 				2BAB07D81FF3913D00DFAC18 /* Assets.xcassets */,
@@ -189,6 +228,10 @@
 				2BAB07F21FF48ED000DFAC18 /* ACCameraTopView.m */,
 				B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */,
 				B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */,
+				2BAB08911FFCD25200DFAC18 /* ACIconShowFlowLayout.h */,
+				2BAB08921FFCD25200DFAC18 /* ACIconShowFlowLayout.m */,
+				2BAB08941FFCD6DA00DFAC18 /* ACIconCollectionCell.h */,
+				2BAB08951FFCD6DA00DFAC18 /* ACIconCollectionCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +254,7 @@
 		2BAB08151FF4FC6E00DFAC18 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				2BAB08671FFC700200DFAC18 /* ZipArchive */,
 				2BAB083C1FFB521E00DFAC18 /* ACMTStoreDonloadTask.h */,
 				2BAB08391FFB521D00DFAC18 /* ACMTStoreDonloadTask.m */,
 				2BAB083B1FFB521E00DFAC18 /* ACMTStoreDownloadManager.h */,
@@ -227,6 +271,10 @@
 				2BAB08401FFB54B300DFAC18 /* ACCameraFileManager.m */,
 				2BAB08461FFB6D8600DFAC18 /* ACSaveImageUtil.h */,
 				2BAB08451FFB6D8600DFAC18 /* ACSaveImageUtil.m */,
+				2BAB088B1FFCABEF00DFAC18 /* ACArchiverManager.h */,
+				2BAB088C1FFCABEF00DFAC18 /* ACArchiverManager.m */,
+				2BAB088E1FFCB0F800DFAC18 /* ACFaceDataManager.h */,
+				2BAB088F1FFCB0F800DFAC18 /* ACFaceDataManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -264,8 +312,44 @@
 			children = (
 				2BAB08641FFB9C3700DFAC18 /* ACFaceSDK.h */,
 				2BAB08651FFB9C3700DFAC18 /* ACFaceSDK.m */,
+				2BAB08881FFCA97E00DFAC18 /* ACFaceModel.h */,
+				2BAB08891FFCA97E00DFAC18 /* ACFaceModel.m */,
 			);
 			path = ACFaceSDK;
+			sourceTree = "<group>";
+		};
+		2BAB08671FFC700200DFAC18 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB08681FFC700200DFAC18 /* minizip */,
+				2BAB08721FFC700200DFAC18 /* ZipArchive.h */,
+				2BAB08731FFC700200DFAC18 /* ZipArchive.mm */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		2BAB08681FFC700200DFAC18 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB08691FFC700200DFAC18 /* crypt.h */,
+				2BAB086A1FFC700200DFAC18 /* ioapi.c */,
+				2BAB086B1FFC700200DFAC18 /* ioapi.h */,
+				2BAB086C1FFC700200DFAC18 /* mztools.c */,
+				2BAB086D1FFC700200DFAC18 /* mztools.h */,
+				2BAB086E1FFC700200DFAC18 /* unzip.c */,
+				2BAB086F1FFC700200DFAC18 /* unzip.h */,
+				2BAB08701FFC700200DFAC18 /* zip.c */,
+				2BAB08711FFC700200DFAC18 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+		2BAB087C1FFC7F6200DFAC18 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB08851FFC820700DFAC18 /* CameraSerias */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		96D779807FAE9168C813D98F /* Pods */ = {
@@ -346,6 +430,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BAB08861FFC820D00DFAC18 /* CameraSerias in Resources */,
 				2BAB07DC1FF3913D00DFAC18 /* LaunchScreen.storyboard in Resources */,
 				2BAB07D91FF3913D00DFAC18 /* Assets.xcassets in Resources */,
 				2BAB07D71FF3913D00DFAC18 /* Main.storyboard in Resources */,
@@ -410,8 +495,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BAB08741FFC79E200DFAC18 /* ioapi.c in Sources */,
+				2BAB08751FFC79E200DFAC18 /* mztools.c in Sources */,
+				2BAB08761FFC79E200DFAC18 /* unzip.c in Sources */,
+				2BAB08771FFC79E200DFAC18 /* zip.c in Sources */,
+				2BAB08991FFCF5FF00DFAC18 /* ACOtherCameraViewController.m in Sources */,
+				2BAB08781FFC79E200DFAC18 /* ZipArchive.mm in Sources */,
 				2BAB08411FFB54B300DFAC18 /* ACCameraFileManager.m in Sources */,
 				2BAB08271FF4FDEB00DFAC18 /* ACAlbumBtn.m in Sources */,
+				2BAB088D1FFCABEF00DFAC18 /* ACArchiverManager.m in Sources */,
 				2BAB08281FF4FDEB00DFAC18 /* ACPhotoAlbumCell.m in Sources */,
 				2BAB08291FF4FDEB00DFAC18 /* ACPhotoAlbumController.m in Sources */,
 				2BAB082A1FF4FDEB00DFAC18 /* ACPhotoDetailController.m in Sources */,
@@ -433,12 +525,16 @@
 				B6BF63961FF52529000CE33D /* UIImage+ACCameraFixOrientation.m in Sources */,
 				2BAB083D1FFB521E00DFAC18 /* ACMTStoreDonloadTask.m in Sources */,
 				2BAB080F1FF4E34C00DFAC18 /* ACPhotoShowViewController.m in Sources */,
+				2BAB088A1FFCA97E00DFAC18 /* ACFaceModel.m in Sources */,
 				2BAB08121FF4F56F00DFAC18 /* ACFaceDetectionViewController.m in Sources */,
 				2BAB07F31FF48ED000DFAC18 /* ACCameraTopView.m in Sources */,
 				2BAB083E1FFB521E00DFAC18 /* ACMTStoreDownloadManager.m in Sources */,
 				2BAB07ED1FF4841800DFAC18 /* ACCameraBaseViewController.m in Sources */,
 				2BAB08351FF504EB00DFAC18 /* UIView+ACCameraFrame.m in Sources */,
+				2BAB08901FFCB0F800DFAC18 /* ACFaceDataManager.m in Sources */,
 				2BAB08661FFB9C3700DFAC18 /* ACFaceSDK.m in Sources */,
+				2BAB08961FFCD6DA00DFAC18 /* ACIconCollectionCell.m in Sources */,
+				2BAB08931FFCD25300DFAC18 /* ACIconShowFlowLayout.m in Sources */,
 				B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */,
 				2BAB08471FFB6D8600DFAC18 /* ACSaveImageUtil.m in Sources */,
 			);
