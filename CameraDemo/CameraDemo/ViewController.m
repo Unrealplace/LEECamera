@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "ACPhotoPickerController.h"
 #import "ACCameraViewController.h"
+#import "ACOtherCameraViewController.h"
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ACCameraSelectDelegate>
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ACPhotoPickerControllerDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)NSArray     *dataSource;
@@ -83,10 +84,14 @@
     pickerVC.maximumSize = CGSizeMake(1024, 1024);
     pickerVC.delegate = self;
     UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:pickerVC];
-//    [navi setNavigationBarHidden:YES animated:NO];
-//    self.navi =navi;
+    [navi setNavigationBarHidden:YES animated:NO];
     [self presentViewController:navi animated:YES completion:nil];
     
+    
+//    ACOtherCameraViewController * other = [[ACOtherCameraViewController alloc] init];
+//    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:other];
+//    [self presentViewController:navi animated:YES completion:nil];
+
     
 //    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:[NSClassFromString(_dataSource[indexPath.section]) new]];
 //
@@ -101,9 +106,25 @@
 //        [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
 }
 
-- (void)cameraPhotoPickerController:(ACPhotoPickerController *)controller {
-    ACCameraViewController * cameraVC = [ACCameraViewController new];
-    [controller.navigationController pushViewController:cameraVC animated:YES];
+- (void)photoPickerController:(ACPhotoPickerController *)controller
+             withFunctionType:(ACFaceSDKFunctionType)functionType
+         andCompletionHandler:(void (^)(UIImage *))compleationHandler {
+    switch (functionType) {
+        case ACFaceSDKFunctionTypeCameraUse:{
+            ACCameraViewController * cameraVC = [ACCameraViewController new];
+            [controller.navigationController pushViewController:cameraVC animated:YES];
+            
+        }
+            break;
+        case ACFaceSDKFunctionTypeAlertUse:{
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
+
 
 @end

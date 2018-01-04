@@ -239,8 +239,10 @@
 
 - (void)bottomShowBtnClick:(UIButton*)btn {
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cameraPhotoPickerController:)]) {
-        [self.delegate cameraPhotoPickerController:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(photoPickerController:withFunctionType:andCompletionHandler:)]) {
+        [self.delegate photoPickerController:self withFunctionType:ACFaceSDKFunctionTypeCameraUse andCompletionHandler:^(UIImage *image) {
+            
+        }];
     }
 //    ACCameraViewController * cameraVC = [ACCameraViewController new];
 //    [self.navigationController pushViewController:cameraVC animated:YES];

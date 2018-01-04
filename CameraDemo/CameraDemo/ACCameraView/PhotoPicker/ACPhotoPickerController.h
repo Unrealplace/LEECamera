@@ -10,10 +10,17 @@
 
 typedef void(^photoPickerHandler)(UIImage * photo);
 
+typedef enum :NSInteger{
+    ACFaceSDKFunctionTypeCameraUse = 0,
+    ACFaceSDKFunctionTypeAlertUse ,
+}ACFaceSDKFunctionType;
+
 @class ACPhotoPickerController;
 
-@protocol ACCameraSelectDelegate <NSObject>
-- (void)cameraPhotoPickerController:(ACPhotoPickerController*)controller ;
+@protocol ACPhotoPickerControllerDelegate <NSObject>
+- (void)photoPickerController:(ACPhotoPickerController*)controller
+             withFunctionType:(ACFaceSDKFunctionType)functionType
+         andCompletionHandler:(void(^)(UIImage *image))compleationHandler ;
 
 @end
 
@@ -25,7 +32,7 @@ typedef void(^photoPickerHandler)(UIImage * photo);
 //选图回调
 - (void)selectPhotoWithPickAction:(photoPickerHandler)pickAction;
 
-@property (nonatomic,strong)id <ACCameraSelectDelegate> delegate ;
+@property (nonatomic,strong)id <ACPhotoPickerControllerDelegate> delegate ;
 
 
 

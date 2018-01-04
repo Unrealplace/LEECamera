@@ -43,13 +43,13 @@
 		2BAB08761FFC79E200DFAC18 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB086E1FFC700200DFAC18 /* unzip.c */; };
 		2BAB08771FFC79E200DFAC18 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08701FFC700200DFAC18 /* zip.c */; };
 		2BAB08781FFC79E200DFAC18 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08731FFC700200DFAC18 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2BAB08861FFC820D00DFAC18 /* CameraSerias in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB08851FFC820700DFAC18 /* CameraSerias */; };
 		2BAB088A1FFCA97E00DFAC18 /* ACFaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08891FFCA97E00DFAC18 /* ACFaceModel.m */; };
 		2BAB088D1FFCABEF00DFAC18 /* ACArchiverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB088C1FFCABEF00DFAC18 /* ACArchiverManager.m */; };
 		2BAB08901FFCB0F800DFAC18 /* ACFaceDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB088F1FFCB0F800DFAC18 /* ACFaceDataManager.m */; };
 		2BAB08931FFCD25300DFAC18 /* ACIconShowFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08921FFCD25200DFAC18 /* ACIconShowFlowLayout.m */; };
 		2BAB08961FFCD6DA00DFAC18 /* ACIconCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08951FFCD6DA00DFAC18 /* ACIconCollectionCell.m */; };
 		2BAB08991FFCF5FF00DFAC18 /* ACOtherCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08981FFCF5FF00DFAC18 /* ACOtherCameraViewController.m */; };
+		2BAB08A51FFDC02700DFAC18 /* CameraSerias in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB08A41FFDBFB500DFAC18 /* CameraSerias */; };
 		69949F3B0CB1E194D24A204A /* libPods-CameraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */; };
 		B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */; };
 		B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */; };
@@ -129,7 +129,6 @@
 		2BAB08711FFC700200DFAC18 /* zip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		2BAB08721FFC700200DFAC18 /* ZipArchive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		2BAB08731FFC700200DFAC18 /* ZipArchive.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
-		2BAB08851FFC820700DFAC18 /* CameraSerias */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CameraSerias; path = ../../../../../CameraSerias; sourceTree = "<group>"; };
 		2BAB08881FFCA97E00DFAC18 /* ACFaceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFaceModel.h; sourceTree = "<group>"; };
 		2BAB08891FFCA97E00DFAC18 /* ACFaceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFaceModel.m; sourceTree = "<group>"; };
 		2BAB088B1FFCABEF00DFAC18 /* ACArchiverManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACArchiverManager.h; sourceTree = "<group>"; };
@@ -142,6 +141,7 @@
 		2BAB08951FFCD6DA00DFAC18 /* ACIconCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACIconCollectionCell.m; sourceTree = "<group>"; };
 		2BAB08971FFCF5FF00DFAC18 /* ACOtherCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACOtherCameraViewController.h; sourceTree = "<group>"; };
 		2BAB08981FFCF5FF00DFAC18 /* ACOtherCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACOtherCameraViewController.m; sourceTree = "<group>"; };
+		2BAB08A41FFDBFB500DFAC18 /* CameraSerias */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CameraSerias; sourceTree = "<group>"; };
 		88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CameraDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraView.h; sourceTree = "<group>"; };
 		B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraView.m; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		2BAB07CE1FF3913D00DFAC18 /* CameraDemo */ = {
 			isa = PBXGroup;
 			children = (
-				2BAB087C1FFC7F6200DFAC18 /* Resources */,
+				2BAB08A21FFDBEF100DFAC18 /* Resources */,
 				2BAB07CF1FF3913D00DFAC18 /* AppDelegate.h */,
 				2BAB07D01FF3913D00DFAC18 /* AppDelegate.m */,
 				2BAB07E51FF3A7A500DFAC18 /* SystemVC.h */,
@@ -282,6 +282,8 @@
 		2BAB08161FF4FCB500DFAC18 /* PhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
+				2BAB08211FF4FCB500DFAC18 /* ACPhotoPickerController.h */,
+				2BAB08221FF4FCB500DFAC18 /* ACPhotoPickerController.m */,
 				2BAB08171FF4FCB500DFAC18 /* ACAlbumBtn.h */,
 				2BAB08181FF4FCB500DFAC18 /* ACAlbumBtn.m */,
 				2BAB08191FF4FCB500DFAC18 /* ACPhotoAlbumCell.h */,
@@ -292,8 +294,6 @@
 				2BAB081E1FF4FCB500DFAC18 /* ACPhotoDetailController.m */,
 				2BAB081F1FF4FCB500DFAC18 /* ACPhotoPickerCell.h */,
 				2BAB08201FF4FCB500DFAC18 /* ACPhotoPickerCell.m */,
-				2BAB08211FF4FCB500DFAC18 /* ACPhotoPickerController.h */,
-				2BAB08221FF4FCB500DFAC18 /* ACPhotoPickerController.m */,
 				2BAB08331FF504EB00DFAC18 /* UIView+ACCameraFrame.h */,
 				2BAB08341FF504EB00DFAC18 /* UIView+ACCameraFrame.m */,
 				2BAB08231FF4FCB500DFAC18 /* NSIndexSet+Convenience.h */,
@@ -344,10 +344,10 @@
 			path = minizip;
 			sourceTree = "<group>";
 		};
-		2BAB087C1FFC7F6200DFAC18 /* Resources */ = {
+		2BAB08A21FFDBEF100DFAC18 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2BAB08851FFC820700DFAC18 /* CameraSerias */,
+				2BAB08A41FFDBFB500DFAC18 /* CameraSerias */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -430,7 +430,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BAB08861FFC820D00DFAC18 /* CameraSerias in Resources */,
+				2BAB08A51FFDC02700DFAC18 /* CameraSerias in Resources */,
 				2BAB07DC1FF3913D00DFAC18 /* LaunchScreen.storyboard in Resources */,
 				2BAB07D91FF3913D00DFAC18 /* Assets.xcassets in Resources */,
 				2BAB07D71FF3913D00DFAC18 /* Main.storyboard in Resources */,
