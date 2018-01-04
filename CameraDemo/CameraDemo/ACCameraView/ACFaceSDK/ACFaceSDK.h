@@ -43,11 +43,31 @@ typedef enum :NSInteger{
  */
 - (void)compressionSerias;
 
+
+
+
 /**
  调用宿主的相机功能
  */
 
 - (void)useCameraHandler:(void(^)(UIViewController * currentController))handler;
+
+
+/**
+ 返回对应的相机控制器
+ 
+ @param handler 处理回调
+ */
+- (void)backToCameraControllerHandler:(void(^)(UIViewController * currentController))handler;
+
+/**
+ 设置相机控制器的父控制器
+ 
+ @param controller 控制器
+ */
+- (void)setBackToCameraController:(UIViewController*)controller;
+
+
 
 
 /**
@@ -75,19 +95,14 @@ typedef enum :NSInteger{
 - (void)setupEnterController:(UIViewController*)controller;
 
 
-
 /**
- 返回对应的相机控制器
+ 显示提示
 
- @param handler 处理回调
+ @param handler 提示回调
  */
-- (void)backToCameraControllerHandler:(void(^)(UIViewController * currentController))handler;
+- (void)showTintAlertControllerHandler:(void(^)(UIViewController * currentController))handler;
 
-/**
- 设置相机控制器的父控制器
+- (void)setupTintAlertController:(UIViewController*)controller;
 
- @param controller 控制器
- */
-- (void)setBackToCameraController:(UIViewController*)controller;
 
 @end

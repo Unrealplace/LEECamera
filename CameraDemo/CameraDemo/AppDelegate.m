@@ -26,23 +26,25 @@
     [[ACFaceSDK sharedSDK] compressionSerias];
     
     [[ACFaceSDK sharedSDK] useCameraHandler:^(UIViewController *currentController) {
-//        ACCameraViewController * pickerVC = [[ACCameraViewController alloc]init];
-//        [currentController.navigationController pushViewController:pickerVC animated:YES];
-        
-        ACOtherCameraViewController * pickerVC = [[ACOtherCameraViewController alloc]init];
+        ACCameraViewController * pickerVC = [[ACCameraViewController alloc]init];
         [currentController.navigationController pushViewController:pickerVC animated:YES];
+        
+//        ACOtherCameraViewController * pickerVC = [[ACOtherCameraViewController alloc]init];
+//        [currentController.navigationController pushViewController:pickerVC animated:YES];
         
     }];
     
     [[ACFaceSDK sharedSDK] backToCameraControllerHandler:^(UIViewController *currentController) {
         for (UIViewController * vc in currentController.navigationController.childViewControllers) {
-            if ([vc isKindOfClass:[ACOtherCameraViewController class]]) {
+            if ([vc isKindOfClass:[ACCameraViewController class]]) {
                  [currentController.navigationController popToViewController:vc animated:YES];
             }
         }
     }];
      
-    
+    [[ACFaceSDK sharedSDK] showTintAlertControllerHandler:^(UIViewController *currentController) {
+        NSLog(@"显示 alert");
+    }];
     
     return YES;
 }

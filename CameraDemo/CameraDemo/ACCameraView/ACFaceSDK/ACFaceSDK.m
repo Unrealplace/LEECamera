@@ -10,15 +10,17 @@
 #import "ACFaceDataManager.h"
 #import "ACPhotoPickerController.h"
 #import "ACPhotoShowViewController.h"
-typedef void (^UseCameraBlock)(UIViewController * controller);
+typedef void (^ACCameraBlock)(UIViewController * controller);
 
 NSString * const SERIAS_PATH = @"CameraSerias";
 
 @interface ACFaceSDK()
 
-@property (nonatomic, copy)UseCameraBlock cameraBlock;
+@property (nonatomic, copy)ACCameraBlock cameraBlock;
 
-@property (nonatomic, copy)UseCameraBlock backToCameraBlock;
+@property (nonatomic, copy)ACCameraBlock backToCameraBlock;
+
+@property (nonatomic, copy)ACCameraBlock  showTintBlock;
 
 
 /**
@@ -33,7 +35,6 @@ NSString * const SERIAS_PATH = @"CameraSerias";
  */
 @property (nonatomic, assign)ACFaceSDKEnviromentType enriroType;
 
-@property (nonatomic, copy)NSString * cameraClass;
 
 @end
 
@@ -63,7 +64,6 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 
 - (void)useCameraHandler:(void (^)(UIViewController *))handler {
     self.cameraBlock = handler;
-
 }
 
 - (void)setupEnterController:(UIViewController *)controller {
@@ -127,34 +127,15 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 - (void)setBackToCameraController:(UIViewController *)controller {
     self.backToCameraBlock(controller);
 }
-//- (void)backToCameraController:(UIViewController *)controller {
-//    
-//    for (UIViewController * vc in controller.navigationController.childViewControllers) {
-//        if ([vc isKindOfClass:NSClassFromString(self.cameraClass)]) {
-//         [controller.navigationController popToViewController:vc animated:YES];
-//        }
-//    }
-//    switch (self.appType) {
-//        case ACFaceSDKAPPTypeArtCamera:
-//        {
-//             
-//        }
-//            break;
-//        case ACFaceSDKAPPTypeManCamera:
-//        {
-//            
-//        }
-//            break;
-//        case ACFaceSDKAPPTypeBeautyCamera:
-//        {
-//            
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//}
+
+- (void)showTintAlertControllerHandler:(void (^)(UIViewController *))handler {
+    self.showTintBlock = handler;
+    
+}
+
+- (void)setupTintAlertController:(UIViewController *)controller {
+    self.showTintBlock(controller);
+}
 
  
 @end

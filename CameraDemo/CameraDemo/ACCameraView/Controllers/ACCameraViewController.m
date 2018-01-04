@@ -375,6 +375,7 @@
 }
 
 - (void)tintPhotoAlbum:(ACCameraView *)cameraView {
+    [[ACFaceSDK sharedSDK] setupTintAlertController:self];
     
 }
 
