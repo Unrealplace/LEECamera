@@ -14,6 +14,10 @@
 
 - (void)takePhoto:(ACCameraBottomView*)cameraBottomView;
 
+- (void)showPhotoAlblum:(ACCameraBottomView*)cameraBottomView;
+
+- (void)tintPhoto:(ACCameraBottomView*)cameraBottomView;
+
 @end
 
 @interface ACCameraBottomView : UIView

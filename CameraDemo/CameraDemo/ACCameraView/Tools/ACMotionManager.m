@@ -7,10 +7,8 @@
 //
 
 #import "ACMotionManager.h"
-#import <CoreMotion/CoreMotion.h>
 
 @interface ACMotionManager ()
-@property(nonatomic, strong) CMMotionManager * motionManager;
 
 @end
 @implementation ACMotionManager
@@ -58,6 +56,7 @@
 }
 
 -(void)dealloc{
+    NSLog(@"%s",__func__);
     [_motionManager stopDeviceMotionUpdates];
 }
 @end

@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
 
 @interface ACMotionManager : NSObject
 
 @property(nonatomic, assign)UIDeviceOrientation deviceOrientation;
 
 @property(nonatomic, assign)AVCaptureVideoOrientation videoOrientation;
+
+@property(nonatomic, strong) CMMotionManager * motionManager;
 
 @end

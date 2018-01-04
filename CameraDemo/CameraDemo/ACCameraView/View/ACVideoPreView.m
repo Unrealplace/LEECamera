@@ -10,6 +10,9 @@
 
 @implementation ACVideoPreView
 
+- (void)dealloc {
+    self.captureSession = nil;
+}
 + (Class)layerClass {
     return [AVCaptureVideoPreviewLayer class];
 }

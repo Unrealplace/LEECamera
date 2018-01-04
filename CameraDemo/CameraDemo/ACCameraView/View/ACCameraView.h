@@ -37,6 +37,16 @@
 - (void)takePhotoAction:(ACCameraView*)cameraView;
 
 /**
+ 显示相册
+ */
+- (void)showPhotoAlbum:(ACCameraView*)cameraView;
+/**
+ 显示提示
+ */
+- (void)tintPhotoAlbum:(ACCameraView*)cameraView;
+
+
+/**
  定点聚焦
 
  @param cameraView 摄像头视图

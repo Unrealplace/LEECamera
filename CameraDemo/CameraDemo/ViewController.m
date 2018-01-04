@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "ACPhotoPickerController.h"
 #import "ACCameraViewController.h"
-#import "ACOtherCameraViewController.h"
+#import "ACTintViewController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ACPhotoPickerControllerDelegate>
 
@@ -80,30 +80,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    ACPhotoPickerController * pickerVC = [[ACPhotoPickerController alloc]init];
-    pickerVC.maximumSize = CGSizeMake(1024, 1024);
-    pickerVC.delegate = self;
-    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:pickerVC];
-    [navi setNavigationBarHidden:YES animated:NO];
-    [self presentViewController:navi animated:YES completion:nil];
+    ACTintViewController * tint = [[ACTintViewController alloc] init];
+    [self.navigationController pushViewController:tint animated:YES];
     
-    
-//    ACOtherCameraViewController * other = [[ACOtherCameraViewController alloc] init];
-//    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:other];
+//    ACCameraViewController * pickerVC = [[ACCameraViewController alloc]init];
+//    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:pickerVC];
+//    [navi setNavigationBarHidden:YES animated:NO];
 //    [self presentViewController:navi animated:YES completion:nil];
-
     
-//    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:[NSClassFromString(_dataSource[indexPath.section]) new]];
-//
-//    [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
-    
-//    [self presentViewController:navi animated:YES completion:^{
-//
-//        [[UIApplication sharedApplication] setStatusBarHidden:YES];
-//
-//    }];
-    
-//        [self.navigationController pushViewController:[NSClassFromString(_dataSource[indexPath.section]) new] animated:YES];
 }
 
 - (void)photoPickerController:(ACPhotoPickerController *)controller

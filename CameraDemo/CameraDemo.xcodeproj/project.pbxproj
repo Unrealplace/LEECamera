@@ -50,6 +50,8 @@
 		2BAB08961FFCD6DA00DFAC18 /* ACIconCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08951FFCD6DA00DFAC18 /* ACIconCollectionCell.m */; };
 		2BAB08991FFCF5FF00DFAC18 /* ACOtherCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08981FFCF5FF00DFAC18 /* ACOtherCameraViewController.m */; };
 		2BAB08A51FFDC02700DFAC18 /* CameraSerias in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB08A41FFDBFB500DFAC18 /* CameraSerias */; };
+		2BAB08A81FFE03E500DFAC18 /* ACTintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08A71FFE03E500DFAC18 /* ACTintViewController.m */; };
+		2BAB08AB1FFE118700DFAC18 /* ACFaceProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB08AA1FFE118700DFAC18 /* ACFaceProcessViewController.m */; };
 		69949F3B0CB1E194D24A204A /* libPods-CameraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */; };
 		B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */; };
 		B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */; };
@@ -142,6 +144,10 @@
 		2BAB08971FFCF5FF00DFAC18 /* ACOtherCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACOtherCameraViewController.h; sourceTree = "<group>"; };
 		2BAB08981FFCF5FF00DFAC18 /* ACOtherCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACOtherCameraViewController.m; sourceTree = "<group>"; };
 		2BAB08A41FFDBFB500DFAC18 /* CameraSerias */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CameraSerias; sourceTree = "<group>"; };
+		2BAB08A61FFE03E500DFAC18 /* ACTintViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACTintViewController.h; sourceTree = "<group>"; };
+		2BAB08A71FFE03E500DFAC18 /* ACTintViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACTintViewController.m; sourceTree = "<group>"; };
+		2BAB08A91FFE118700DFAC18 /* ACFaceProcessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFaceProcessViewController.h; sourceTree = "<group>"; };
+		2BAB08AA1FFE118700DFAC18 /* ACFaceProcessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFaceProcessViewController.m; sourceTree = "<group>"; };
 		88999F61ECE5D231C422A0FC /* libPods-CameraDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CameraDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraView.h; sourceTree = "<group>"; };
 		B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraView.m; sourceTree = "<group>"; };
@@ -241,12 +247,16 @@
 			children = (
 				2BAB07EB1FF4841800DFAC18 /* ACCameraBaseViewController.h */,
 				2BAB07EC1FF4841800DFAC18 /* ACCameraBaseViewController.m */,
+				2BAB08A61FFE03E500DFAC18 /* ACTintViewController.h */,
+				2BAB08A71FFE03E500DFAC18 /* ACTintViewController.m */,
 				2BAB07E81FF3A80900DFAC18 /* ACCameraViewController.h */,
 				2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */,
 				2BAB08101FF4F56F00DFAC18 /* ACFaceDetectionViewController.h */,
 				2BAB08111FF4F56F00DFAC18 /* ACFaceDetectionViewController.m */,
 				2BAB080D1FF4E34C00DFAC18 /* ACPhotoShowViewController.h */,
 				2BAB080E1FF4E34C00DFAC18 /* ACPhotoShowViewController.m */,
+				2BAB08A91FFE118700DFAC18 /* ACFaceProcessViewController.h */,
+				2BAB08AA1FFE118700DFAC18 /* ACFaceProcessViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -500,6 +510,7 @@
 				2BAB08761FFC79E200DFAC18 /* unzip.c in Sources */,
 				2BAB08771FFC79E200DFAC18 /* zip.c in Sources */,
 				2BAB08991FFCF5FF00DFAC18 /* ACOtherCameraViewController.m in Sources */,
+				2BAB08AB1FFE118700DFAC18 /* ACFaceProcessViewController.m in Sources */,
 				2BAB08781FFC79E200DFAC18 /* ZipArchive.mm in Sources */,
 				2BAB08411FFB54B300DFAC18 /* ACCameraFileManager.m in Sources */,
 				2BAB08271FF4FDEB00DFAC18 /* ACAlbumBtn.m in Sources */,
@@ -523,6 +534,7 @@
 				2BAB08441FFB55A600DFAC18 /* ACFileManager.m in Sources */,
 				2BAB07EA1FF3A80900DFAC18 /* ACCameraViewController.m in Sources */,
 				B6BF63961FF52529000CE33D /* UIImage+ACCameraFixOrientation.m in Sources */,
+				2BAB08A81FFE03E500DFAC18 /* ACTintViewController.m in Sources */,
 				2BAB083D1FFB521E00DFAC18 /* ACMTStoreDonloadTask.m in Sources */,
 				2BAB080F1FF4E34C00DFAC18 /* ACPhotoShowViewController.m in Sources */,
 				2BAB088A1FFCA97E00DFAC18 /* ACFaceModel.m in Sources */,

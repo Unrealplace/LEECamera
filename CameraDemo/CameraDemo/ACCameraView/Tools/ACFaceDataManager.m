@@ -83,7 +83,8 @@ NSString * const CAMERA_SERIAS_PATH = @"CameraSerias";
 }
 + (NSURL *)storedSeriesPath
 {
-    NSString *directoryName = [self directoryNameWithNetworkType:[ACFaceSDK sharedSDK].enriroType];
+    
+    NSString *directoryName = [self directoryNameWithNetworkType:[[ACFaceSDK sharedSDK] enriroType]];
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSURL * pathUrl = [NSURL URLWithString:[[path stringByAppendingPathComponent:directoryName] stringByAppendingPathComponent:CAMERA_SERIAS_PATH]];
     return pathUrl;

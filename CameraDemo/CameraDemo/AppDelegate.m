@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ACFaceSDK.h"
+#import "ACCameraViewController.h"
+#import "ACOtherCameraViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,11 +20,29 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [ACFaceSDK sharedSDK].appType = ACFaceSDKAPPTypeArtCamera;
-    [ACFaceSDK sharedSDK].enriroType = ACFaceSDKEnviromentTypeRelease;
+   
+    [[ACFaceSDK sharedSDK] setAppType:ACFaceSDKAPPTypeArtCamera andCurrentEnviroment:ACFaceSDKEnviromentTypeDebug];
+    
     [[ACFaceSDK sharedSDK] compressionSerias];
     
-//    [[ACFaceSDK sharedSDK] compressionCameraSeriasWithPath:@"CameraSerias"];
+    [[ACFaceSDK sharedSDK] useCameraHandler:^(UIViewController *currentController) {
+//        ACCameraViewController * pickerVC = [[ACCameraViewController alloc]init];
+//        [currentController.navigationController pushViewController:pickerVC animated:YES];
+        
+        ACOtherCameraViewController * pickerVC = [[ACOtherCameraViewController alloc]init];
+        [currentController.navigationController pushViewController:pickerVC animated:YES];
+        
+    }];
+    
+    [[ACFaceSDK sharedSDK] backToCameraControllerHandler:^(UIViewController *currentController) {
+        for (UIViewController * vc in currentController.navigationController.childViewControllers) {
+            if ([vc isKindOfClass:[ACOtherCameraViewController class]]) {
+                 [currentController.navigationController popToViewController:vc animated:YES];
+            }
+        }
+    }];
+     
+    
     
     return YES;
 }

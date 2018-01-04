@@ -55,7 +55,7 @@
 - (void)dealloc {
 //    self.photoCollections.delegate = nil;
 //    self.photoCollections.dataSource = nil;
-    NSLog(@"ACPhoto dealloc");
+    NSLog(@"%s",__func__);
     
 }
 
@@ -66,7 +66,7 @@
     [self.view addSubview:self.photoCollections];
     [self.view addSubview:self.naviView];
     [self.view addSubview:self.topShowLabel];
-    [self.view addSubview:self.bottomShowBtn];
+//    [self.view addSubview:self.bottomShowBtn];
     
 }
 -(BOOL)prefersStatusBarHidden{
@@ -239,18 +239,26 @@
 
 - (void)bottomShowBtnClick:(UIButton*)btn {
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(photoPickerController:withFunctionType:andCompletionHandler:)]) {
-        [self.delegate photoPickerController:self withFunctionType:ACFaceSDKFunctionTypeCameraUse andCompletionHandler:^(UIImage *image) {
-            
-        }];
+
+    
+    BOOL have = NO;
+    for (UIViewController * vc in self.navigationController.childViewControllers) {
+        if ([vc isKindOfClass:[ACCameraViewController class]]) {
+            have = YES;
+            [self.navigationController popToViewController:vc animated:YES];
+        }
     }
-//    ACCameraViewController * cameraVC = [ACCameraViewController new];
-//    [self.navigationController pushViewController:cameraVC animated:YES];
+    if (!have) {
+        ACCameraViewController * cameraVC = [ACCameraViewController new];
+        [self.navigationController pushViewController:cameraVC animated:YES];
+    }
+
     
 }
 #pragma mark - bar item action
 - (void)closePhotoPicker
 {
+    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

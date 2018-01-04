@@ -12,7 +12,8 @@
 #import "ACMotionManager.h"
 #import "ACPhotoShowViewController.h"
 #import "ACCameraTool.h"
-
+#import "ACPhotoPickerController.h"
+#import "ACFaceSDK.h"
 
 @interface ACCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,
                                      AVCaptureAudioDataOutputSampleBufferDelegate,
@@ -53,6 +54,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   
+    
     _isFrontCarmera = NO;
     _cameraView = [[ACCameraView alloc] initWithFrame:self.view.bounds];
     _cameraView.delegate = self;
@@ -84,7 +88,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
 
  
 }
@@ -93,9 +97,16 @@
 }
 
 - (void)dealloc {
-    NSLog(@"dealloc");
+    NSLog(@"%s",__func__);
+    [_captureSession stopRunning];
+    [_motionManager.motionManager stopDeviceMotionUpdates];
+    _motionManager   = nil;
+    _captureSession  = nil;
+    _deviceInput     = nil;
+    _videoConnection = nil;
+    _videoOutput     = nil;
+    _imageOutput     = nil;
     self.navigationController.navigationBarHidden = NO;
-//    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 - (UIImageView *)imageView {
@@ -220,9 +231,10 @@
         self.imageView.image = nil;
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
         UIImage *image = [[UIImage alloc]initWithData:imageData];
-        ACPhotoShowViewController * photoVC = [ACPhotoShowViewController new];
-        photoVC.showImage = image;
-        [self.navigationController pushViewController:photoVC animated:YES];
+        [[ACFaceSDK sharedSDK] enterPhotoWithCurrentController:self andImage:image];
+        
+//        [[ACFaceSDK sharedSDK] generateImageFromeCameraWithAppType:ACFaceSDKAPPTypeArtCamera andCurrentController:self withImage:image];
+        
         
     };
     [_imageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:takePictureSuccess];
@@ -340,8 +352,8 @@
 #pragma mark ACCameraDelegate
 
 - (void)cancelAction:(ACCameraView *)cameraView {
-
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
@@ -350,6 +362,22 @@
     [self takePictureImage];
 
 }
+- (void)showPhotoAlbum:(ACCameraView *)cameraView {
+    
+//    [[ACFaceSDK sharedSDK] generateImageFromeCameraWithAppType:ACFaceSDKAPPTypeArtCamera andCurrentController:self withImage:[UIImage imageNamed:@"girl"]];
+    
+    [[ACFaceSDK sharedSDK] usePhotoAlbumWithCurrentController:self];
+    
+//    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:photoVC];
+//
+//    [self presentViewController:navi animated:YES completion:nil];
+    
+}
+
+- (void)tintPhotoAlbum:(ACCameraView *)cameraView {
+    
+}
+
 - (void)switchCameraAction:(ACCameraView *)cameraView{
     NSLog(@"switchCamera");
      [self switchCameras];

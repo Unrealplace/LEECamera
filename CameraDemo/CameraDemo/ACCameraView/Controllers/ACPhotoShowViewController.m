@@ -30,7 +30,10 @@
     
     
 }
+- (void)dealloc {
+    NSLog(@"%s",__func__);
 
+}
 - (UIImageView*)showImageView {
     if (!_showImageView) {
         _showImageView = [UIImageView new];

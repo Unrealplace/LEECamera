@@ -129,7 +129,16 @@
         [self.delegate takePhotoAction:self];
     }
 }
-
+- (void)showPhotoAlblum:(ACCameraBottomView *)cameraBottomView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showPhotoAlbum:)]) {
+        [self.delegate showPhotoAlbum:self];
+    }
+}
+- (void)tintPhoto:(ACCameraBottomView *)cameraBottomView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tintPhotoAlbum:)]) {
+        [self.delegate tintPhotoAlbum:self];
+    }
+}
 - (void)touchCancel:(ACCameraTopView *)cameraTopView {
     if (self.delegate && [self.delegate respondsToSelector:@selector(cancelAction:)]) {
         [self.delegate cancelAction:self];
