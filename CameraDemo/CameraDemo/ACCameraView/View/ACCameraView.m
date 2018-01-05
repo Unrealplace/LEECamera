@@ -9,18 +9,10 @@
 #import "ACCameraView.h"
 #import "ACCameraBottomView.h"
 #import "ACCameraTopView.h"
+#import "ACPhotoTool.h"
 
 @interface ACCameraView ()<ACCameraBottomViewDelegate,ACCameraTopViewDelegate>
-// 显示图层
-@property (nonatomic, strong) ACVideoPreView             *preView;
-//顶部操作菜单
-@property (nonatomic, strong) ACCameraTopView            *topView;
-// 底部操作菜单图层
-@property (nonatomic, strong) ACCameraBottomView         *bottomView;
-
-//聚焦图层
-@property (nonatomic, strong) UIView                     *focusView;
-
+ 
 
 @end
 
@@ -56,6 +48,10 @@
         _bottomView = [[ACCameraBottomView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.preView.frame), self.bounds.size.width, self.bounds.size.height - self.topView.bounds.size.height - self.preView.bounds.size.height)];
         _bottomView.backgroundColor = [UIColor blackColor];
         _bottomView.delegate        = self;
+
+        [ACPhotoTool latestAsset:^(ACAsset * _Nullable asset) {
+            [_bottomView setTheLatestImageWith:asset.image];
+        }];
     }
     return _bottomView;
 }

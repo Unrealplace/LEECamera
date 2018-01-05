@@ -14,7 +14,6 @@
 #import "ACCameraViewController.h"
 #import "ACMTStoreDownloadManager.h"
 #import "ACFileManager.h"
-#import "ACSaveImageUtil.h"
 #import "ACArchiverManager.h"
 
 #import "ACFaceProcessViewController.h"
@@ -114,17 +113,7 @@
 
 - (void)goBackSelectPhotoBtnClick:(UIButton*)btn {
     
-    BOOL have = NO;
-    for (UIViewController * vc in self.navigationController.childViewControllers) {
-        if ([vc isKindOfClass:[ACPhotoPickerController class]]) {
-            have = YES;
-            [self.navigationController popToViewController:vc animated:YES];
-        }
-    }
-    if (!have) {
-        ACPhotoPickerController * photoVC = [ACPhotoPickerController new];
-        [self.navigationController pushViewController:photoVC animated:YES];
-    }
+    [[ACFaceSDK sharedSDK] setupPhotoAlbumController:self];
     
 }
 

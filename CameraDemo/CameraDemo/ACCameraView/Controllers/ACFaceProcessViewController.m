@@ -12,10 +12,11 @@
 #import "ACIconCollectionCell.h"
 #import "UIView+ACCameraFrame.h"
 #import "ACArchiverManager.h"
+#import "ACFaceShareViewController.h"
 
 static NSString * IconCellID = @"IconCellID";
 
-@interface ACFaceProcessViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface ACFaceProcessViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ACCameraNaviViewDelegate>
 @property (nonatomic, strong)UICollectionView * iconCollectionView;
 
 @property (nonatomic, strong)ACIconShowFlowLayout * iconShowFlowLayout;
@@ -44,8 +45,10 @@ static NSString * IconCellID = @"IconCellID";
     
     [self.iconCollectionView reloadData];
     [self.view addSubview:self.faceImageView];
+    [self.view addSubview:self.naviView];
     
 }
+
 
 
 - (UIImageView*)faceImageView {
@@ -61,15 +64,30 @@ static NSString * IconCellID = @"IconCellID";
     if (!_iconCollectionView) {
         _iconShowFlowLayout = [[ACIconShowFlowLayout alloc] init];
         _iconShowFlowLayout.itemSize = CGSizeMake(100, 100);
+        _iconShowFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        _iconShowFlowLayout.minimumLineSpacing = 10;
+        _iconShowFlowLayout.minimumInteritemSpacing = 5;
+    
         _iconCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.view.ca_height - 100, self.view.ca_width, 100) collectionViewLayout:_iconShowFlowLayout];
         _iconCollectionView.showsVerticalScrollIndicator = NO;
+        _iconCollectionView.showsHorizontalScrollIndicator = NO;
         _iconCollectionView.scrollEnabled   = YES;
-        _iconCollectionView.backgroundColor = [UIColor redColor];
-        [_iconCollectionView registerClass:[ACIconCollectionCell class] forCellWithReuseIdentifier:IconCellID];
+//        _iconCollectionView.backgroundColor = [UIColor redColor];
+         [_iconCollectionView registerClass:[ACIconCollectionCell class] forCellWithReuseIdentifier:IconCellID];
         _iconCollectionView.delegate = self;
         _iconCollectionView.dataSource = self;
     }
     return _iconCollectionView;
+}
+
+
+- (void)cameraNaviViewTouchEvent:(ACCameraNaviViewTouchType)touchType {
+    if (touchType == ACCameraNaviViewTouchTypeLeft) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else if (touchType == ACCameraNaviViewTouchTypeRight) {
+        ACFaceShareViewController * share = [ACFaceShareViewController new];
+        [self.navigationController pushViewController:share animated:YES];
+    }
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

@@ -20,8 +20,9 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 
 @property (nonatomic, copy)ACCameraBlock backToCameraBlock;
 
-@property (nonatomic, copy)ACCameraBlock  showTintBlock;
+@property (nonatomic, copy)ACCameraBlock showTintBlock;
 
+@property (nonatomic, copy)ACCameraBlock photoBlock;
 
 /**
  设置app 类型
@@ -70,29 +71,6 @@ NSString * const SERIAS_PATH = @"CameraSerias";
     self.cameraBlock(controller);
  }
 
-- (void)usePhotoAlbumWithCurrentController:(UIViewController *)currentController {
-    switch (self.appType) {
-        case ACFaceSDKAPPTypeArtCamera:
-        {
-            ACPhotoPickerController * photoVC = [ACPhotoPickerController new];
-            [currentController.navigationController pushViewController:photoVC animated:YES];
-        }
-            break;
-        case ACFaceSDKAPPTypeManCamera:
-        {
-            
-        }
-            break;
-        case ACFaceSDKAPPTypeBeautyCamera:
-        {
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
-}
 
 - (void)enterPhotoWithCurrentController:(UIViewController *)currentController
                                andImage:(UIImage *)image {
@@ -137,5 +115,11 @@ NSString * const SERIAS_PATH = @"CameraSerias";
     self.showTintBlock(controller);
 }
 
+- (void)usePhotoAlbumControllerHandler:(void (^)(UIViewController *))handler {
+    self.photoBlock = handler;
+}
+- (void)setupPhotoAlbumController:(UIViewController *)currentController {
+    self.photoBlock(currentController);
+}
  
 @end

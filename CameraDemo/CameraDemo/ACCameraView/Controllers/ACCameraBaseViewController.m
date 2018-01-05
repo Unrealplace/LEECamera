@@ -7,6 +7,7 @@
 //
 
 #import "ACCameraBaseViewController.h"
+#import "UIView+ACCameraFrame.h"
 
 @interface ACCameraBaseViewController ()
 
@@ -17,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    
+
  }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -39,5 +40,16 @@
 
 }
 
+- (ACCameraNaviView *)naviView {
+    if (!_naviView) {
+        _naviView = [[ACCameraNaviView alloc] initWithFrame:CGRectMake(0, 0, self.view.ca_width, 44)];
+//        _naviView.hidden = YES;
+        _naviView.delegate = self;
+    }
+    return _naviView;
+}
+- (void)cameraNaviViewTouchEvent:(ACCameraNaviViewTouchType)touchType {
+   
+}
 
 @end

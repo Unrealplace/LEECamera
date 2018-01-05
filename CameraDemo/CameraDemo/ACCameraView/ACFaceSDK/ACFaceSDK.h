@@ -73,9 +73,18 @@ typedef enum :NSInteger{
 /**
  使用相册功能
 
- @param currentController 当前控制器
+ @param handler 处理回调
  */
-- (void)usePhotoAlbumWithCurrentController:(UIViewController *)currentController;
+- (void)usePhotoAlbumControllerHandler:(void(^)(UIViewController* currentController))handler;
+
+/**
+ 设置要用的相册的父控制器
+
+ @param currentController 相册的父控制器
+ */
+- (void)setupPhotoAlbumController:(UIViewController*)currentController;
+
+
 
 
 /**
@@ -96,13 +105,21 @@ typedef enum :NSInteger{
 
 
 /**
- 显示提示
+ 显示提示，用户点击小灯泡或者首次登陆时候弹框提示
 
  @param handler 提示回调
  */
 - (void)showTintAlertControllerHandler:(void(^)(UIViewController * currentController))handler;
 
+/**
+ 配置弹框的父控制器
+
+ @param controller 弹框的父控制器
+ */
 - (void)setupTintAlertController:(UIViewController*)controller;
+
+
+//- (void)showDownLoadProsess
 
 
 @end

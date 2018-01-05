@@ -14,6 +14,7 @@
 #import "ACCameraTool.h"
 #import "ACPhotoPickerController.h"
 #import "ACFaceSDK.h"
+#import "ACPhotoTool.h"
 
 @interface ACCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,
                                      AVCaptureAudioDataOutputSampleBufferDelegate,
@@ -36,8 +37,8 @@
 
 
 @property(nonatomic, strong)UIImageView * imageView;
-@property(nonatomic, strong) ACMotionManager *motionManager;
-@property(nonatomic, assign) AVCaptureFlashMode currentflashMode; // 当前闪光灯的模式，用来调整前后摄像头切换时候的模式
+@property(nonatomic, strong)ACMotionManager *motionManager;
+@property(nonatomic, assign)AVCaptureFlashMode currentflashMode; // 当前闪光灯的模式，用来调整前后摄像头切换时候的模式
 @property(nonatomic, assign)BOOL isFrontCarmera;// 当前是前置还是后置摄像头
 
 @end
@@ -231,11 +232,17 @@
         self.imageView.image = nil;
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:sampleBuffer];
         UIImage *image = [[UIImage alloc]initWithData:imageData];
-        [[ACFaceSDK sharedSDK] enterPhotoWithCurrentController:self andImage:image];
         
-//        [[ACFaceSDK sharedSDK] generateImageFromeCameraWithAppType:ACFaceSDKAPPTypeArtCamera andCurrentController:self withImage:image];
-        
-        
+        [ACPhotoTool saveImage:image compeleted:^(BOOL isCompeleted, NSString *status, NSDictionary *imgInfo) {
+            
+            [ACPhotoTool latestAsset:^(ACAsset * _Nullable asset) {
+                [_cameraView.bottomView setTheLatestImageWith:asset.image];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [[ACFaceSDK sharedSDK] enterPhotoWithCurrentController:self andImage:image];
+                });
+            }];
+           
+        }];
     };
     [_imageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:takePictureSuccess];
 }
@@ -366,7 +373,9 @@
     
 //    [[ACFaceSDK sharedSDK] generateImageFromeCameraWithAppType:ACFaceSDKAPPTypeArtCamera andCurrentController:self withImage:[UIImage imageNamed:@"girl"]];
     
-    [[ACFaceSDK sharedSDK] usePhotoAlbumWithCurrentController:self];
+    [[ACFaceSDK sharedSDK] setupPhotoAlbumController:self];
+    
+//    [[ACFaceSDK sharedSDK] usePhotoAlbumWithCurrentController:self];
     
 //    UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:photoVC];
 //

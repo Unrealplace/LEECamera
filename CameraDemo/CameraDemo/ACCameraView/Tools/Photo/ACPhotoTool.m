@@ -1,19 +1,70 @@
 //
-//  ACSaveImage.m
+//  ACPhotoToll.m
+//  CameraDemo
 //
-//  Created by NicoLin on 5/24/16.
-//  Copyright © 2016 林凯. All rights reserved.
+//  Created by NicoLin on 2018/1/5.
+//  Copyright © 2018年 NicoLin. All rights reserved.
 //
 
-#import "ACSaveImageUtil.h"
-#import <Photos/Photos.h> // iOS8.0开始,我们最好用这个咯
-
+#import "ACPhotoTool.h"
+#import "ALAsset+AC.h"
+#import "ALAssetsLibrary+AC.h"
+#import "PHAsset+AC.h"
 #define Album @"图片合成器"
 
-@implementation ACSaveImageUtil
+@implementation ACPhotoTool
++ (void)latestAsset:(ACPhotoCallBack _Nullable)callBack {
+    NSLog(@"system -- %@",[UIDevice currentDevice].systemVersion);
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {//判断适配
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                PHAsset *asset = [PHAsset latestAsset];
+                // 在资源的集合中获取第一个集合，并获取其中的图片
+                if (asset) {
+                    PHCachingImageManager *imageManager = [[PHCachingImageManager alloc] init];
+                    [imageManager requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+                        ACAsset *a = nil;
+                        if (imageData) {
+                            UIImage * image = [UIImage imageWithData:imageData];
+                            a = [[ACAsset alloc]initWithPHAsset:asset image:image];
+                        }
+                        if (callBack) {
+                            callBack(a);
+                        }
+                    }];
+                } else {
+                    if (callBack) {
+                        callBack(nil);
+                    }
+                }
+            } else {
+                NSLog(@"status %ld",(long)status);
+                if (callBack) {
+                    callBack(nil);
+                }
+            }
+        }];
+    } else {
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc]init];
+        [library latestAsset:^(ALAsset * _Nullable asset, NSError * _Nullable error) {
+            ACAsset *a = nil;
+            if (asset) {
+                a = [[ACAsset alloc]initWithALAsset:asset];
+            } else {
+                NSLog(@"---- %@",error.localizedDescription);
+            }
+            if (callBack) {
+                callBack(a);
+            }
+        }];
+    }
+}
 
-+ (void)saveImage:(UIImage *)image compeleted:(saveImageHandler)saveImageHandler
-{
+
+
+
+
++ (void)saveImage:(UIImage *)image compeleted:(ACSaveImageHandler)saveImageHandler {
     if (!image) {
         if (saveImageHandler) {
             saveImageHandler(NO,@"未能成功生成图片",nil);
@@ -55,8 +106,8 @@
             }
         }];
     }
-
 }
+
 
 /**
  *  返回相册
@@ -102,7 +153,7 @@
 /**
  *  返回相册,避免重复创建相册引起不必要的错误
  */
-+ (void)saveImageToAlbum:(UIImage *)image compeleted:(saveImageHandler)saveImageHandler
++ (void)saveImageToAlbum:(UIImage *)image compeleted:(ACSaveImageHandler)saveImageHandler
 {
     /*
      PHAsset : 一个PHAsset对象就代表一个资源文件,比如一张图片
@@ -115,7 +166,7 @@
         
         // 返回PHAsset(图片)的字符串标识
         assetId = [PHAssetChangeRequest creationRequestForAssetFromImage:image].placeholderForCreatedAsset.localIdentifier;
-
+        
     } completionHandler:^(BOOL success, NSError * _Nullable error) {
         
         if (error || !assetId) {
@@ -126,7 +177,7 @@
         }
         
         NSLog(@"成功保存图片到相机胶卷中");
-    
+        
         // 2. 获得相册对象
         PHAssetCollection *collection = [self collection];
         
@@ -159,4 +210,5 @@
         }];
     }];
 }
+
 @end

@@ -24,4 +24,11 @@
 
 @property (nonatomic,weak)id <ACCameraBottomViewDelegate> delegate;
 
+/**
+ 设置最新的一张图片
+
+ @param image 最新的图片
+ */
+- (void)setTheLatestImageWith:(UIImage*)image;
+
 @end

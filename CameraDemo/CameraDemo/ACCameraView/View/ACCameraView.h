@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-
+#import "ACCameraBottomView.h"
+#import "ACCameraTopView.h"
 #import "ACVideoPreView.h"
 
 @class ACCameraView;
+
 
 @protocol ACCameraViewDelegate <NSObject>
 
@@ -61,11 +63,23 @@
  */
 - (void)flashLightAction:(ACCameraView*)cameraView ;
 
+
+
+
 @end
 
 
 @interface ACCameraView : UIView
 
+// 显示图层
+@property (nonatomic, strong) ACVideoPreView             *preView;
+//顶部操作菜单
+@property (nonatomic, strong) ACCameraTopView            *topView;
+// 底部操作菜单图层
+@property (nonatomic, strong) ACCameraBottomView         *bottomView;
+
+//聚焦图层
+@property (nonatomic, strong) UIView                     *focusView;
 
 @property (nonatomic,weak)id <ACCameraViewDelegate> delegate ;
 

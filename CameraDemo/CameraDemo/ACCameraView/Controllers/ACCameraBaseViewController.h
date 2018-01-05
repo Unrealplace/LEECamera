@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ACCameraNaviView.h"
 
-@interface ACCameraBaseViewController : UIViewController
+@interface ACCameraBaseViewController : UIViewController <ACCameraNaviViewDelegate>
+@property (nonatomic, strong)ACCameraNaviView * naviView;
 
 @end

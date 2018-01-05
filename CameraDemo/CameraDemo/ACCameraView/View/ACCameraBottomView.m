@@ -57,10 +57,12 @@
 - (UIButton*)showPhotoBtn {
     if (!_showPhotoBtn) {
         _showPhotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _showPhotoBtn.frame = CGRectMake(20, 0, 70, 50);
-        [_showPhotoBtn setTitle:@"缩略图" forState:UIControlStateNormal];
+        _showPhotoBtn.frame = CGRectMake(20, 0, 50, 50);
+        _showPhotoBtn.layer.cornerRadius = 4;
+        _showPhotoBtn.layer.masksToBounds = YES;
+        _showPhotoBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [_showPhotoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_showPhotoBtn addTarget:self action:@selector(showPhotoBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_showPhotoBtn addTarget:self action:@selector(showPhotoBtnClick:) forControlEvents: UIControlEventTouchDown];
     }
     return _showPhotoBtn;
 }
@@ -71,21 +73,41 @@
         _tintBtn.frame = CGRectMake(self.ca_width - 70, 0, 50, 50);
         [_tintBtn setTitle:@"提示" forState:UIControlStateNormal];
         [_tintBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_tintBtn addTarget:self action:@selector(tintBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_tintBtn addTarget:self action:@selector(tintBtnClick:) forControlEvents:UIControlEventTouchUpInside ];
     }
     return _tintBtn;
 }
+
+
+- (void)setTheLatestImageWith:(UIImage *)image {
+    
+    [self.showPhotoBtn setImage:image forState:UIControlStateNormal];
+    [self.showPhotoBtn setImage:image forState:UIControlStateHighlighted];
+    
+}
+
 #pragma mark touch 
 
 - (void)takePhotoBtnClick:(UIButton*)btn {
+   
     if (self.delegate && [self.delegate respondsToSelector:@selector(takePhoto:)]) {
         [self.delegate takePhoto:self];
     }
+  
 }
 - (void)showPhotoBtnClick:(UIButton*)btn {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(showPhotoAlblum:)]) {
-        [self.delegate showPhotoAlblum:self];
-    }
+    [UIView animateWithDuration:0.25 animations:^{
+        btn.transform = CGAffineTransformMakeScale(0.75, 0.75);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            btn.transform = CGAffineTransformMakeScale(1, 1);
+        } completion:^(BOOL finished) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(showPhotoAlblum:)]) {
+                [self.delegate showPhotoAlblum:self];
+            }
+        }];
+    }];
+   
 }
 - (void)tintBtnClick:(UIButton*)btn {
     if (self.delegate && [self.delegate respondsToSelector:@selector(tintPhoto:)]) {
