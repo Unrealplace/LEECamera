@@ -226,6 +226,53 @@
 			path = Transition;
 			sourceTree = "<group>";
 		};
+		2B48A8911FFF94E100DB57EA /* ACCamera */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB07EB1FF4841800DFAC18 /* ACCameraBaseViewController.h */,
+				2BAB07EC1FF4841800DFAC18 /* ACCameraBaseViewController.m */,
+				2BAB07E81FF3A80900DFAC18 /* ACCameraViewController.h */,
+				2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */,
+				B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */,
+				B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */,
+				2BAB08AF1FFF17A500DFAC18 /* ACCameraNaviView.h */,
+				2BAB08B01FFF17A500DFAC18 /* ACCameraNaviView.m */,
+				2BAB07EE1FF48EC000DFAC18 /* ACCameraBottomView.h */,
+				2BAB07EF1FF48EC000DFAC18 /* ACCameraBottomView.m */,
+				2BAB07F11FF48ED000DFAC18 /* ACCameraTopView.h */,
+				2BAB07F21FF48ED000DFAC18 /* ACCameraTopView.m */,
+				B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */,
+				B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */,
+			);
+			path = ACCamera;
+			sourceTree = "<group>";
+		};
+		2B48A8921FFF96CF00DB57EA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB08A61FFE03E500DFAC18 /* ACTintViewController.h */,
+				2BAB08A71FFE03E500DFAC18 /* ACTintViewController.m */,
+				2BAB08101FF4F56F00DFAC18 /* ACFaceDetectionViewController.h */,
+				2BAB08111FF4F56F00DFAC18 /* ACFaceDetectionViewController.m */,
+				2BAB080D1FF4E34C00DFAC18 /* ACPhotoShowViewController.h */,
+				2BAB080E1FF4E34C00DFAC18 /* ACPhotoShowViewController.m */,
+				2BAB08A91FFE118700DFAC18 /* ACFaceProcessViewController.h */,
+				2BAB08AA1FFE118700DFAC18 /* ACFaceProcessViewController.m */,
+				2BAB08B21FFF238100DFAC18 /* ACFaceShareViewController.h */,
+				2BAB08B31FFF238100DFAC18 /* ACFaceShareViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2B48A8931FFF96EE00DB57EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2BAB08881FFCA97E00DFAC18 /* ACFaceModel.h */,
+				2BAB08891FFCA97E00DFAC18 /* ACFaceModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2BAB07C31FF3913D00DFAC18 = {
 			isa = PBXGroup;
 			children = (
@@ -272,10 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				2BAB08631FFB9C2300DFAC18 /* ACFaceSDK */,
-				2BAB08161FF4FCB500DFAC18 /* PhotoPicker */,
-				2BAB08151FF4FC6E00DFAC18 /* Tools */,
-				2BAB08141FF4FC5300DFAC18 /* Controllers */,
-				2BAB08131FF4FC3900DFAC18 /* View */,
 			);
 			path = ACCameraView;
 			sourceTree = "<group>";
@@ -283,16 +326,6 @@
 		2BAB08131FF4FC3900DFAC18 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */,
-				B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */,
-				2BAB08AF1FFF17A500DFAC18 /* ACCameraNaviView.h */,
-				2BAB08B01FFF17A500DFAC18 /* ACCameraNaviView.m */,
-				2BAB07EE1FF48EC000DFAC18 /* ACCameraBottomView.h */,
-				2BAB07EF1FF48EC000DFAC18 /* ACCameraBottomView.m */,
-				2BAB07F11FF48ED000DFAC18 /* ACCameraTopView.h */,
-				2BAB07F21FF48ED000DFAC18 /* ACCameraTopView.m */,
-				B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */,
-				B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */,
 				2BAB08911FFCD25200DFAC18 /* ACIconShowFlowLayout.h */,
 				2BAB08921FFCD25200DFAC18 /* ACIconShowFlowLayout.m */,
 				2BAB08941FFCD6DA00DFAC18 /* ACIconCollectionCell.h */,
@@ -304,21 +337,8 @@
 		2BAB08141FF4FC5300DFAC18 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2B48A87D1FFF655500DB57EA /* Transition */,
-				2BAB07EB1FF4841800DFAC18 /* ACCameraBaseViewController.h */,
-				2BAB07EC1FF4841800DFAC18 /* ACCameraBaseViewController.m */,
-				2BAB08A61FFE03E500DFAC18 /* ACTintViewController.h */,
-				2BAB08A71FFE03E500DFAC18 /* ACTintViewController.m */,
-				2BAB07E81FF3A80900DFAC18 /* ACCameraViewController.h */,
-				2BAB07E91FF3A80900DFAC18 /* ACCameraViewController.m */,
-				2BAB08101FF4F56F00DFAC18 /* ACFaceDetectionViewController.h */,
-				2BAB08111FF4F56F00DFAC18 /* ACFaceDetectionViewController.m */,
-				2BAB080D1FF4E34C00DFAC18 /* ACPhotoShowViewController.h */,
-				2BAB080E1FF4E34C00DFAC18 /* ACPhotoShowViewController.m */,
-				2BAB08A91FFE118700DFAC18 /* ACFaceProcessViewController.h */,
-				2BAB08AA1FFE118700DFAC18 /* ACFaceProcessViewController.m */,
-				2BAB08B21FFF238100DFAC18 /* ACFaceShareViewController.h */,
-				2BAB08B31FFF238100DFAC18 /* ACFaceShareViewController.m */,
+				2B48A8921FFF96CF00DB57EA /* Controller */,
+				2BAB08131FF4FC3900DFAC18 /* View */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -383,8 +403,12 @@
 				2BAB08641FFB9C3700DFAC18 /* ACFaceSDK.h */,
 				2BAB08651FFB9C3700DFAC18 /* ACFaceSDK.m */,
 				2BAB082F1FF500F500DFAC18 /* ACCameraHeader.h */,
-				2BAB08881FFCA97E00DFAC18 /* ACFaceModel.h */,
-				2BAB08891FFCA97E00DFAC18 /* ACFaceModel.m */,
+				2B48A8931FFF96EE00DB57EA /* Model */,
+				2BAB08151FF4FC6E00DFAC18 /* Tools */,
+				2BAB08141FF4FC5300DFAC18 /* Controllers */,
+				2B48A87D1FFF655500DB57EA /* Transition */,
+				2B48A8911FFF94E100DB57EA /* ACCamera */,
+				2BAB08161FF4FCB500DFAC18 /* PhotoPicker */,
 			);
 			path = ACFaceSDK;
 			sourceTree = "<group>";
