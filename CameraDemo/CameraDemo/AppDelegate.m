@@ -23,7 +23,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
    
-    [[ACFaceSDK sharedSDK] setAppType:ACFaceSDKAPPTypeArtCamera andCurrentEnviroment:ACFaceSDKEnviromentTypeDebug];
+    [[ACFaceSDK sharedSDK] setAppType:ACFaceSDKAPPTypeArtCamera
+                 andCurrentEnviroment:ACFaceSDKEnviromentTypeDebug
+                       andControllers:@[@"ACPhotoPickerController",@"ACOtherPhotoViewController"]];
     
     [[ACFaceSDK sharedSDK] compressionSerias];
     

@@ -18,8 +18,11 @@
 #import "UIImage+ACCameraFixOrientation.h"
 #import "ACCameraViewController.h"
 #import "ACFaceDetectionViewController.h"
+#import "ACPushTransition.h"
+#import "ACPopTransition.h"
+#import "ACFaceSDK.h"
 
-@interface ACPhotoPickerController ()<PHPhotoLibraryChangeObserver,UICollectionViewDelegate,UICollectionViewDataSource,UIViewControllerPreviewingDelegate>
+@interface ACPhotoPickerController ()<PHPhotoLibraryChangeObserver,UICollectionViewDelegate,UICollectionViewDataSource,UIViewControllerPreviewingDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, copy) photoPickerHandler pickAction;//选择照片回调
 
@@ -47,6 +50,7 @@
 
 
 @property CGRect previousPreheatRect;
+
 @end
 
 @implementation ACPhotoPickerController
@@ -112,6 +116,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -589,6 +594,5 @@
     [self changeTheCropContentWithSelectedIndex:cell.indexPath];
     [self closePhotoPicker];
 }
-
 
 @end

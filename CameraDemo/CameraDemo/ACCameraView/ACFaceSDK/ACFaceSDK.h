@@ -37,7 +37,7 @@ typedef enum :NSInteger{
  @param appType app 类型
  @param enviroType 当前的环境
  */
-- (void)setAppType:(ACFaceSDKAPPType)appType andCurrentEnviroment:(ACFaceSDKEnviromentType)enviroType;
+- (void)setAppType:(ACFaceSDKAPPType)appType andCurrentEnviroment:(ACFaceSDKEnviromentType)enviroType andControllers:(NSArray*)controllersArray;
 /**
  解压素材
  */
@@ -119,7 +119,10 @@ typedef enum :NSInteger{
 - (void)setupTintAlertController:(UIViewController*)controller;
 
 
-//- (void)showDownLoadProsess
+
+- (NSArray *)otherControllers;
+
+
 
 
 @end

@@ -15,10 +15,12 @@
 #import "ACPhotoPickerController.h"
 #import "ACFaceSDK.h"
 #import "ACPhotoTool.h"
+#import "ACNavAnimation.h"
 
 @interface ACCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,
                                      AVCaptureAudioDataOutputSampleBufferDelegate,
-                                        ACCameraViewDelegate>
+                                        ACCameraViewDelegate,
+                                       UINavigationControllerDelegate>
 {
     // 会话
     AVCaptureSession * _captureSession;
@@ -40,6 +42,10 @@
 @property(nonatomic, strong)ACMotionManager *motionManager;
 @property(nonatomic, assign)AVCaptureFlashMode currentflashMode; // 当前闪光灯的模式，用来调整前后摄像头切换时候的模式
 @property(nonatomic, assign)BOOL isFrontCarmera;// 当前是前置还是后置摄像头
+
+@property (strong, nonatomic) ACPushTransition * pushAnimation;
+
+@property (strong, nonatomic) ACPopTransition  * popAnimation;
 
 @end
 
@@ -84,12 +90,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-
+    self.navigationController.delegate = self;
+    
  }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 //    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.delegate = nil;
 
  
 }
@@ -411,4 +419,45 @@
         }
      }
  }
+
+
+#pragma mark - **************** Navgation delegate
+/** 返回转场动画实例*/
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC
+{
+    if (operation == UINavigationControllerOperationPush) {
+        if (![[[ACFaceSDK sharedSDK] otherControllers] containsObject:NSStringFromClass([toVC class])]){
+            return nil;
+        }else{
+            return self.pushAnimation;
+        }
+    }else if (operation == UINavigationControllerOperationPop){
+        if (![[[ACFaceSDK sharedSDK] otherControllers] containsObject:NSStringFromClass([fromVC class])]){
+            return nil;
+        }else{
+            return self.popAnimation;
+        }
+    }
+    return nil;
+}
+
+-(ACPushTransition *)pushAnimation
+{
+    if (!_pushAnimation) {
+        _pushAnimation = [[ACPushTransition alloc] init];
+    }
+    return _pushAnimation;
+}
+-(ACPopTransition *)popAnimation
+{
+    if (!_popAnimation) {
+        _popAnimation = [[ACPopTransition alloc] init];
+    }
+    return _popAnimation;
+}
+
+
 @end

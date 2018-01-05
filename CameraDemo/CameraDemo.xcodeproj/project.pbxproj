@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B48A8801FFF656F00DB57EA /* ACPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B48A87F1FFF656F00DB57EA /* ACPushTransition.m */; };
+		2B48A8831FFF67E900DB57EA /* ACPopTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B48A8821FFF67E900DB57EA /* ACPopTransition.m */; };
+		2B48A8891FFF6B1900DB57EA /* ACInteractionTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B48A8881FFF6B1900DB57EA /* ACInteractionTransitionAnimation.m */; };
+		2B48A88C1FFF6B6B00DB57EA /* ACInteractiveTrasitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B48A88B1FFF6B6B00DB57EA /* ACInteractiveTrasitionAnimation.m */; };
+		2B48A8901FFF7D2C00DB57EA /* UIView+ACSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B48A88F1FFF7D2C00DB57EA /* UIView+ACSnapshot.m */; };
 		2BAB07D11FF3913D00DFAC18 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07D01FF3913D00DFAC18 /* AppDelegate.m */; };
 		2BAB07D41FF3913D00DFAC18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB07D31FF3913D00DFAC18 /* ViewController.m */; };
 		2BAB07D71FF3913D00DFAC18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB07D51FF3913D00DFAC18 /* Main.storyboard */; };
@@ -66,6 +71,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B48A87E1FFF656F00DB57EA /* ACPushTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPushTransition.h; sourceTree = "<group>"; };
+		2B48A87F1FFF656F00DB57EA /* ACPushTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACPushTransition.m; sourceTree = "<group>"; };
+		2B48A8811FFF67E900DB57EA /* ACPopTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPopTransition.h; sourceTree = "<group>"; };
+		2B48A8821FFF67E900DB57EA /* ACPopTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACPopTransition.m; sourceTree = "<group>"; };
+		2B48A8871FFF6B1900DB57EA /* ACInteractionTransitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACInteractionTransitionAnimation.h; sourceTree = "<group>"; };
+		2B48A8881FFF6B1900DB57EA /* ACInteractionTransitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACInteractionTransitionAnimation.m; sourceTree = "<group>"; };
+		2B48A88A1FFF6B6B00DB57EA /* ACInteractiveTrasitionAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACInteractiveTrasitionAnimation.h; sourceTree = "<group>"; };
+		2B48A88B1FFF6B6B00DB57EA /* ACInteractiveTrasitionAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACInteractiveTrasitionAnimation.m; sourceTree = "<group>"; };
+		2B48A88D1FFF6C2000DB57EA /* ACNavAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNavAnimation.h; sourceTree = "<group>"; };
+		2B48A88E1FFF7D2C00DB57EA /* UIView+ACSnapshot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ACSnapshot.h"; sourceTree = "<group>"; };
+		2B48A88F1FFF7D2C00DB57EA /* UIView+ACSnapshot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ACSnapshot.m"; sourceTree = "<group>"; };
 		2BAB07CC1FF3913D00DFAC18 /* CameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAB07CF1FF3913D00DFAC18 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2BAB07D01FF3913D00DFAC18 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -192,6 +208,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B48A87D1FFF655500DB57EA /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				2B48A88D1FFF6C2000DB57EA /* ACNavAnimation.h */,
+				2B48A87E1FFF656F00DB57EA /* ACPushTransition.h */,
+				2B48A87F1FFF656F00DB57EA /* ACPushTransition.m */,
+				2B48A8811FFF67E900DB57EA /* ACPopTransition.h */,
+				2B48A8821FFF67E900DB57EA /* ACPopTransition.m */,
+				2B48A8871FFF6B1900DB57EA /* ACInteractionTransitionAnimation.h */,
+				2B48A8881FFF6B1900DB57EA /* ACInteractionTransitionAnimation.m */,
+				2B48A88A1FFF6B6B00DB57EA /* ACInteractiveTrasitionAnimation.h */,
+				2B48A88B1FFF6B6B00DB57EA /* ACInteractiveTrasitionAnimation.m */,
+				2B48A88E1FFF7D2C00DB57EA /* UIView+ACSnapshot.h */,
+				2B48A88F1FFF7D2C00DB57EA /* UIView+ACSnapshot.m */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		2BAB07C31FF3913D00DFAC18 = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +304,7 @@
 		2BAB08141FF4FC5300DFAC18 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2B48A87D1FFF655500DB57EA /* Transition */,
 				2BAB07EB1FF4841800DFAC18 /* ACCameraBaseViewController.h */,
 				2BAB07EC1FF4841800DFAC18 /* ACCameraBaseViewController.m */,
 				2BAB08A61FFE03E500DFAC18 /* ACTintViewController.h */,
@@ -568,9 +603,11 @@
 				2BAB082C1FF4FDEB00DFAC18 /* ACPhotoPickerController.m in Sources */,
 				2BAB082D1FF4FDEB00DFAC18 /* NSIndexSet+Convenience.m in Sources */,
 				2BAB082E1FF4FDEB00DFAC18 /* UICollectionView+Convenience.m in Sources */,
+				2B48A8831FFF67E900DB57EA /* ACPopTransition.m in Sources */,
 				2BAB07D41FF3913D00DFAC18 /* ViewController.m in Sources */,
 				B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */,
 				2BAB07DF1FF3913D00DFAC18 /* main.m in Sources */,
+				2B48A8891FFF6B1900DB57EA /* ACInteractionTransitionAnimation.m in Sources */,
 				2BAB08D31FFF4F1A00DFAC18 /* ACPhotoTool.m in Sources */,
 				2BAB07F01FF48EC000DFAC18 /* ACCameraBottomView.m in Sources */,
 				2BAB08381FFB1BED00DFAC18 /* ACCameraTool.m in Sources */,
@@ -584,6 +621,7 @@
 				2BAB08A81FFE03E500DFAC18 /* ACTintViewController.m in Sources */,
 				2BAB083D1FFB521E00DFAC18 /* ACMTStoreDonloadTask.m in Sources */,
 				2BAB080F1FF4E34C00DFAC18 /* ACPhotoShowViewController.m in Sources */,
+				2B48A8801FFF656F00DB57EA /* ACPushTransition.m in Sources */,
 				2BAB088A1FFCA97E00DFAC18 /* ACFaceModel.m in Sources */,
 				2BAB08121FF4F56F00DFAC18 /* ACFaceDetectionViewController.m in Sources */,
 				2BAB07F31FF48ED000DFAC18 /* ACCameraTopView.m in Sources */,
@@ -591,6 +629,7 @@
 				2BAB07ED1FF4841800DFAC18 /* ACCameraBaseViewController.m in Sources */,
 				2BAB08AE1FFF0E7E00DFAC18 /* ACOtherPhotoViewController.m in Sources */,
 				2BAB08351FF504EB00DFAC18 /* UIView+ACCameraFrame.m in Sources */,
+				2B48A88C1FFF6B6B00DB57EA /* ACInteractiveTrasitionAnimation.m in Sources */,
 				2BAB08901FFCB0F800DFAC18 /* ACFaceDataManager.m in Sources */,
 				2BAB08661FFB9C3700DFAC18 /* ACFaceSDK.m in Sources */,
 				2BAB08961FFCD6DA00DFAC18 /* ACIconCollectionCell.m in Sources */,
@@ -598,6 +637,7 @@
 				2BAB08C71FFF4EAE00DFAC18 /* ALAsset+AC.m in Sources */,
 				2BAB08931FFCD25300DFAC18 /* ACIconShowFlowLayout.m in Sources */,
 				B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */,
+				2B48A8901FFF7D2C00DB57EA /* UIView+ACSnapshot.m in Sources */,
 				2BAB08CD1FFF4EDD00DFAC18 /* PHAsset+AC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

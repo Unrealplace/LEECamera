@@ -36,6 +36,9 @@ NSString * const SERIAS_PATH = @"CameraSerias";
  */
 @property (nonatomic, assign)ACFaceSDKEnviromentType enriroType;
 
+@property (nonatomic, strong)NSArray * vcArray;
+
+
 
 @end
 
@@ -54,9 +57,11 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 - (ACFaceSDKEnviromentType)enriroType{
     return _enriroType;
 }
-- (void)setAppType:(ACFaceSDKAPPType)appType andCurrentEnviroment:(ACFaceSDKEnviromentType)enviroType {
+- (void)setAppType:(ACFaceSDKAPPType)appType andCurrentEnviroment:(ACFaceSDKEnviromentType)enviroType andControllers:(NSArray *)controllersArray{
     _appType    = appType;
     _enriroType = enviroType;
+    self.vcArray= [NSArray arrayWithArray:controllersArray];
+    
 }
 
 - (void)compressionSerias {
@@ -74,28 +79,10 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 
 - (void)enterPhotoWithCurrentController:(UIViewController *)currentController
                                andImage:(UIImage *)image {
-    switch (self.appType) {
-        case ACFaceSDKAPPTypeArtCamera:
-        {
-            ACPhotoShowViewController * photoVC = [ACPhotoShowViewController new];
-            photoVC.showImage = image;
-            [currentController.navigationController pushViewController:photoVC animated:YES];
-        }
-            break;
-        case ACFaceSDKAPPTypeManCamera:
-        {
-            
-        }
-            break;
-        case ACFaceSDKAPPTypeBeautyCamera:
-        {
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
+   
+    ACPhotoShowViewController * photoVC = [ACPhotoShowViewController new];
+    photoVC.showImage = image;
+    [currentController.navigationController pushViewController:photoVC animated:YES];
 }
 
 - (void)backToCameraControllerHandler:(void (^)(UIViewController *))handler {
@@ -121,5 +108,9 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 - (void)setupPhotoAlbumController:(UIViewController *)currentController {
     self.photoBlock(currentController);
 }
- 
+
+- (NSArray*)otherControllers {
+    return self.vcArray;
+}
+
 @end
