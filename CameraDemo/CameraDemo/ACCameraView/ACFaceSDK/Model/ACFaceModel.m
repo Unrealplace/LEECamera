@@ -9,29 +9,32 @@
 #import "ACFaceModel.h"
 #import "ACFaceDataManager.h"
 
-@interface ACFaceModel()<NSCoding>
-
-@end
 
 @implementation ACFaceModel
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-   
-    if ([self init]) {
-        self.name = [aDecoder decodeObjectForKey:@"name"];
-        self.faceID = [aDecoder decodeIntegerForKey:@"faceID"];
-        self.fileName = [aDecoder decodeObjectForKey:@"fileName"];
+- (instancetype)init {
+    if (self = [super init]) {
+        self.isDefautSet = NO;
     }
     return self;
-    
 }
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    
-    [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeInteger:self.faceID forKey:@"faceID"];
-    [aCoder encodeObject:self.fileName forKey:@"fileName"];
-    
-}
+//- (id)initWithCoder:(NSCoder *)aDecoder {
+//   
+//    if ([self init]) {
+//        self.name = [aDecoder decodeObjectForKey:@"name"];
+//        self.faceID = [aDecoder decodeIntegerForKey:@"faceID"];
+//        self.fileName = [aDecoder decodeObjectForKey:@"fileName"];
+//    }
+//    return self;
+//    
+//}
+//- (void)encodeWithCoder:(NSCoder *)aCoder {
+//    
+//    [aCoder encodeObject:self.name forKey:@"name"];
+//    [aCoder encodeInteger:self.faceID forKey:@"faceID"];
+//    [aCoder encodeObject:self.fileName forKey:@"fileName"];
+//    
+//}
 
 - (UIImage*)iconImage {
     NSString *path       = [ACFaceDataManager storedSeriesPath].absoluteString;

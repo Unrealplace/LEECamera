@@ -10,4 +10,7 @@
 
 @interface ACFaceShareViewController : ACCameraBaseViewController
 
+
+@property (nonatomic, strong) UIImage    * compositionImage;
+
 @end

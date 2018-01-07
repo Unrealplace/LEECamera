@@ -11,6 +11,31 @@
 
 
 #endif /* ACCameraHeader_h */
+
+
+// app 的类型枚举
+typedef enum :NSInteger {
+    ACFaceSDKAPPTypeArtCamera = 0,
+    ACFaceSDKAPPTypeManCamera,
+    ACFaceSDKAPPTypeBeautyCamera
+    
+}ACFaceSDKAPPType;
+
+typedef enum :NSInteger{
+    ACFaceSDKEnviromentTypeDebug = 0,
+    ACFaceSDKEnviromentTypeRelease
+}ACFaceSDKEnviromentType;
+
+typedef enum :NSInteger{
+    ACFaceSDKShareTypeXStar = 0,
+    ACFaceSDKShareTypeWeiChat ,
+    ACFaceSDKShareTypeWeiChatZone,
+    ACFaceSDKShareTypeQQ,
+    ACFaceSDKShareTypeQQZone,
+    ACFaceSDKShareTypeSina,
+    
+}ACFaceSDKShareType;
+
 //RGBA颜色基础宏
 #define ACCAMERA_RGBAColor(r,g,b,a)              [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #define ACCAMERA_ACRGBColor(r,g,b)               [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(1.0f)]

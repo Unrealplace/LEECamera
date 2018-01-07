@@ -10,7 +10,10 @@
 #import "ACFaceDataManager.h"
 #import "ACPhotoPickerController.h"
 #import "ACPhotoShowViewController.h"
+#import "ACArchiverManager.h"
+
 typedef void (^ACCameraBlock)(UIViewController * controller);
+typedef void (^ACCameraShareBlock)(UIViewController * controller,ACFaceShareModel * model, ACFaceSDKShareType shareType);
 
 NSString * const SERIAS_PATH = @"CameraSerias";
 
@@ -23,6 +26,8 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 @property (nonatomic, copy)ACCameraBlock showTintBlock;
 
 @property (nonatomic, copy)ACCameraBlock photoBlock;
+
+@property (nonatomic, copy) ACCameraShareBlock    shareBlock;
 
 /**
  设置app 类型
@@ -54,6 +59,13 @@ NSString * const SERIAS_PATH = @"CameraSerias";
     
 }
 
+- (void)updateEnviroMentType:(ACFaceSDKEnviromentType)enrioType {
+    _enriroType = enrioType;
+    NSArray * arr = [ACArchiverManager unArchiverFaceSeriasandEnviromentType:enrioType];
+    if (!arr) {
+        [self compressionSerias];
+    }
+}
 - (ACFaceSDKEnviromentType)enriroType{
     return _enriroType;
 }
@@ -65,7 +77,9 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 }
 
 - (void)compressionSerias {
-    [ACFaceDataManager compressionCameraSeriasWithPath:SERIAS_PATH];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [ACFaceDataManager compressionCameraSeriasWithPath:SERIAS_PATH];
+    });
 }
 
 - (void)useCameraHandler:(void (^)(UIViewController *))handler {
@@ -111,6 +125,14 @@ NSString * const SERIAS_PATH = @"CameraSerias";
 
 - (NSArray*)otherControllers {
     return self.vcArray;
+}
+
+- (void)shareViewClick:(void (^)(UIViewController *, ACFaceShareModel *, ACFaceSDKShareType))handler {
+    self.shareBlock = handler;
+}
+
+- (void)setShareViewWith:(UIViewController *)controller andShareModel:(ACFaceShareModel *)model andShareType:(ACFaceSDKShareType)shareType {
+    self.shareBlock(controller, model, shareType);
 }
 
 @end

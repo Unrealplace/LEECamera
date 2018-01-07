@@ -8,13 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ACBaseModel.h"
 
-@interface ACFaceModel : NSObject
+@interface ACFaceModel : ACBaseModel
 
 @property (nonatomic, copy)NSString * name;
 
-@property (nonatomic, assign)NSInteger faceID;
 
+/**
+ 用于区别的id 号
+ */
+@property (nonatomic, assign)NSInteger faceId;
+
+
+/**
+ 默认玩法
+ */
+@property (nonatomic, assign) BOOL    isDefautSet;
+
+/**
+ 是否下载过
+ */
+@property (nonatomic, assign) BOOL    isDownload;
 
 /**
  显示用的icon
@@ -31,6 +46,11 @@
  */
 @property (nonatomic, copy)NSString * fileName;
 
+
+/**
+ 当前版本信息
+ */
+@property (nonatomic, copy) NSString    *versionNum;
 
 /**
  显示用的iconImage

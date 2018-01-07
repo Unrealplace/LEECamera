@@ -13,10 +13,10 @@ typedef enum :NSInteger{
     ACCameraNaviViewTouchTypeCenter ,
     ACCameraNaviViewTouchTypeRight
 }ACCameraNaviViewTouchType;
-
+@class ACCameraNaviView;
 @protocol ACCameraNaviViewDelegate <NSObject>
 
-- (void)cameraNaviViewTouchEvent:(ACCameraNaviViewTouchType)touchType;
+- (void)cameraNaviViewTouchEvent:(ACCameraNaviViewTouchType)touchType andCameraNaviView:(ACCameraNaviView*)naviView;
 
 @end
 

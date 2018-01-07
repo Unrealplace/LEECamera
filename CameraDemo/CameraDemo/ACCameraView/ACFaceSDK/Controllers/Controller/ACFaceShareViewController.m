@@ -22,6 +22,8 @@
 - (void)cameraNaviViewTouchEvent:(ACCameraNaviViewTouchType)touchType {
     if (touchType == ACCameraNaviViewTouchTypeLeft) {
         [self.navigationController popViewControllerAnimated:YES];
+    }else if (touchType == ACCameraNaviViewTouchTypeRight){
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 

@@ -47,13 +47,13 @@ NSString * const CAMERA_SERIAS_PATH = @"CameraSerias";
                         }
                     }
                     // 解压缩后得到的文件数据,主要获取bundle.json
-                    NSString *bundlePath = [[savedPath stringByAppendingPathComponent:seriesName] stringByAppendingPathComponent:@"bundle.json"];
+//                    NSString *bundlePath = [[savedPath stringByAppendingPathComponent:seriesName] stringByAppendingPathComponent:@"bundle.json"];
 //                    NSData *data = [NSData dataWithContentsOfFile:bundlePath];
                     ACFaceModel * model = [[ACFaceModel alloc] init];
                     model.name = @"oliver";
-                    model.faceID = 12345;
+                    model.faceId = 12345;
                     model.fileName = seriesName;
-                    
+                    model.isDefautSet = YES;
                     [dataArray addObject:model];
 //                    if (data){
 //                        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -62,10 +62,52 @@ NSString * const CAMERA_SERIAS_PATH = @"CameraSerias";
                 }
             }
             [zip UnzipCloseFile];
-            [ACArchiverManager archiverFaceSeriasWith:dataArray];
+            [ACArchiverManager archiverFaceSeriasWith:dataArray andEnviromentType:[[ACFaceSDK sharedSDK]enriroType]];
             
         }
     }
+}
+
+// 从路径中获得完整的文件名（带后缀）
+//exestr = [filePath lastPathComponent];
+//NSLog(@"%@",exestr);
+//// 获得文件名（不带后缀）
+//exestr = [exestr stringByDeletingPathExtension];
+//NSLog(@"%@",exestr);
+//
+//// 获得文件的后缀名（不带'.'）
+//exestr = [filePath pathExtension];
+//NSLog(@"%@",exestr);
+//
++ (void)compressionItemAtPath:(NSString*)itemPath {
+    //可能不止一个压缩包
+   
+    NSString * fileName = [itemPath lastPathComponent];
+    // 去除.zip后缀得到的压缩包文件
+    NSString * zipfileName = [[fileName componentsSeparatedByString:@"."] firstObject];
+    NSString *savedPath = [[self storedSeriesPath].absoluteString stringByAppendingPathComponent:zipfileName];
+    ZipArchive *zip = [[ZipArchive alloc] init];
+    if ([zip UnzipOpenFile:itemPath]){
+        if ([zip UnzipFileTo:savedPath overWrite:YES]){
+            // 可能会生成__MACOSX文件,过滤
+            NSString *seriesName = [NSString new];
+            NSArray *fileNameTemps = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:savedPath error:nil];
+            for (NSString *file in fileNameTemps){
+                if (![file isEqualToString:@"__MACOSX"]){
+                    seriesName = file;
+                }
+            }
+            // 解压缩后得到的文件数据,主要获取bundle.json
+            //                    NSString *bundlePath = [[savedPath stringByAppendingPathComponent:seriesName] stringByAppendingPathComponent:@"bundle.json"];
+            ACFaceModel * model = [[ACFaceModel alloc] init];
+            model.name = @"oliver";
+            model.faceId = 123345;
+            model.fileName = seriesName;
+            model.isDownload = YES;
+            [ACArchiverManager addModelWith:model andEnviromentType:[ACFaceSDK sharedSDK].enriroType];
+        }
+    }
+    
 }
 
 + (BOOL)hadCompressionAtPath:(NSString*)filePath {

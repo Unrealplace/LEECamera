@@ -8,26 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-// app 的类型枚举
-typedef enum :NSInteger {
-    ACFaceSDKAPPTypeArtCamera = 0,
-    ACFaceSDKAPPTypeManCamera,
-    ACFaceSDKAPPTypeBeautyCamera
-    
-}ACFaceSDKAPPType;
-
-typedef enum :NSInteger{
-    ACFaceSDKEnviromentTypeDebug = 0,
-    ACFaceSDKEnviromentTypeRelease
-}ACFaceSDKEnviromentType;
-
-
+#import "ACCameraHeader.h"
+#import "ACFaceShareModel.h"
 
 @interface ACFaceSDK : NSObject
 
 + (instancetype)sharedSDK;
 
+
+/**
+ 更新当前环境
+
+ @param enrioType 当前的环境
+ */
+- (void)updateEnviroMentType:(ACFaceSDKEnviromentType)enrioType;
 
 - (ACFaceSDKEnviromentType)enriroType;
 
@@ -42,8 +36,6 @@ typedef enum :NSInteger{
  解压素材
  */
 - (void)compressionSerias;
-
-
 
 
 /**
@@ -68,8 +60,6 @@ typedef enum :NSInteger{
 - (void)setBackToCameraController:(UIViewController*)controller;
 
 
-
-
 /**
  使用相册功能
 
@@ -83,8 +73,6 @@ typedef enum :NSInteger{
  @param currentController 相册的父控制器
  */
 - (void)setupPhotoAlbumController:(UIViewController*)currentController;
-
-
 
 
 /**
@@ -123,6 +111,23 @@ typedef enum :NSInteger{
 - (NSArray *)otherControllers;
 
 
+
+
+/**
+ 设置分享功能
+
+ @param handler 分享回调
+ */
+- (void)shareViewClick:(void(^)(UIViewController * currentController,ACFaceShareModel * model,ACFaceSDKShareType type))handler;
+
+/**
+ 设置分享
+
+ @param controller 控制器
+ @param model 分享的模型
+ @param shareType 分享的种类
+ */
+- (void)setShareViewWith:(UIViewController *)controller andShareModel:(ACFaceShareModel*)model andShareType:(ACFaceSDKShareType)shareType;
 
 
 @end

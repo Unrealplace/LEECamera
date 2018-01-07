@@ -112,5 +112,11 @@
  */
 + (NSString *)cameraSeriasDebugDirPath;
 
+/**
+ 相机的documents
+
+ @return 返回路径
+ */
++ (NSString *)cameraDocumentPath;
 
 @end

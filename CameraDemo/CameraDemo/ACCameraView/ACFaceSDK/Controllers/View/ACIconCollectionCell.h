@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ACFaceModel.h"
 
 @interface ACIconCollectionCell : UICollectionViewCell
 
-@property (nonatomic,strong)UIImage * iconImage;
+
+@property (nonatomic, strong) ACFaceModel    *model;
 
 @end

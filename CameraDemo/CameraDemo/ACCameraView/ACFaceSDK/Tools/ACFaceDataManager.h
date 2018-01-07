@@ -17,5 +17,11 @@
  */
 + (void)compressionCameraSeriasWithPath:(NSString*)cameraSeriasPath;
 
+/**
+ 解压一个下载的素材
+
+ @param itemPath 下载后的路径全部放在download 下面
+ */
++ (void)compressionItemAtPath:(NSString*)itemPath ;
 + (NSURL *)storedSeriesPath;
 @end

@@ -27,6 +27,7 @@
                  andCurrentEnviroment:ACFaceSDKEnviromentTypeDebug
                        andControllers:@[@"ACPhotoPickerController",@"ACOtherPhotoViewController"]];
     
+
     [[ACFaceSDK sharedSDK] compressionSerias];
     
     // 使用相机功能
@@ -78,6 +79,12 @@
     // 弹窗提示信息
     [[ACFaceSDK sharedSDK] showTintAlertControllerHandler:^(UIViewController *currentController) {
         NSLog(@"显示 alert");
+        if ([[ACFaceSDK sharedSDK] enriroType] == ACFaceSDKEnviromentTypeRelease) {
+            [[ACFaceSDK sharedSDK] updateEnviroMentType:ACFaceSDKEnviromentTypeDebug];
+        }else {
+            [[ACFaceSDK sharedSDK] updateEnviroMentType:ACFaceSDKEnviromentTypeRelease];
+        }
+        
         UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"hello" message:@"使用提示信息啊" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
            
@@ -90,6 +97,12 @@
         [currentController presentViewController:alertVC animated:YES completion:nil];
         
     }];
+    
+    [[ACFaceSDK sharedSDK] shareViewClick:^(UIViewController *currentController, ACFaceShareModel *model, ACFaceSDKShareType type) {
+        NSLog(@"开始分享%ld",type);
+    }];
+  
+    
     
     return YES;
 }

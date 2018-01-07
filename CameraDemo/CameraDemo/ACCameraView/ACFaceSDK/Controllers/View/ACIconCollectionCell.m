@@ -43,8 +43,17 @@
     }
 }
 
-- (void)setIconImage:(UIImage *)iconImage {
-    self.iconImageView.image = iconImage;
- }
 
+- (void)setModel:(ACFaceModel *)model {
+    if (model.isDefautSet) {
+        self.downLayer.hidden = YES;
+    }else {
+        if (!model.isDownload) {
+            self.downLayer.hidden = NO;
+        }else {
+            self.downLayer.hidden = YES;
+        }
+    }
+    self.iconImageView.image = model.iconImage;
+}
 @end

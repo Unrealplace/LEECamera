@@ -155,4 +155,8 @@ NSString * const ACCameraSeriesDebugDir   = @"ACCameraSeriesDebugDir"; // 相机
 {
     return [self pathForDocumentsDirectoryWithPath:ACBeautyModuleAdJson];
 }
+
++ (NSString*)cameraDocumentPath {
+    return [self pathForDocumentsDirectory];
+}
 @end
