@@ -96,7 +96,7 @@
         }
         else if (status == PHAuthorizationStatusDenied) {
             
-            __weak typeof(self) weakSelf = self;
+//            __weak typeof(self) weakSelf = self;
             
 //            @weakify(self)
 //            [ACAlertManager alertWithTitle:@"相机权限未开启" message:@"相机权限未开启，请进入系统【设置】>【隐私】>【相机】中打开开关,开启相机功能" ensureAction:^{
@@ -210,7 +210,7 @@
 - (UILabel *)topShowLabel {
     if (!_topShowLabel) {
         _topShowLabel = [UILabel new];
-        _topShowLabel.frame = CGRectMake(0, 64, 280, 35);
+        _topShowLabel.frame = CGRectMake(0, ACCAMERA_NAVI_TOP_PADDING + ACCAMERA_AdjustValue(64), ACCAMERA_AdjustValueByWidth(280), ACCAMERA_AdjustValue(35));
         _topShowLabel.ca_centerX = self.view.ca_centerX;
         _topShowLabel.backgroundColor = [UIColor blackColor];
         _topShowLabel.textAlignment = NSTextAlignmentCenter;
@@ -218,18 +218,6 @@
         _topShowLabel.text = @"五官清晰可辨的正面照效果更好";
     }
     return _topShowLabel;
-}
-- (UIButton *)bottomShowBtn {
-    if (!_bottomShowBtn) {
-        _bottomShowBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _bottomShowBtn.frame = CGRectMake(0, self.view.ca_height - 64, 200, 44);
-        _bottomShowBtn.ca_centerX = self.view.ca_centerX;
-        _bottomShowBtn.backgroundColor = [UIColor yellowColor];
-        _topShowLabel.textColor = [UIColor whiteColor];
-        [_bottomShowBtn setTitle:@"不满意？现在拍一张！" forState:UIControlStateNormal];
-        [_bottomShowBtn addTarget:self action:@selector(bottomShowBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _bottomShowBtn;
 }
 - (void)setAllPhotos:(PHFetchResult *)allPhotos {
     if (_allPhotos != allPhotos) {
@@ -242,24 +230,6 @@
     }
 }
 
-- (void)bottomShowBtnClick:(UIButton*)btn {
-    
-
-    
-    BOOL have = NO;
-    for (UIViewController * vc in self.navigationController.childViewControllers) {
-        if ([vc isKindOfClass:[ACCameraViewController class]]) {
-            have = YES;
-            [self.navigationController popToViewController:vc animated:YES];
-        }
-    }
-    if (!have) {
-        ACCameraViewController * cameraVC = [ACCameraViewController new];
-        [self.navigationController pushViewController:cameraVC animated:YES];
-    }
-
-    
-}
 #pragma mark - bar item action
 - (void)closePhotoPicker
 {

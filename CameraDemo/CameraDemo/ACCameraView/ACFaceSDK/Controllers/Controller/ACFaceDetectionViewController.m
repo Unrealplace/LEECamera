@@ -12,7 +12,6 @@
 #import "UIView+ACCameraFrame.h"
 #import "ACPhotoPickerController.h"
 #import "ACCameraViewController.h"
-#import "ACMTStoreDownloadManager.h"
 #import "ACFileManager.h"
 #import "ACArchiverManager.h"
 
@@ -44,14 +43,6 @@
     [self.view addSubview:self.goBackCameraBtn];
     [self.view addSubview:self.goBackSelectPhotoBtn];
     [self.view addSubview:self.saveBtn];
-    
-//    _photoPicker   = [ACPhotoPickerController new];
-    
-//    NSMutableArray *childVCs = [self.navigationController.viewControllers  mutableCopy];
-//    [childVCs insertObject:_photoPicker atIndex:self.navigationController.viewControllers.count - 1];
-//    self.navigationController.viewControllers = [childVCs copy];
-    
-  
     
 }
 - (void)dealloc {
@@ -106,20 +97,17 @@
     
     [self.navigationController pushViewController:vc animated:YES];
     
-    
-//    [ACSaveImageUtil saveImage:self.showImage compeleted:^(BOOL isCompeleted, NSString *status, NSDictionary *imgInfo) {
-//    }];
 }
 
 - (void)goBackSelectPhotoBtnClick:(UIButton*)btn {
     
-    [[ACFaceSDK sharedSDK] setupPhotoAlbumController:self];
-    
+    [[ACFaceSDK sharedSDK] backToPhotoAlbum:self];
+ 
 }
 
 - (void)goBackCameraBtnClick:(UIButton*)btn {
 
-    [[ACFaceSDK sharedSDK] setBackToCameraController:self];
+    [[ACFaceSDK sharedSDK] backToCamera:self];
     
 }
 @end

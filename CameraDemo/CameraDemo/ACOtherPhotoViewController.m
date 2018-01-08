@@ -28,6 +28,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (UIButton*)faceDetectionBtn {
     if (!_faceDetectionBtn) {
         _faceDetectionBtn = [UIButton new];

@@ -33,6 +33,12 @@ typedef NS_ENUM(NSUInteger, ACProgressHUDAnimateEffect) {
 
 + (void)showProgressWithPosition:(CGPoint)position;
 
++ (void)showProgressWithContentFile:(NSString*)file
+                       withPosition:(CGPoint)position
+               allowUserInteraction:(BOOL)userInteraction
+                        maxWaitTime:(NSTimeInterval)maxTime
+                           afterTimecallBack:(void(^)(void))handler;
+
 //默认允许用户交互
 + (void)showProgressWithAllowUserInteraction:(BOOL)userInteraction;
 

@@ -48,8 +48,8 @@
     }
     return _naviView;
 }
-- (void)cameraNaviViewTouchEvent:(ACCameraNaviViewTouchType)touchType {
-   
+- (void)cameraNaviViewTouchEvent:(ACCameraNaviViewTouchType)touchType andCameraNaviView:(ACCameraNaviView *)naviView {
+    
 }
 
 @end

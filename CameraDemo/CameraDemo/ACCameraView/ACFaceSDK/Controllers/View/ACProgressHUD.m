@@ -9,6 +9,7 @@
 #import "ACProgressHUD.h"
 #import "ACCameraHeader.h"
 #import "UIView+ACCameraFrame.h"
+typedef void (^DelayCallBackBlock)(void);
 
 @interface NSString (HudSize)
 - (CGFloat)widthForFont:(UIFont *)font ;
@@ -68,6 +69,9 @@ static NSTimeInterval const SlowDelayDuration = 2.44f;
 
 @property (nonatomic, assign)NSTimeInterval delayDuration; //持续显示时间
 
+@property (nonatomic, copy)DelayCallBackBlock timeDeleyBlock;
+
+
 @end
 
 @implementation ACProgressHUD
@@ -116,13 +120,30 @@ static NSTimeInterval const SlowDelayDuration = 2.44f;
         _animateView.contentMode = UIViewContentModeScaleAspectFill;
         _animateView.center = self.center;
         _animateView.backgroundColor = [UIColor clearColor];
-        _animateView.animationImages = [self animationImages]; //获取Gif图片列表        
+        _animateView.animationImages = [self animationImages]; //获取Gif图片列表
         _animateView.animationDuration = 1;     //执行一次完整动画所需的时长
 //        _animateView.animationRepeatCount = 1;  //动画重复次数
     }
     return _animateView;
 }
-
++ (NSArray *)animationImagesWithFile:(NSString*)filePath
+{
+    NSFileManager *fielM = [NSFileManager defaultManager];
+    NSString *path = [[NSBundle mainBundle] pathForResource:filePath ofType:@"bundle"];
+    NSArray *arrays = [[fielM contentsOfDirectoryAtPath:path error:nil] sortedArrayUsingComparator:^NSComparisonResult(NSString *path1, NSString *path2) {
+        
+        return (NSComparisonResult)[path1 compare:path2 options:NSNumericSearch];
+    }];
+    
+    NSMutableArray *imagesArr = [NSMutableArray array];
+    for (NSString *name in arrays) {
+        UIImage *image = [UIImage imageNamed:[[filePath stringByAppendingString:@".bundle"] stringByAppendingPathComponent:name]];
+        if (image) {
+            [imagesArr addObject:image];
+        }
+    }
+    return imagesArr;
+}
 - (NSArray *)animationImages
 {
     NSFileManager *fielM = [NSFileManager defaultManager];
@@ -292,12 +313,39 @@ static NSTimeInterval const SlowDelayDuration = 2.44f;
     [[ACProgressHUD sharedView].animateView startAnimating];
 }
 
++ (void)showProgressWithContentFile:(NSString *)file withPosition:(CGPoint)position allowUserInteraction:(BOOL)userInteraction maxWaitTime:(NSTimeInterval)maxTime afterTimecallBack:(void (^)(void))handler{
+    
+
+
+    if (![ACProgressHUD sharedView].superview) {
+        [[ACProgressHUD sharedView].frontWindow addSubview:[ACProgressHUD sharedView]];
+    }
+    [ACProgressHUD sharedView].timeDeleyBlock = handler;
+    [ACProgressHUD sharedView].userInteractionEnabled = !userInteraction;
+    [ACProgressHUD sharedView].contentsToast.layer.opacity = 0.0f;
+    [ACProgressHUD sharedView].animateView.alpha = 1.0f;
+    [ACProgressHUD sharedView].animateView.frame = CGRectMake(0, 0, 100, 100);
+    [ACProgressHUD sharedView].animateView.center = position;
+    [ACProgressHUD sharedView].animateView.animationImages = [self animationImagesWithFile:file];
+    [[ACProgressHUD sharedView].animateView startAnimating];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(maxTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([ACProgressHUD sharedView].timeDeleyBlock) {
+            [ACProgressHUD sharedView].timeDeleyBlock();
+        }
+        [self dismissProgress];
+    });
+    
+}
+
+
+
 + (void)dismissProgress {
  
     if (![ACProgressHUD sharedView].superview) {
         return;
     }
-    
+    [ACProgressHUD sharedView].timeDeleyBlock = nil;
     [ACProgressHUD sharedView].userInteractionEnabled = NO;
     [[ACProgressHUD sharedView].animateView stopAnimating];
     [ACProgressHUD sharedView].animateView.alpha = 0.0f;

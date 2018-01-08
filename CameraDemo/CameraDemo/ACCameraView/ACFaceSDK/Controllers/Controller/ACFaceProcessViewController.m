@@ -223,18 +223,24 @@ static NSString * IconCellID = @"IconCellID";
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    [[ACDownLoadManager shareInstance] downLoadWithUrl:@"https://mplat-oss.adnonstop.com/app_source/20180102/1509866822018010210art41790.zip" andSaveToPath:[ACFileManager cameraDocumentPath] callBackProgress:^(float progress) {
-        NSLog(@"%f",progress);
-    } downLoadStateChange:^(ACDownLoadState state) {
+    if ([[ACFaceSDK sharedSDK] setNetState:self] == ACFaceSDKNetStateTypeWifi) {
+        NSLog(@"wifi----%ld",ACFaceSDKNetStateTypeWifi);
+    }else {
+        [[ACDownLoadManager shareInstance] downLoadWithUrl:@"https://mplat-oss.adnonstop.com/app_source/20180102/1509866822018010210art41790.zip" andSaveToPath:[ACFileManager cameraDocumentPath] callBackProgress:^(float progress) {
+            NSLog(@"%f",progress);
+        } downLoadStateChange:^(ACDownLoadState state) {
+            
+        } andSuccess:^(NSString *path, NSError *error) {
+            NSLog(@"%@--%@",path,error);
+            if (!error) {
+                self.dataSourceArray = [ACArchiverManager unArchiverFaceSeriasandEnviromentType:[ACFaceSDK sharedSDK].enriroType];
+                [self.iconCollectionView reloadData];
+            }
+        }];
         
-    } andSuccess:^(NSString *path, NSError *error) {
-        NSLog(@"%@--%@",path,error);
-        if (!error) {
-            self.dataSourceArray = [ACArchiverManager unArchiverFaceSeriasandEnviromentType:[ACFaceSDK sharedSDK].enriroType];
-            [self.iconCollectionView reloadData];
-        }
-    }];
+    }
     
+   
 //    [[ACDownLoadManager shareInstance] cancelDownLoadWithUrl:@"https://mplat-oss.adnonstop.com/app_source/20180102/1509866822018010210art41790.zip"];
 
 }

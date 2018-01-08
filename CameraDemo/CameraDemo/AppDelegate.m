@@ -22,46 +22,99 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-   
+    
+    /**
+     初始化SDK 并配置要使用的 相册和相机
+     
+     @param appType app 的类型
+     @param enviroType 当前开发的环境
+     @param photoClass photo 控制器
+     @param cameraClass camera 控制器
+     */
     [[ACFaceSDK sharedSDK] setAppType:ACFaceSDKAPPTypeArtCamera
                  andCurrentEnviroment:ACFaceSDKEnviromentTypeDebug
-                       andControllers:@[@"ACPhotoPickerController",@"ACOtherPhotoViewController"]];
+           andRegisterPhotoController:[ACOtherPhotoViewController class]
+                  andCameraController:[ACOtherCameraViewController class]];
+    /**
+     SDK 不集成网络检测，考虑各个app 都有网络检测，只需调用即可
+     
+     @param currentController 当前控制器
+     @return 返回当前网络状态
+     */
+    [[ACFaceSDK sharedSDK] monitorNetState:^ACFaceSDKNetStateType(UIViewController *currentController) {
+        
+        
+        
+        return ACFaceSDKNetStateTypeWifi;
+        
+    }];
     
-
     [[ACFaceSDK sharedSDK] compressionSerias];
     
-    // 使用相机功能
-    [[ACFaceSDK sharedSDK] useCameraHandler:^(UIViewController *currentController) {
-        ACCameraViewController * pickerVC = [[ACCameraViewController alloc]init];
-        [currentController.navigationController pushViewController:pickerVC animated:YES];
+    /**
+     弹窗提示信息，相机界面的小灯泡提示，第一次登陆和用户自己点击弹出，各个app 可以根据自身进行提示
+     
+     @param currentController 当前控制器
+     */
+    [[ACFaceSDK sharedSDK] showTintAlertControllerHandler:^(UIViewController *currentController) {
+        NSLog(@"显示 alert");
+        if ([[ACFaceSDK sharedSDK] enriroType] == ACFaceSDKEnviromentTypeRelease) {
+            [[ACFaceSDK sharedSDK] updateEnviroMentType:ACFaceSDKEnviromentTypeDebug];
+        }else {
+            [[ACFaceSDK sharedSDK] updateEnviroMentType:ACFaceSDKEnviromentTypeRelease];
+        }
         
-//        ACOtherCameraViewController * pickerVC = [[ACOtherCameraViewController alloc]init];
-//        [currentController.navigationController pushViewController:pickerVC animated:YES];
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"hello" message:@"使用提示信息啊" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        UIAlertAction *confirAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alertVC addAction:cancleAction];
+        [alertVC addAction:confirAction];
+        [currentController presentViewController:alertVC animated:YES completion:nil];
         
     }];
-    // 返回相机控制器
-    [[ACFaceSDK sharedSDK] backToCameraControllerHandler:^(UIViewController *currentController) {
-        for (UIViewController * vc in currentController.navigationController.childViewControllers) {
-            if ([vc isKindOfClass:[ACCameraViewController class]]) {
-                 [currentController.navigationController popToViewController:vc animated:YES];
-            }
-        }
+    
+    /**
+     调用宿主的分享功能
+     
+     @param currentController 当前控制器
+     @param model 分享的模型
+     @param type 分享的类型
+     */
+    [[ACFaceSDK sharedSDK] shareViewClick:^(UIViewController *currentController, ACFaceShareModel *model, ACFaceSDKShareType type) {
+        NSLog(@"开始分享%ld",type);
     }];
-    // 使用相册功能
-    [[ACFaceSDK sharedSDK] usePhotoAlbumControllerHandler:^(UIViewController *currentController) {
-       
-        BOOL have = NO;
-        for (UIViewController * vc in currentController.navigationController.childViewControllers) {
-            if ([vc isKindOfClass:[ACPhotoPickerController class]]) {
-                have = YES;
-                [currentController.navigationController popToViewController:vc animated:YES];
-            }
-        }
-        if (!have) {
-            ACPhotoPickerController * photoVC = [ACPhotoPickerController new];
-            [currentController.navigationController pushViewController:photoVC animated:YES];
-        }
-        
+    
+    
+   
+    
+    
+    
+    
+
+//
+//    /**
+//     使用宿主相册功能
+//
+//     @param currentController 当前控制器
+//     */
+//    [[ACFaceSDK sharedSDK] usePhotoAlbumControllerHandler:^(UIViewController *currentController) {
+//
+//        BOOL have = NO;
+//        for (UIViewController * vc in currentController.navigationController.childViewControllers) {
+//            if ([vc isKindOfClass:[ACPhotoPickerController class]]) {
+//                have = YES;
+//                [currentController.navigationController popToViewController:vc animated:YES];
+//            }
+//        }
+//        if (!have) {
+//            ACPhotoPickerController * photoVC = [ACPhotoPickerController new];
+//            [currentController.navigationController pushViewController:photoVC animated:YES];
+//        }
+    
 //        BOOL have = NO;
 //        for (UIViewController * vc in currentController.navigationController.childViewControllers) {
 //            if ([vc isKindOfClass:[ACOtherPhotoViewController class]]) {
@@ -75,54 +128,15 @@
 //        }
         
         
-    }];
-    // 弹窗提示信息
-    [[ACFaceSDK sharedSDK] showTintAlertControllerHandler:^(UIViewController *currentController) {
-        NSLog(@"显示 alert");
-        if ([[ACFaceSDK sharedSDK] enriroType] == ACFaceSDKEnviromentTypeRelease) {
-            [[ACFaceSDK sharedSDK] updateEnviroMentType:ACFaceSDKEnviromentTypeDebug];
-        }else {
-            [[ACFaceSDK sharedSDK] updateEnviroMentType:ACFaceSDKEnviromentTypeRelease];
-        }
-        
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"hello" message:@"使用提示信息啊" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-           
-        }];
-        UIAlertAction *confirAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alertVC addAction:cancleAction];
-        [alertVC addAction:confirAction];
-        [currentController presentViewController:alertVC animated:YES completion:nil];
-        
-    }];
+//    }];
     
-    [[ACFaceSDK sharedSDK] shareViewClick:^(UIViewController *currentController, ACFaceShareModel *model, ACFaceSDKShareType type) {
-        NSLog(@"开始分享%ld",type);
-    }];
-  
+    
     
     
     return YES;
 }
 
 
-//
-//+ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmHandle:(SQAlertConfirmHandle)confirmHandle cancleHandle:(SQAlertCancleHandle)cancleHandle {
-//
-//}
-//
-//+ (UIViewController *)currentViewController {
-//    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-//    UIViewController *presentedVC = [[window rootViewController] presentedViewController];
-//    if (presentedVC) {
-//        return presentedVC;
-//
-//    } else {
-//        return window.rootViewController;
-//    }
-//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

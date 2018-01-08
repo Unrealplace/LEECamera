@@ -10,6 +10,7 @@
 #import "ACPhotoPickerController.h"
 #import "ACCameraViewController.h"
 #import "ACTintViewController.h"
+#import "ACProgressHUD.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ACPhotoPickerControllerDelegate>
 
@@ -32,7 +33,12 @@
     
     [self.view addSubview:self.tableView];
 
+    [ACProgressHUD showProgressWithContentFile:@"Loading" withPosition:CGPointMake(100, 200) allowUserInteraction:NO maxWaitTime:2.0f afterTimecallBack:^{
+        NSLog(@"end......");
+    }];
+    
 }
+
 
 - (UITableView *)tableView{
     if (_tableView == nil) {

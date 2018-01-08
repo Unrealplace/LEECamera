@@ -10,6 +10,7 @@
 #import "ACCameraBottomView.h"
 #import "ACCameraTopView.h"
 #import "ACPhotoTool.h"
+#import "ACCameraHeader.h"
 
 @interface ACCameraView ()<ACCameraBottomViewDelegate,ACCameraTopViewDelegate>
  
@@ -29,7 +30,7 @@
 
 - (ACCameraTopView*)topView {
     if (!_topView) {
-        _topView = [[ACCameraTopView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 44)];
+        _topView = [[ACCameraTopView alloc] initWithFrame:CGRectMake(0, ACCAMERA_NAVI_TOP_PADDING, self.bounds.size.width, ACCAMERA_AdjustValue(44))];
         _topView.backgroundColor = [UIColor blackColor];
         _topView.delegate = self;
     }
@@ -38,14 +39,15 @@
 
 - (ACVideoPreView*)preView {
     if (!_preView) {
-        _preView = [[ACVideoPreView alloc] initWithFrame:CGRectMake(0, 44, self.bounds.size.width, self.bounds.size.height - 44 - 100)];
+        _preView = [[ACVideoPreView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.topView.frame), self.bounds.size.width, self.bounds.size.height - ACCAMERA_AdjustValue(44) - ACCAMERA_AdjustValue(100) - ACCAMERA_BOTTOM_PADDING)];
+        _preView.backgroundColor = [UIColor redColor];
     }
     return _preView;
 }
 
 - (ACCameraBottomView*)bottomView {
     if (!_bottomView) {
-        _bottomView = [[ACCameraBottomView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.preView.frame), self.bounds.size.width, self.bounds.size.height - self.topView.bounds.size.height - self.preView.bounds.size.height)];
+        _bottomView = [[ACCameraBottomView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.preView.frame), self.bounds.size.width, self.bounds.size.height - self.topView.bounds.size.height - self.preView.bounds.size.height - ACCAMERA_NAVI_TOP_PADDING - ACCAMERA_BOTTOM_PADDING)];
         _bottomView.backgroundColor = [UIColor blackColor];
         _bottomView.delegate        = self;
 
@@ -59,10 +61,10 @@
 - (UIView*)focusView {
     if (!_focusView) {
         _focusView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
-        _focusView.backgroundColor = [UIColor clearColor];
+        _focusView.backgroundColor   = [UIColor clearColor];
         _focusView.layer.borderWidth = 3.0f;
         _focusView.layer.borderColor = [UIColor greenColor].CGColor;
-        _focusView.hidden          = YES;
+        _focusView.hidden            = YES;
     }
     return _focusView;
 }
@@ -96,8 +98,6 @@
     }
     [self runFocusAnimation:self.focusView point:point];
 }
-
-
 
 
 // 聚焦、曝光动画

@@ -10,11 +10,14 @@
 #import "ACCameraViewController.h"
 #import "UIView+ACCameraFrame.h"
 #import "ACFaceSDK.h"
+#import "ACNavAnimation.h"
 
-@interface ACTintViewController ()
+@interface ACTintViewController ()<UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIButton *enterBtn;
+@property (strong, nonatomic)ACPushTransition * pushAnimation;
 
+@property (strong, nonatomic)ACPopTransition  * popAnimation;
 @end
 
 @implementation ACTintViewController
@@ -30,7 +33,8 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -49,11 +53,67 @@
 }
 - (void)enterBtnClick:(UIButton*)btn {
     
-    [[ACFaceSDK sharedSDK] setupEnterController:self];
+    if ([[ACFaceSDK sharedSDK] isFirstLoad]) {
+        NSLog(@"fisrt ----load");
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[ACFaceSDK sharedSDK] setupTintAlertController:self];
+        });
+    }else {
+        NSLog(@"not fisrt ----load");
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[ACFaceSDK sharedSDK] setupTintAlertController:self];
+        });
+    }
+    [[ACFaceSDK sharedSDK] enterToCamera:self];
+    
+//    [[ACFaceSDK sharedSDK] setupEnterController:self];
+    
+    
     
 //    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:pickerVC];
 //    [navi setNavigationBarHidden:YES animated:NO];
 //    [self.navigationController pushViewController:pickerVC animated:YES];
 }
+
+
+#pragma mark - **************** Navgation delegate
+/** 返回转场动画实例*/
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC
+{
+    if (operation == UINavigationControllerOperationPush) {
+        if (![NSStringFromClass([[ACFaceSDK sharedSDK] currentPhotoCotroller]) isEqual:NSStringFromClass([toVC class])]) {
+            return nil;
+        }else {
+            return self.pushAnimation;
+        }
+    }else if (operation == UINavigationControllerOperationPop){
+        
+        if (![NSStringFromClass([[ACFaceSDK sharedSDK] currentPhotoCotroller]) isEqual:NSStringFromClass([fromVC class])]){
+            return nil;
+        }else {
+            return self.popAnimation;
+        }
+    }
+    return nil;
+}
+
+-(ACPushTransition *)pushAnimation
+{
+    if (!_pushAnimation) {
+        _pushAnimation = [[ACPushTransition alloc] init];
+    }
+    return _pushAnimation;
+}
+-(ACPopTransition *)popAnimation
+{
+    if (!_popAnimation) {
+        _popAnimation = [[ACPopTransition alloc] init];
+    }
+    return _popAnimation;
+}
+
 
 @end

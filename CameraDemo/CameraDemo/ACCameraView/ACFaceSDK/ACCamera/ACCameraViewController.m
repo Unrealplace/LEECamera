@@ -11,16 +11,14 @@
 #import "ACCameraView.h"
 #import "ACMotionManager.h"
 #import "ACPhotoShowViewController.h"
-#import "ACCameraTool.h"
 #import "ACPhotoPickerController.h"
 #import "ACFaceSDK.h"
 #import "ACPhotoTool.h"
-#import "ACNavAnimation.h"
+#import "ACCameraHeader.h"
 
 @interface ACCameraViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,
                                      AVCaptureAudioDataOutputSampleBufferDelegate,
-                                        ACCameraViewDelegate,
-                                       UINavigationControllerDelegate>
+                                        ACCameraViewDelegate>
 {
     // 会话
     AVCaptureSession * _captureSession;
@@ -43,9 +41,7 @@
 @property(nonatomic, assign)AVCaptureFlashMode currentflashMode; // 当前闪光灯的模式，用来调整前后摄像头切换时候的模式
 @property(nonatomic, assign)BOOL isFrontCarmera;// 当前是前置还是后置摄像头
 
-@property (strong, nonatomic) ACPushTransition * pushAnimation;
 
-@property (strong, nonatomic) ACPopTransition  * popAnimation;
 
 @end
 
@@ -69,20 +65,14 @@
     _cameraView.delegate = self;
     [self.view addSubview:_cameraView];
     
-    if ([ACCameraTool isFirstLoad]) {
-        NSLog(@"fisrt ----load");
-    }else{
-        NSLog(@"not----fisrt ----load");
-
-    }
+   
     NSError *error;
     [self setupSession:&error];
     if (!error) {
         [_cameraView setupSession:_captureSession];
         [self startCaptureSession];
     }
-    [self.view addSubview:self.imageView];
-
+ 
 }
 
 
@@ -90,7 +80,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    self.navigationController.delegate = self;
+//    self.navigationController.delegate = self;
     
  }
 
@@ -118,13 +108,7 @@
     self.navigationController.navigationBarHidden = NO;
 }
 
-- (UIImageView *)imageView {
-    if (!_imageView) {
-        _imageView = [UIImageView new];
-        _imageView.frame = CGRectMake(0, 0, 100, 100);
-    }
-    return _imageView;
-}
+ 
 
 
 // 当前设备取向
@@ -379,9 +363,11 @@
 }
 - (void)showPhotoAlbum:(ACCameraView *)cameraView {
     
+    [[ACFaceSDK sharedSDK] usePhotoAlbum:self];
+    
 //    [[ACFaceSDK sharedSDK] generateImageFromeCameraWithAppType:ACFaceSDKAPPTypeArtCamera andCurrentController:self withImage:[UIImage imageNamed:@"girl"]];
     
-    [[ACFaceSDK sharedSDK] setupPhotoAlbumController:self];
+//    [[ACFaceSDK sharedSDK] setupPhotoAlbumController:self];
     
 //    [[ACFaceSDK sharedSDK] usePhotoAlbumWithCurrentController:self];
     
@@ -392,6 +378,7 @@
 }
 
 - (void)tintPhotoAlbum:(ACCameraView *)cameraView {
+    
     [[ACFaceSDK sharedSDK] setupTintAlertController:self];
     
 }
@@ -420,44 +407,6 @@
      }
  }
 
-
-#pragma mark - **************** Navgation delegate
-/** 返回转场动画实例*/
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
-                                  animationControllerForOperation:(UINavigationControllerOperation)operation
-                                               fromViewController:(UIViewController *)fromVC
-                                                 toViewController:(UIViewController *)toVC
-{
-    if (operation == UINavigationControllerOperationPush) {
-        if (![[[ACFaceSDK sharedSDK] otherControllers] containsObject:NSStringFromClass([toVC class])]){
-            return nil;
-        }else{
-            return self.pushAnimation;
-        }
-    }else if (operation == UINavigationControllerOperationPop){
-        if (![[[ACFaceSDK sharedSDK] otherControllers] containsObject:NSStringFromClass([fromVC class])]){
-            return nil;
-        }else{
-            return self.popAnimation;
-        }
-    }
-    return nil;
-}
-
--(ACPushTransition *)pushAnimation
-{
-    if (!_pushAnimation) {
-        _pushAnimation = [[ACPushTransition alloc] init];
-    }
-    return _pushAnimation;
-}
--(ACPopTransition *)popAnimation
-{
-    if (!_popAnimation) {
-        _popAnimation = [[ACPopTransition alloc] init];
-    }
-    return _popAnimation;
-}
 
 
 @end

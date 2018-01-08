@@ -73,7 +73,7 @@
 
 - (void)dismissBtnClick:(UIButton*)btn {
     [self.navigationController popViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

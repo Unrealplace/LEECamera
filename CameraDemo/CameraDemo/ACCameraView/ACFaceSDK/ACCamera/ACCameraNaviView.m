@@ -75,7 +75,7 @@
 }
 
 - (void)touchWithType:(UIButton*)btn {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cameraNaviViewTouchEvent:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cameraNaviViewTouchEvent:andCameraNaviView:)]) {
         [self.delegate cameraNaviViewTouchEvent:btn.tag andCameraNaviView:self];
     }
     

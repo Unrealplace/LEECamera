@@ -11,7 +11,7 @@
 
 typedef void(^ACPhotoCallBack)(ACAsset *_Nullable asset);
 
-typedef void(^ACSaveImageHandler)(BOOL isCompeleted,NSString * status,NSDictionary * imgInfo);
+typedef void(^ACSaveImageHandler)(BOOL isCompeleted,NSString * _Nullable status,NSDictionary * _Nullable imgInfo);
 
 
 @interface ACPhotoTool : NSObject
@@ -29,7 +29,7 @@ typedef void(^ACSaveImageHandler)(BOOL isCompeleted,NSString * status,NSDictiona
  @param image 图片
  @param saveImageHandler 保存成功的回调
  */
-+ (void)saveImage:(UIImage *)image compeleted:(ACSaveImageHandler)saveImageHandler;
++ (void)saveImage:(UIImage *_Nullable)image compeleted:(ACSaveImageHandler _Nullable )saveImageHandler;
 
 @end
 

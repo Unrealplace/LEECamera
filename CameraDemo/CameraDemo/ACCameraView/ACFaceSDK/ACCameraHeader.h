@@ -36,6 +36,12 @@ typedef enum :NSInteger{
     
 }ACFaceSDKShareType;
 
+typedef enum :NSInteger{
+   ACFaceSDKNetStateTypeWifi = 0,
+   ACFaceSDKNetStateTypeWAN,
+   ACFaceSDKNetStateTypeNotReach
+}ACFaceSDKNetStateType;
+
 //RGBA颜色基础宏
 #define ACCAMERA_RGBAColor(r,g,b,a)              [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #define ACCAMERA_ACRGBColor(r,g,b)               [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(1.0f)]
@@ -48,16 +54,20 @@ typedef enum :NSInteger{
 #define ACCAMERA_SCREEN_HEIGHT                   [UIScreen mainScreen].bounds.size.height
 
 
-
 //是否为pad
 #define ACCAMERA_DeviceIsPad                     [UIDevice currentDevice].isPad
 #define ACCAMERA_DeviceIsX                       (ACCAMERA_SCREEN_HEIGHT == 812.0f)
 
-//适配
+// 适配
+//一个像素的宽度
+#define ACCAMERA_SINGLE_PIXEL                    (1.0 / [UIScreen mainScreen].scale)
+#define ACCAMERA_AdjustValue(a)                  (ACCAMERA_DeviceIsX ? a : (a) * [UIScreen mainScreen].bounds.size.height / 667.0f)
+#define ACCAMERA_AdjustValueByWidth(a)           (a) * [UIScreen mainScreen].bounds.size.width / 375.0f
 
 #define ACCAMERA_NAVI_TOP_PADDING                (ACCAMERA_DeviceIsX ? 44.0f : 0.0f)
+#define ACCAMERA_BOTTOM_PADDING                  (ACCAMERA_DeviceIsX ? 34.0f : 0.0f)
 #define ACCAMERA_NAVI_HEIGHT                     (ACCAMERA_DeviceIsX ? 60.0f : 44.0f)
-#define ACCAMERA_EDIT_BOTTOM_PADDING             (ACCAMERA_DeviceIsX ? 34.0f : 0.0f)
+
 
 
 //字体
