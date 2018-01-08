@@ -74,6 +74,12 @@
     return _rightBtn;
 }
 
+- (void)hiddenLeftBtn:(BOOL)leftHidden centerBtnHidden:(BOOL)centerHidden rightBtnHidden:(BOOL)rightBtnHidden {
+    self.leftBtn.hidden = leftHidden;
+    self.centerBtn.hidden = centerHidden;
+    self.rightBtn.hidden = rightBtnHidden;
+}
+
 - (void)touchWithType:(UIButton*)btn {
     if (self.delegate && [self.delegate respondsToSelector:@selector(cameraNaviViewTouchEvent:andCameraNaviView:)]) {
         [self.delegate cameraNaviViewTouchEvent:btn.tag andCameraNaviView:self];

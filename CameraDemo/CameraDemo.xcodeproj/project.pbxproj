@@ -76,6 +76,7 @@
 		B619623D2002378200AB7683 /* ACCameraShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B619623C2002378200AB7683 /* ACCameraShareCell.m */; };
 		B61962402002379E00AB7683 /* ACCameraShareFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B619623F2002379E00AB7683 /* ACCameraShareFlowLayout.m */; };
 		B61962432002717800AB7683 /* ACFaceShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B61962422002717800AB7683 /* ACFaceShareModel.m */; };
+		B6558AFD2003BA970080F26C /* ACCameraAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6558AFC2003BA970080F26C /* ACCameraAlertView.m */; };
 		B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */; };
 		B6BF63931FF3DD8C000CE33D /* ACVideoPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63921FF3DD8C000CE33D /* ACVideoPreView.m */; };
 		B6BF63961FF52529000CE33D /* UIImage+ACCameraFixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF63951FF52529000CE33D /* UIImage+ACCameraFixOrientation.m */; };
@@ -218,6 +219,8 @@
 		B619623F2002379E00AB7683 /* ACCameraShareFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraShareFlowLayout.m; sourceTree = "<group>"; };
 		B61962412002717800AB7683 /* ACFaceShareModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACFaceShareModel.h; sourceTree = "<group>"; };
 		B61962422002717800AB7683 /* ACFaceShareModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACFaceShareModel.m; sourceTree = "<group>"; };
+		B6558AFB2003BA970080F26C /* ACCameraAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraAlertView.h; sourceTree = "<group>"; };
+		B6558AFC2003BA970080F26C /* ACCameraAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraAlertView.m; sourceTree = "<group>"; };
 		B6BF638E1FF3D4E7000CE33D /* ACCameraView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCameraView.h; sourceTree = "<group>"; };
 		B6BF638F1FF3D4E7000CE33D /* ACCameraView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCameraView.m; sourceTree = "<group>"; };
 		B6BF63911FF3DD8C000CE33D /* ACVideoPreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACVideoPreView.h; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 				B619623C2002378200AB7683 /* ACCameraShareCell.m */,
 				B619623E2002379E00AB7683 /* ACCameraShareFlowLayout.h */,
 				B619623F2002379E00AB7683 /* ACCameraShareFlowLayout.m */,
+				B6558AFB2003BA970080F26C /* ACCameraAlertView.h */,
+				B6558AFC2003BA970080F26C /* ACCameraAlertView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -749,6 +754,7 @@
 				B6BF63901FF3D4E7000CE33D /* ACCameraView.m in Sources */,
 				B619623A2002354D00AB7683 /* ACCameraShareBottomView.m in Sources */,
 				B61962372002352C00AB7683 /* ACCameraShareView.m in Sources */,
+				B6558AFD2003BA970080F26C /* ACCameraAlertView.m in Sources */,
 				2B48A8901FFF7D2C00DB57EA /* UIView+ACSnapshot.m in Sources */,
 				2BAB08CD1FFF4EDD00DFAC18 /* PHAsset+AC.m in Sources */,
 			);

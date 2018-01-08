@@ -60,6 +60,7 @@ typedef enum :NSInteger{
 
 // 适配
 //一个像素的宽度
+#define ACCAMERA_Window                        [[[UIApplication sharedApplication] delegate] window]
 #define ACCAMERA_SINGLE_PIXEL                    (1.0 / [UIScreen mainScreen].scale)
 #define ACCAMERA_AdjustValue(a)                  (ACCAMERA_DeviceIsX ? a : (a) * [UIScreen mainScreen].bounds.size.height / 667.0f)
 #define ACCAMERA_AdjustValueByWidth(a)           (a) * [UIScreen mainScreen].bounds.size.width / 375.0f

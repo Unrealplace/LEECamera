@@ -43,7 +43,6 @@
 - (ACCameraNaviView *)naviView {
     if (!_naviView) {
         _naviView = [[ACCameraNaviView alloc] initWithFrame:CGRectMake(0, 0, self.view.ca_width, 44)];
-//        _naviView.hidden = YES;
         _naviView.delegate = self;
     }
     return _naviView;

@@ -25,10 +25,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor purpleColor];
     [self.view addSubview:self.enterBtn];
     self.enterBtn.ca_center = self.view.ca_center;
-    
+    [self.naviView hiddenLeftBtn:NO centerBtnHidden:YES rightBtnHidden:YES];
+    [self.view addSubview:self.naviView];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -65,14 +66,14 @@
         });
     }
     [[ACFaceSDK sharedSDK] enterToCamera:self];
-    
-//    [[ACFaceSDK sharedSDK] setupEnterController:self];
-    
-    
-    
-//    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:pickerVC];
-//    [navi setNavigationBarHidden:YES animated:NO];
-//    [self.navigationController pushViewController:pickerVC animated:YES];
+
+}
+
+
+- (void)cameraNaviViewTouchEvent:(ACCameraNaviViewTouchType)touchType andCameraNaviView:(ACCameraNaviView *)naviView {
+    if (touchType == ACCameraNaviViewTouchTypeLeft) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 

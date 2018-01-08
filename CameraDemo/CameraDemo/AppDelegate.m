@@ -12,6 +12,7 @@
 #import "ACOtherCameraViewController.h"
 #import "ACPhotoPickerController.h"
 #import "ACOtherPhotoViewController.h"
+#import "ACCameraAlertView.h"
 
 @interface AppDelegate ()
 
@@ -33,8 +34,8 @@
      */
     [[ACFaceSDK sharedSDK] setAppType:ACFaceSDKAPPTypeArtCamera
                  andCurrentEnviroment:ACFaceSDKEnviromentTypeDebug
-           andRegisterPhotoController:[ACOtherPhotoViewController class]
-                  andCameraController:[ACOtherCameraViewController class]];
+           andRegisterPhotoController:[ACPhotoPickerController class]
+                  andCameraController:[ACCameraViewController class]];
     /**
      SDK 不集成网络检测，考虑各个app 都有网络检测，只需调用即可
      
@@ -64,16 +65,20 @@
             [[ACFaceSDK sharedSDK] updateEnviroMentType:ACFaceSDKEnviromentTypeRelease];
         }
         
-        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"hello" message:@"使用提示信息啊" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        UIAlertAction *confirAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alertVC addAction:cancleAction];
-        [alertVC addAction:confirAction];
-        [currentController presentViewController:alertVC animated:YES completion:nil];
+        ACCameraAlertView * alertView = [ACCameraAlertView tintAlertView];
+        
+        [alertView showAlert];
+        
+//        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"hello" message:@"使用提示信息啊" preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//        }];
+//        UIAlertAction *confirAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//        }];
+//        [alertVC addAction:cancleAction];
+//        [alertVC addAction:confirAction];
+//        [currentController presentViewController:alertVC animated:YES completion:nil];
         
     }];
     
@@ -89,52 +94,11 @@
     }];
     
     
-   
-    
-    
-    
-    
-
-//
-//    /**
-//     使用宿主相册功能
-//
-//     @param currentController 当前控制器
-//     */
-//    [[ACFaceSDK sharedSDK] usePhotoAlbumControllerHandler:^(UIViewController *currentController) {
-//
-//        BOOL have = NO;
-//        for (UIViewController * vc in currentController.navigationController.childViewControllers) {
-//            if ([vc isKindOfClass:[ACPhotoPickerController class]]) {
-//                have = YES;
-//                [currentController.navigationController popToViewController:vc animated:YES];
-//            }
-//        }
-//        if (!have) {
-//            ACPhotoPickerController * photoVC = [ACPhotoPickerController new];
-//            [currentController.navigationController pushViewController:photoVC animated:YES];
-//        }
-    
-//        BOOL have = NO;
-//        for (UIViewController * vc in currentController.navigationController.childViewControllers) {
-//            if ([vc isKindOfClass:[ACOtherPhotoViewController class]]) {
-//                have = YES;
-//                [currentController.navigationController popToViewController:vc animated:YES];
-//            }
-//        }
-//        if (!have) {
-//            ACOtherPhotoViewController * photoVC = [ACOtherPhotoViewController new];
-//            [currentController.navigationController pushViewController:photoVC animated:YES];
-//        }
-        
-        
-//    }];
-    
-    
-    
-    
     return YES;
 }
+
+
+
 
 
 

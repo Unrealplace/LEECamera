@@ -25,4 +25,7 @@ typedef enum :NSInteger{
 @property (nonatomic, weak)id <ACCameraNaviViewDelegate> delegate;
 
 
+
+- (void)hiddenLeftBtn:(BOOL)leftHidden centerBtnHidden:(BOOL)centerHidden rightBtnHidden:(BOOL)rightBtnHidden;
+
 @end
